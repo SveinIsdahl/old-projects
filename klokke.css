@@ -71,7 +71,7 @@
    	border-right: solid 4px blue;
 }	
 
-a{
+.links {
 text-decoration: none;
 color: blue;
 font-size:40px;
