@@ -10,10 +10,17 @@ function setup() {
     function figur(ctx,dx) {
         ctx.beginPath();
         ctx.fillStyle = "rgb(200,0,200)";
-        ctx.arc(dx + 100, 375, 30, 0, 2 * Math.PI);
+        ctx.arc(dx + 100, 375, 20, 0, 2 * Math.PI);
         ctx.stroke();
-
-
-    
     }
+    function tegn() {
+        ctx.clearRect(0,0,500,500)
+        figur(ctx, xpos);
+        xpos += vx;
+        if (xpos > 300){
+            vx = -2;
+        }
+        
+    }
+    setInterval(tegn, 10);
 }
