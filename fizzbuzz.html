@@ -1,19 +1,47 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>FizzBuzz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        p{
+            white-space: pre
+        }
+    </style>
 </head>
+
 <body>
+    <h1>FizzBuzz</h1>
+    <b><a style="color: blue;" href="fizzbuzz1.html">Neste side: FizzBuzz 1</a></b> 
+    <br>
+    <h4>Reglene: <br> Write a program that prints the numbers from 1 to 100. But for multiples of three print “Fizz” instead of the number
+    and for the multiples of five print “Buzz”. For numbers which are multiples of both three and five print “FizzBuzz”</h4>
+    <article> Resten av mine forsøk kommer til å ligge i console. Målet med å gjøre denne "utfordringen" flere ganger er å gjøre koden kortere og å prøve forskjellige metoder.</article>
+
     <script>
-        var output = "";
+        var svar = [];
+        for (let i = 1; i <= 100; i++) {
+            var output = "";
+            if (i % 3 === 0) {output += "Fizz";}
+            if (i % 5 === 0) {output += "Buzz";}
+            if (output === "") {output = i;}
+            svar.push(output);
+        }
+        var p = svar.join("\n");
+        console.log(p)
 
-
+        function func() {
+            document.getElementById("output").innerHTML = p;
+        }
     </script>
-    
+    <hr>
+    <button onclick="func()">Eksempel</button>
+    <p id="output"></p>
+
 </body>
+
 </html>
