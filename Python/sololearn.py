@@ -1,3 +1,4 @@
+import os
 #print(float(input("Skriv inn et tall: \n"))+
 #float(input("Skriv inn et til får å kunne legge dem sammen: \n")))
 x="a"
@@ -11,3 +12,4 @@ if 2 < x:
     print("2<" + str(x))
 else:
     print("2>" + str(x))
+print("Current Working Directory " , os.getcwd())
