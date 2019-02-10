@@ -32,11 +32,16 @@ function draw() {
     ctx.lineTo(250 + 200, kurve[0] + 250);
     ctx.stroke();
 
-//    ctx.beginShape();
+    ctx.beginPath();
+    ctx.moveTo(x+250, y+250);
+    ctx.lineTo(x+250, y+350);
+    ctx.stroke();
+
+
     for (let i = 0; i < kurve.length + 1; i++) {
         ctx.fillRect(i + 250 + 200, kurve[i] + 250, 2, 2);
     }
-//    ctx.endShape();
+    //Lager sinuskurven av 2px*2px firkanter
 
 
 
@@ -46,10 +51,9 @@ function draw() {
     vinkel += 0.02;
 }
 
-function draw1() {
+function drawLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     draw();
 }
-setInterval(draw1, 20);
-
+setInterval(drawLoop, 20);
 
