@@ -15,7 +15,7 @@ function draw() {
 
     let x = radius * Math.cos(vinkel);
     let y = radius * Math.sin(vinkel);
-    kurve.push(y);
+    kurve.unshift(y);
     ctx.beginPath();
     ctx.ellipse(x + 250, y + 250, 8, 8, 2 * Math.PI, 0, 2 * Math.PI);
     ctx.stroke();
@@ -27,16 +27,23 @@ function draw() {
     ctx.stroke();
     //linje fra midten til sirkelperiferi x, y
 
-    /*   ctx.beginPath();
-       ctx.moveTo(x+250, y+250);
-       ctx.lineTo(350, 250);
-       ctx.stroke();
-   */
-  for(let i = 0; i < 10000; i++){
-    ctx.fillRect(i+250+100, kurve[i]+250, 1, 1);
-  }
+    ctx.beginPath();
+    ctx.moveTo(x + 250, y + 250);
+    ctx.lineTo(250 + 200, kurve[0] + 250);
+    ctx.stroke();
 
-    vinkel += 0.01;
+//    ctx.beginShape();
+    for (let i = 0; i < kurve.length + 1; i++) {
+        ctx.fillRect(i + 250 + 200, kurve[i] + 250, 2, 2);
+    }
+//    ctx.endShape();
+
+
+
+    if (kurve.length > 1400){
+        kurve.pop();
+    }
+    vinkel += 0.02;
 }
 
 function draw1() {
