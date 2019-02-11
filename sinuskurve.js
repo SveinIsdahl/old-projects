@@ -1,5 +1,5 @@
-var canvas = document.getElementById("canvas");
-var ctx = canvas.getContext("2d");
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
 let vinkel = 0;
 let kurve = [];
 //ctx.translate(250, 250)
@@ -36,7 +36,7 @@ function draw() {
     ctx.moveTo(x+250, y+250);
     ctx.lineTo(x+250, 250);
     ctx.stroke();
-    //Sinus-linje
+    //Sinus-linje fra punkt til x av punkt, men 250 i y-akse
 
     ctx.beginPath();
     ctx.moveTo(150, 250);
@@ -56,8 +56,6 @@ function draw() {
         ctx.fillRect(i + 250 + 200, kurve[i] + 250, 2, 2);
     }
     //Lager sinuskurven av 2px*2px firkanter
-
-
 
     if (kurve.length > 1400){
         kurve.pop();
