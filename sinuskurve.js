@@ -2,6 +2,7 @@ let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 let vinkel = 0;
 let kurve = [];
+var buttonState = 0;
 //ctx.translate(250, 250)
 //FLytter alt på canvas ned og bort 250px
 //Virker ikke når andre verdier (x og y) settes til 0
@@ -17,7 +18,7 @@ function draw() {
     let y = radius * Math.sin(vinkel);
     kurve.unshift(y);
     ctx.beginPath();
-    ctx.ellipse(x + 250, y + 250, 8, 8, 2 * Math.PI, 0, 2 * Math.PI);
+    ctx.ellipse(x + 250, y + 250, 5, 5, 2 * Math.PI, 0, 2 * Math.PI);
     ctx.stroke();
     //sirkel på sirkelperiferi x, y
 
@@ -33,10 +34,16 @@ function draw() {
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.moveTo(x+250, y+250);
-    ctx.lineTo(x+250, 250);
+    ctx.moveTo(x + 250, y + 250);
+    ctx.lineTo(x + 250, 250);
     ctx.stroke();
     //Sinus-linje fra punkt til x av punkt, men 250 i y-akse
+
+    ctx.beginPath();
+    ctx.moveTo(x + 250, y + 250);
+    ctx.lineTo(250, y + 250);
+    ctx.stroke();
+    //Cosinus-linje fra punkt til y av punkt, men 250 i x-akse
 
     ctx.beginPath();
     ctx.moveTo(150, 250);
@@ -50,22 +57,38 @@ function draw() {
     ctx.stroke();
     //Linje fra sirkelperiferi til sirkelperiferi i y-aksen
 
-
-
     for (let i = 0; i < kurve.length + 1; i++) {
         ctx.fillRect(i + 250 + 200, kurve[i] + 250, 2, 2);
     }
     //Lager sinuskurven av 2px*2px firkanter
 
-    if (kurve.length > 1400){
+    if (kurve.length > 1400) {
         kurve.pop();
     }
-    vinkel += 0.02;
+
+    let vinkelGrader = vinkel * 180 / Math.PI * (-1);
+    vinkelGraderAvrundet = Math.round(vinkelGrader)
+    document.getElementById("vinkelOutput").innerHTML = "vinkel=" + vinkelGraderAvrundet;
+
+    if (vinkelGraderAvrundet >= 360) {
+        vinkel = 0;
+    }
+
+    vinkel -= 0.015;
 }
 
 function drawLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     draw();
 }
-setInterval(drawLoop, 20);
 
+var loop = setInterval(drawLoop, 35);
+
+/*function button1(){
+    var loop = setInterval(drawLoop, 100);
+}
+*/
+
+function button() {
+        clearInterval(loop);
+}
