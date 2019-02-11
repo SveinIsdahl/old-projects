@@ -34,8 +34,22 @@ function draw() {
 
     ctx.beginPath();
     ctx.moveTo(x+250, y+250);
-    ctx.lineTo(x+250, y+350);
+    ctx.lineTo(x+250, 250);
     ctx.stroke();
+    //Sinus-linje
+
+    ctx.beginPath();
+    ctx.moveTo(150, 250);
+    ctx.lineTo(2250, 250);
+    ctx.stroke();
+    //Linje fra sirkelperiferi til enden av canvas, 
+
+    ctx.beginPath();
+    ctx.moveTo(250, 150);
+    ctx.lineTo(250, 350);
+    ctx.stroke();
+    //Linje fra sirkelperiferi til sirkelperiferi i y-aksen
+
 
 
     for (let i = 0; i < kurve.length + 1; i++) {
