@@ -14,8 +14,8 @@ function draw() {
     //lager sirkel på 250, 250 med radius=100
     //siste 3 parmetrene er rotasjon (360 deg), start og slutt vinkel. Alle utrykket i radianer.
 
-    let x = radius * Math.cos(vinkel);
-    let y = radius * Math.sin(vinkel);
+    var x = radius * Math.cos(vinkel);
+    var y = radius * Math.sin(vinkel);
     kurve.unshift(y);
     ctx.beginPath();
     ctx.ellipse(x + 250, y + 250, 5, 5, 2 * Math.PI, 0, 2 * Math.PI);
@@ -74,6 +74,7 @@ function draw() {
         vinkel = 0;
     }
 
+
     vinkel -= 0.015;
 }
 
@@ -92,3 +93,4 @@ var loop = setInterval(drawLoop, 35);
 function button() {
         clearInterval(loop);
 }
+
