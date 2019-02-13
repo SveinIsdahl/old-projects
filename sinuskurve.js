@@ -47,7 +47,7 @@ function draw() {
         tanPos *= (-1);
     }
 
-    ctx.font = "12px Arial";
+    ctx.font = "13px Arial";
     ctx.fillStyle = "blue";
     ctx.fillText("cos=" + xCos.toPrecision(4), xxRep + x + 250 - 50, yyRep + y + 250 - 10);
     ctx.fillStyle = "red";
