@@ -47,11 +47,11 @@ function draw() {
         tanPos *= (-1);
     }
 
-    ctx.font = "13px Arial";
+    ctx.font = "14px Arial";
     ctx.fillStyle = "blue";
     ctx.fillText("cos=" + xCos.toPrecision(4), xxRep + x + 250 - 50, yyRep + y + 250 - 10);
     ctx.fillStyle = "red";
-    ctx.fillText("sin=" + ySin.toPrecision(4), xRep + 250 + 5, yRep + 250 - 10);
+    ctx.fillText("sin=" + ySin.toPrecision(4), xRep + 250 + 3, yRep + 250 - 10);
     ctx.fillStyle = "black";
     ctx.fillText("Tan=" + (tanPos).toPrecision(4), 80, 130)
     //Viser sin og cos i positive verdier
@@ -145,7 +145,7 @@ function drawLoop() {
     draw();
 }
 
-var loop = setInterval(drawLoop, 45);
+var loop = setInterval(drawLoop, 50);
 
 /*function button1(){
     var loop = setInterval(drawLoop, 100);
