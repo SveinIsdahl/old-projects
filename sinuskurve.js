@@ -11,12 +11,10 @@ function draw() {
     ctx.beginPath();
     ctx.ellipse(250, 250, radius, radius, 2 * Math.PI, 0, 2 * Math.PI);
     ctx.stroke();
-    //lager sirkel på 250, 250 med radius=100
+    //lager sirkel på 250, 250 med radius
     //siste 3 parmetrene er rotasjon (360 deg), start og slutt vinkel. Alle utrykket i radianer.
 
     let x = radius * Math.cos(vinkel);
-    console.log(x);
-    console.log(vinkel);
     let y = radius * Math.sin(vinkel);
     let xCos = (x / radius);
     let ySin = (y / radius);
