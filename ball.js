@@ -16,13 +16,13 @@ function ball(){
     let ran2 = Math.floor(Math.random() * 255) + 0;
     let ran3 = Math.floor(Math.random() * 255) + 0;
     console.log(ran1)
-    if (pos.x > 1775 || pos.x < 25) {    
+    if (pos.x > 1375 || pos.x < 25) {    
         ctx.fillStyle = `rgb(
         ${Math.floor(ran1)},
         ${Math.floor(ran2)}, 
         ${Math.floor(ran3)})`;
     }
-    if (pos.y > 870 || pos.y < 25) {
+    if (pos.y > 770 || pos.y < 25) {
         ctx.fillStyle = `rgb(
         ${Math.floor(ran3)},
         ${Math.floor(ran1)}, 
@@ -49,10 +49,10 @@ function draw() {
     vel.x += acc.x;
     vel.y += acc.y;  
     
-    if (pos.x > 1775 || pos.x < 25){
+    if (pos.x > 1375 || pos.x < 25){
         vel.x = -vel.x;  
     }
-    if (pos.y > 870 || pos.y < 25) {
+    if (pos.y > 770 || pos.y < 25) {
         vel.y = -vel.y;
 
     }
