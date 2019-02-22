@@ -1,11 +1,13 @@
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
+let width = canvas.width;
+let height = canvas.height;
 
 let radius = 40
 
-let pos = {x:radius+700, y:radius};
+let pos = {x:radius+700, y:radius+500};
 let vel = {x:0, y:0};
-let acc = {x:0.000, y:0.00};
+let acc = {x:0.000, y:0.000};
 
 function ball(){
     ctx.lineWidth = "5";
@@ -15,14 +17,13 @@ function ball(){
     let ran1 = Math.floor(Math.random() * 255) + 0;
     let ran2 = Math.floor(Math.random() * 255) + 0;
     let ran3 = Math.floor(Math.random() * 255) + 0;
-    console.log(ran1)
-    if (pos.x > 1375 || pos.x < 25) {    
+    if (pos.x > width-radius || pos.x < radius) {    
         ctx.fillStyle = `rgb(
         ${Math.floor(ran1)},
         ${Math.floor(ran2)}, 
         ${Math.floor(ran3)})`;
     }
-    if (pos.y > 770 || pos.y < 25) {
+    if (pos.y > height-radius || pos.y < radius) {
         ctx.fillStyle = `rgb(
         ${Math.floor(ran3)},
         ${Math.floor(ran1)}, 
@@ -34,14 +35,8 @@ function ball(){
 }
 
 function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, width, height);
     ball();
-    if (pos.y < 0){
-        pos.y = 5;
-    }
-    if (pos.x < 0) {
-        pos.x = 5;
-    }
 
     pos.x += vel.x;
     pos.y += vel.y;
@@ -49,19 +44,19 @@ function draw() {
     vel.x += acc.x;
     vel.y += acc.y;  
     
-    if (pos.x > 1375 || pos.x < 25){
+    if (pos.x > width-radius || pos.x < radius){
         vel.x = -vel.x;  
     }
-    if (pos.y > 770 || pos.y < 25) {
+    if (pos.y > height-radius || pos.y < radius) {
         vel.y = -vel.y;
 
     }
     
-    let ranY = (Math.random() - 0.5);
-    let ranX = (Math.random() - 0.5);
+    let ranY = (Math.random()*10 - 5);
+    let ranX = (Math.random()*10 - 5);
     acc.y = ranY/10;
     acc.x = ranX/10;
     
 }
 
-setInterval(draw, 1.6);
+setInterval(draw, 16);
