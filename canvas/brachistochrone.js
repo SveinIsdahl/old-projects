@@ -11,6 +11,7 @@ let velY = 0
 let accX = 0
 let accY = 0
 
+
 function Ball(r, x ,y, velX, velY, accX, accY){
     this.r = r;
     this.x = x;
@@ -43,5 +44,7 @@ function draw() {
     }
     ball.accY +=0.0015;
     ball.accX +=0.002;
+
+
 }
 setInterval(draw, 16);
