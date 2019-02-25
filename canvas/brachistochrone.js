@@ -1,29 +1,47 @@
-var pos = null;
-var x = 0;
-function setup() {
-    createCanvas(640, 480);
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
+let width = canvas.width;
+let height = canvas.height;
 
+let r = 50
+let x = 500
+let y = 500
+let velX = 0
+let velY = 0
+let accX = 0
+let accY = 0
+
+function Ball(r, x ,y, velX, velY, accX, accY){
+    this.r = r;
+    this.x = x;
+    this.y = y;
+    this.velX = velX;
+    this.velY = velY;
+    this.accX = accX;
+    this.accY = accY;
 }
+
+let ball = new Ball(r, x, y, velX, velY, accX, accY);
 
 function draw() {
-    if (pos.x == 0){
-        var pos = createVector(100, 100);
-        var vel = createVector(10, 10);
-        var accel = createVector(10, 10);
+    ctx.clearRect(0, 0, width, height);
+    ctx.beginPath();
+    ctx.ellipse(ball.x, ball.y, ball.r, ball.r, 2 * Math.PI, 0, 2 * Math.PI);
+    ctx.stroke();
+
+    ball.x += ball.velX;
+    ball.y += ball.velY;
+
+    ball.velX += ball.accX;
+    ball.velY += ball.accY;  
+    
+    if (ball.x > width-ball.r || ball.x < ball.r){
+        ball.velX = -ball.velX;
     }
-
-
-    pos.x += 1;
-
-    background(0)
-    stroke(255);
-    fill(255);
-    ellipse(pos.x, pos.x, 80, 80);
-
-    if (pos.x > 520){
-        pos.x=1;
+    if (ball.y > height-ball.r || ball.y < ball.r) {
+        ball.velY = -ball.velY;
     }
-
+    ball.accY +=0.0015;
+    ball.accX +=0.002;
 }
-
-
+setInterval(draw, 16);
