@@ -68,3 +68,5 @@ setInterval(draw, 16);
 //Legg til collition-detection (Uten box2d, bruk tutorial på detection kun m. baller)
 //Legg til slider for antall baller 1-100? Random properties?
 //Test max antall baller
+//if vel < (Lavt tall f.eks 0.0001) vel = 0
+//Dette hindrer vibrasjoner når de ligger ved enden av canvas
