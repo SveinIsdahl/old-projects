@@ -9,9 +9,6 @@ let ball1 = {
     yvel: 0,
     xacc: 0.0017,
     yacc: 0.0032,
-    draw: function(){
-        this.
-    }
 }
 let ball2 = {
     r: 50,
