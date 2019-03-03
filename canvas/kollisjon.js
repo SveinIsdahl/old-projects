@@ -66,3 +66,5 @@ setInterval(draw, 16);
 
 //Legg til object constructor for å konstruere flere baller
 //Legg til collition-detection (Uten box2d, bruk tutorial på detection kun m. baller)
+//Legg til slider for antall baller 1-100? Random properties?
+//Test max antall baller
