@@ -39,6 +39,7 @@ function ball(ball) {
     if (ball.y > height - ball.r || ball.y < ball.r) {
         ball.yvel *= -1;
     }
+
 }
 
 function draw() {
