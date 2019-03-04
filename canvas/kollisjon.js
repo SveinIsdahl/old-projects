@@ -4,34 +4,18 @@ let ctx = canvas.getContext("2d");
 let width = canvas.width;
 let height = canvas.height;
 
-let ball1 = {
-    r: 50,
-    x: 300,
-    y: 300,
-    xvel: 0,
-    yvel: 0,
-    xacc: 0.0007,
-    yacc: 0.032,
+function ball_con(x, y, xacc, yacc){
+    this.r = 25;
+    this.x = x;
+    this.y = y;
+    this.xvel = 0;
+    this.yvel = 0;
+    this.xacc = xacc;
+    this.yacc = yacc;
 }
-let ball2 = {
-    r: 50,
-    x: 500,
-    y: 200,
-    xvel: 0,
-    yvel: 0,
-    xacc: 0.008,
-    yacc: 0.075
-}
-
-let ball3 = {
-    r: 50,
-    x: 500,
-    y: 100,
-    xvel: 0,
-    yvel: 0,
-    xacc: 0.001,
-    yacc: 0.035
-}
+let ball1 = new ball_con(150, 100, 0.03, 0.01);
+let ball2 = new ball_con(100, 200, 0.01, 0.11);
+let ball3 = new ball_con(300, 100, 0.02, 0.04);
 
 function ball(ball) {
     ctx.lineWidth = "5";
@@ -52,7 +36,6 @@ function ball(ball) {
     if (ball.y > height - ball.r || ball.y < ball.r) {
         ball.yvel *= -0.9;
     }
-
 }
 
 function draw() {
