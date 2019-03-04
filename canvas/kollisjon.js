@@ -12,7 +12,13 @@ function ball_con(r, x, y, xacc, yacc){
     this.yvel = 0;
     this.xacc = xacc;
     this.yacc = yacc;
-}
+    this.farge = function farge() {return `rgb(
+        ${Math.floor(Math.floor(Math.random() * 255))},
+        ${Math.floor(Math.floor(Math.random() * 255))}, 
+        ${Math.floor(Math.floor(Math.random() * 255))})`;
+        }
+    }
+
 let ball1 = new ball_con(10, 250, 100, 0.03, 0.01);
 let ball2 = new ball_con(15, 200, 200, 0.03, 0.04);
 let ball3 = new ball_con(20, 300, 100, 0.02, 0.04);
@@ -35,9 +41,11 @@ function ball(ball) {
 
     if (ball.x > width - ball.r || ball.x < ball.r) {
         ball.xvel *= -1;
+        ctx.fillStyle = ball.farge();
     }
     if (ball.y > height - ball.r || ball.y < ball.r) {
         ball.yvel *= -1;
+        ctx.fillStyle = ball.farge();
     }
 
 }
