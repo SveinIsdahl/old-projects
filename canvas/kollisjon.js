@@ -4,8 +4,8 @@ let ctx = canvas.getContext("2d");
 let width = canvas.width;
 let height = canvas.height;
 
-function ball_con(x, y, xacc, yacc){
-    this.r = 25;
+function ball_con(r, x, y, xacc, yacc){
+    this.r = r;
     this.x = x;
     this.y = y;
     this.xvel = 0;
@@ -13,9 +13,12 @@ function ball_con(x, y, xacc, yacc){
     this.xacc = xacc;
     this.yacc = yacc;
 }
-let ball1 = new ball_con(150, 100, 0.03, 0.01);
-let ball2 = new ball_con(100, 200, 0.01, 0.11);
-let ball3 = new ball_con(300, 100, 0.02, 0.04);
+let ball1 = new ball_con(10, 250, 100, 0.03, 0.01);
+let ball2 = new ball_con(15, 200, 200, 0.03, 0.04);
+let ball3 = new ball_con(20, 300, 100, 0.02, 0.04);
+let ball4 = new ball_con(25, 500, 300, 0.01, 0.05);
+let ball5 = new ball_con(30, 600, 200, 0.04, 0.06);
+let ball6 = new ball_con(35, 400, 400, 0.01, 0.07);
 
 function ball(ball) {
     ctx.lineWidth = "5";
@@ -31,10 +34,10 @@ function ball(ball) {
     ball.yvel += ball.yacc;
 
     if (ball.x > width - ball.r || ball.x < ball.r) {
-        ball.xvel *= -0.9;
+        ball.xvel *= -1;
     }
     if (ball.y > height - ball.r || ball.y < ball.r) {
-        ball.yvel *= -0.9;
+        ball.yvel *= -1;
     }
 }
 
@@ -44,6 +47,9 @@ function draw() {
     ball(ball1);
     ball(ball2);
     ball(ball3);
+    ball(ball4);
+    ball(ball5);
+    ball(ball6);
 }
 setInterval(draw, 16);
 
