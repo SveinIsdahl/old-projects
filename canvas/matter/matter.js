@@ -1,12 +1,3 @@
-var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
-output.innerHTML = slider.value;
-
-slider.oninput = function () {
-    output.innerHTML = this.value;
-}
-
-
 let bounce = 1.3;
 let gravity = 1;
 let mass = 1;
