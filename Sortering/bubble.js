@@ -8,7 +8,7 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     values = new Array(width);
     for (let i = 0; i < values.length; i++) {
-        values[i] = random(windowHeight);
+        values[i] = random(height);
     }
 }
 function draw() {
@@ -30,9 +30,10 @@ function draw() {
     }
     // Avlsutter draw loop
     i++
+    frameRate();
 
     for (let i = 0; i < values.length; i++) {
-        stroke(255);
+        stroke(200);
         line(i, height, i, height - values[i]);
         
     }
@@ -45,6 +46,10 @@ function swap (arr, a, b){
     arr[b] = rep;
 }
 //Bytter plasser i array
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
 
 
 // Hvorfor er det svarte linjer etter det er sortert?
