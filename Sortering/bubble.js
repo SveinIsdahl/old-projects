@@ -13,7 +13,7 @@ function setup() {
 }
 function draw() {
     background(0);
-    //bubble();
+    bubble();
     frameRate();
 
     for (let i = 0; i < values.length; i++) {
@@ -54,15 +54,16 @@ function bubble() {
 }
 
 
-//Bytter plasser i array
 
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
 
 
-// Hvorfor er det svarte linjer etter det er sortert?    
+
+/* 
 function selective1(){
         selective(values);
     }   
     setTimeout(selective1, 1000);
+  */   
