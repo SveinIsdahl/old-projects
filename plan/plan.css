@@ -1,0 +1,44 @@
+body {
+    background-color: rgb(61, 60, 60);
+    color: white;
+    
+}
+h1, h2 {
+    color: rgb(213, 59, 252);
+    text-align: center;
+}
+
+h2, h3 {
+    color: rgb(150, 143, 255);
+}
+
+h2, h4 {
+    font-style: italic;
+}
+
+h4{
+    color: rgb(189, 153, 255);
+}
+div {
+    color: white;
+    text-align: start;
+    float: none;
+    font-size: 1.2em;
+}
+li {
+    text-align: start;
+    padding-left: 1em;
+}
+#test {
+    text-align: center;
+}
+
+a {
+    color: rgb(116, 116, 255);
+}
+
+
+a:visited {
+    color: rgb(245, 98, 245);
+}
+
