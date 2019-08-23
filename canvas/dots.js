@@ -1,6 +1,6 @@
 function setup() {
     createCanvas(800, 600);
-    background(60);
+    background(10);
 }
 function mousePressed() {
     stroke(255);

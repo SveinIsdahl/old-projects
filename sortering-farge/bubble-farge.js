@@ -4,12 +4,11 @@ let ctx = canvas.getContext("2d");
 let i = 0;
 let j = 0;
 let verdier = [];
-
+let width = 2;
 function setup() {
-    for (let i = 0; i < 360; i++) {
+    for (let i = 0; i < 360/width; i++) {
         verdier[i] = Math.floor(Math.random()*360);
     }
-    tegn();
 }
 
 function tegn() {
@@ -17,9 +16,9 @@ function tegn() {
     for (let i = 0; i < verdier.length; i++) {
         ctx.beginPath();
         ctx.strokeStyle = "hsl("+verdier[i]+", 100%, 50%)";
-        ctx.lineWidth = 1;
-        ctx.moveTo(i,360);
-        ctx.lineTo(i,verdier[i]);
+        ctx.lineWidth = width;
+        ctx.moveTo(i*width,360);
+        ctx.lineTo(i*width,0);
         ctx.stroke();
     }
 
@@ -56,5 +55,5 @@ function sorter() {
 }
 
 setup();
-setInterval(sorter, 100);
+setInterval(sorter, 30);
 console.log(verdier);

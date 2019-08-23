@@ -26,7 +26,7 @@
 	top: calc((200px - 5px) / 2);
 	width:98px;
 	height:5px;
-	background-color:blue;
+	background-color:rgb(0, 0, 255);
 	animation:turn 3600s steps(60)infinite;
 	transform-origin:1px 3px;
 	transform:rotate(0deg);
@@ -56,7 +56,7 @@
    	transform-origin: 0px 2px;
    	transform: rotate(0deg);
    	text-align: right;
-   	border-right: solid 4px blue;
+   	border-right: solid 4px rgb(174, 0, 255);
 }	
 
 .tall1 {
@@ -68,12 +68,15 @@
    	transform-origin: 0px 2px;
    	transform: rotate(0deg);
    	text-align: right;
-   	border-right: solid 4px blue;
+   	border-right: solid 4px rgb(174, 0, 255);
 }	
 
-.links {
+.link {
 text-decoration: none;
-color: blue;
+color: rgb(121, 121, 255);
 font-size:40px;
 font-weight:700;
+}
+body {
+	background-color: #3d3d3d;
 }

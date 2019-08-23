@@ -17,7 +17,7 @@ function draw() {
     frameRate();
 
     for (let i = 0; i < values.length; i++) {
-        stroke(200);
+        stroke(130);
         line(i, height, i, height - values[i]);
 
     }

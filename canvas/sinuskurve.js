@@ -48,9 +48,9 @@ function draw() {
     }
 
     ctx.font = "14px Arial";
-    ctx.fillStyle = "blue";
+    ctx.fillStyle = "white";
     ctx.fillText("cos=" + xCos.toPrecision(4), xxRep + x + 250 - 50, yyRep + y + 250 - 10);
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "white";
     ctx.fillText("sin=" + ySin.toPrecision(4), xRep + 250 + 3, yRep + 250 - 10);
     ctx.fillStyle = "black";
     ctx.fillText("Tan=" + (tanPos).toPrecision(4), 80, 130)
@@ -86,14 +86,14 @@ function draw() {
     ctx.stroke();
 
     ctx.lineWidth = "2";
-    ctx.strokeStyle = "red";
+    ctx.strokeStyle = "white";
     ctx.beginPath();
     ctx.moveTo(x + 250, y + 250);
     ctx.lineTo(x + 250, 250);
     ctx.stroke();
     //Sinus-linje fra punkt til x av punkt, men 250 i y-akse
 
-    ctx.strokeStyle = "blue";
+    ctx.strokeStyle = "white";
 
     ctx.beginPath();
     ctx.moveTo(x + 250, y + 250);
