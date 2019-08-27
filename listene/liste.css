@@ -1,0 +1,13 @@
+ol {
+    list-style: none;
+    color: red; 
+
+
+}
+ol li::before {content: counter(li); color: rgb(102, 46, 255);
+    display: inline-block; width: 1em;
+    margin-left: -1em;
+    padding-right: 1em;
+
+}
+ol     li {counter-increment: li}
