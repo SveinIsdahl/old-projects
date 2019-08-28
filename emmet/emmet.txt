@@ -1,0 +1,95 @@
+
+Emmet abreviations:
+
+
+.container
+
+<div class="container"></div>
+
+
+
+span.container#id
+
+<span class="class" id="id"></span>
+
+
+
+li*3
+
+<li></li>
+<li></li>
+<li></li>
+
+
+
+ul>li*2
+
+<ul>
+    <li></li>
+    <li></li>
+</ul>
+
+
+
+ul>li*5#item$
+
+<ul>
+    <li id="item1"></li>
+    <li id="item2"></li>
+    <li id="item3"></li>
+    <li id="item4"></li>
+    <li id="item5"></li>
+</ul>
+
+
+
+form>input+input
+
+<form action="">
+    <input type="text">
+    <input type="text">
+</form>
+
+
+
+div>h1+p
+
+<div>
+    <h1></h1>
+    <p></p>
+</div>
+
+
+
+div>(form>input+input)+p
+
+<div>
+    <form action="">
+        <input type="text">
+        <input type="text">
+    </form>
+    <p></p>
+</div>
+
+
+
+div>(form>input:text+input:password+input:submit)+p
+
+<div>
+    <form action="">
+        <input type="text" name="" id="">
+        <input type="password" name="" id="">
+        <input type="submit" value="">
+    </form>
+    <p></p>
+</div>
+
+
+
+p{Random tekst}
+
+<p>Random tekst</p>
+
+
+
+https://docs.emmet.io/cheat-sheet/

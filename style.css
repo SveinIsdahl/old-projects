@@ -18,12 +18,6 @@ a {
 	font-weight:700;
 }
 
-.indexGrid{
-	display:grid;
-	grid-template-columns: repeat(6, 1fr);
-	border:1px solid black;
-	background-color: lightgrey;
-	text-align: center;
-}
+
 
 
