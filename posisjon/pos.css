@@ -11,19 +11,20 @@
     width: 100px;
     height: 100px;
     position: absolute;
-    left: 400px;
-    top: 400px;
+    left: 390px;
+    top: 390px;
     background-image: url("fuggel.png");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-    animation: fly 4s infinite;
+    animation: fly 1s infinite  linear;
 
 }
+
 @keyframes fly {
-    0% {left : 400px; top: 400px;}
-    25% {left: 400px; top: 10px;}
+    0% {left : 390px; top: 390px;}
+    25% {left: 390px; top: 10px;}
     50% {left: 10px; top: 10px;}
-    75% {left: 10px; top:400px;}
-    100% {left: 400px; top:400px;}
+    75% {left: 10px; top:390px;}
+    100% {left: 390px; top:390px;}
 }
