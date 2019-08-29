@@ -1,0 +1,29 @@
+#brett {
+    width: 500px;
+    height: 500px;
+    border: solid black 3px;
+    position: absolute;
+    left: 50px;
+    top: 20px;
+}
+
+#fuggel {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 400px;
+    top: 400px;
+    background-image: url("fuggel.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: fly 4s infinite;
+
+}
+@keyframes fly {
+    0% {left : 400px; top: 400px;}
+    25% {left: 400px; top: 10px;}
+    50% {left: 10px; top: 10px;}
+    75% {left: 10px; top:400px;}
+    100% {left: 400px; top:400px;}
+}

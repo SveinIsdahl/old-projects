@@ -3,3 +3,23 @@ ol {
     color: rgb(255, 255, 255); 
 
 }
+li {
+    color: white;
+}
+li > span {
+    color: green;
+}
+
+#land {
+    background-color: salmon;
+}
+
+/*
+2 måter, nedrest er mest nøyaktig
+#land li {
+    color:blue;
+}
+*/
+#land > ol > li {
+    color:blue;
+}
