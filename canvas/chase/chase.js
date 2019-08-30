@@ -46,18 +46,18 @@ function draw() {
     }
 
 // Hvis player blir stuck utenfor canvas, teleproter 5px tilbake
-    if (p_pos.x > windowWidth+5 - radius) {
-        p_pos.x -= 10;
+    if (p_pos.x > windowWidth+1 - radius) {
+        p_pos.x -= 5;
     }
-    if (p_pos.y > windowHeight+5 - radius) {
-        p_vel.y -= 10
+    if (p_pos.y > windowHeight+1 - radius) {
+        p_pos.y -= 5;
     }
 
-    if (p_pos.x < radius - 25) {
-        p_vel.x += 10;
+    if (p_pos.x < radius - 21) {
+        p_pos.x += 5;
     }
-    if (p_pos.y < radius - 25) {
-        p_vel.y += 10;
+    if (p_pos.y < radius - 21) {
+        p_pos.y += 5;
 
     }
 
