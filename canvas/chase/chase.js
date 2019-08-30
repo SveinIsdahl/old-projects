@@ -19,6 +19,7 @@ function draw() {
     p_pos.x += p_vel.x;
     p_pos.y += p_vel.y;
 
+// Hvis posisjon til player ikke er samme som musepeker, øk akselerasjon mot musepeker
     if (p_pos.x < mouse.x) {
         p_vel.x += vel;
     }
