@@ -1,0 +1,8 @@
+#player {
+    width: 100px;
+    height: 100px;
+    background-image: "bil.png";
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
