@@ -4,7 +4,7 @@ let vel = 0.2;
 let radius = 30;
 
 function setup() {
-    createCanvas(windowWidth - 20, windowHeight - 20);
+    createCanvas(windowWidth - 20, windowHeight - 70);
 
 }
 
@@ -37,7 +37,7 @@ function draw() {
     if (p_pos.x > windowWidth - radius || p_pos.x < radius - 20) {
         p_vel.x = -p_vel.x * 0.7;
     }
-    if (p_pos.y > windowHeight - radius || p_pos.y < radius - 20) {
+    if (p_pos.y > windowHeight - radius -50 || p_pos.y < radius - 20) {
         p_vel.y = -p_vel.y * 0.7;
 
     }
