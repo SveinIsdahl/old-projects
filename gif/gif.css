@@ -1,0 +1,61 @@
+header h1 {
+    color: rgb(125, 162, 255);
+    text-align: center;
+}
+
+main {
+    height: 70vh;
+}
+
+header {
+    height: 10vh;
+}
+
+footer {
+    height: 10vh;
+}
+#verden {
+    height: 70vh;
+
+}
+
+#himmel {
+    position: relative;
+    height: 80%;
+    background-color: rgb(152, 152, 255);
+}
+
+#jord {
+    position: relative;
+    height: 20%;
+    background-color: rgb(181, 141, 89);
+}
+
+#person {
+    position: absolute;
+    left: -100px;
+    bottom: 30px;
+    height: 120px;
+    width: 30px;
+    background-color: grey;
+    border-radius: 7px;
+    animation: slide 55s linear;
+}
+@keyframes slide {
+ 100% {left: 100vw; }
+}
+
+#sol {
+    position: absolute;
+    top: calc((50%) - (100px));
+    left: calc((50%) - (20px));
+    width: 40px;
+    height: 40px;
+    background-color: yellow;
+    border-radius: 50%;
+    animation: flimmer 2s infinite linear alternate;
+}
+@keyframes flimmer {
+    100% {width: 48px; height: 48px;};
+}
+
