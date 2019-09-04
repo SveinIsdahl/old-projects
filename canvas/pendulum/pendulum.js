@@ -110,10 +110,11 @@ function draw() {
     }
 
     idx = (idx +1) % 100;
-    console.log(idx);
+    console.log(idx);        
+    array_x[idx] = pos.x;
+    array_y[idx] = pos.y;
     for (let i = 0;i < idx; i++) {
-        array_x[idx] = pos.x;
-        array_y[idx] = pos.y;
+
         fill(150);
         ellipse(array_x[i], array_y[i], radius);
     }
