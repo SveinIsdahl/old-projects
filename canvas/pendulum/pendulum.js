@@ -108,14 +108,11 @@ function draw() {
     if (pos.y > middle.y) {
         p_vel.y -= vel;
     }
-
-    idx = (idx +1) % 100;
     console.log(idx);        
     array_x[idx] = pos.x;
     array_y[idx] = pos.y;
-    
+    idx = (idx +1) % 500;
     for (let i = 0;i < idx; i++) {
-
         fill(150);
         ellipse(array_x[i], array_y[i], radius);
     }
