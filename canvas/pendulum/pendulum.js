@@ -111,7 +111,7 @@ function draw() {
     console.log(idx);        
     array_x[idx] = pos.x;
     array_y[idx] = pos.y;
-    idx = (idx +1) % 500;
+    idx = (idx +1) % 2000;
     for (let i = 0;i < idx; i++) {
         fill(150);
         ellipse(array_x[i], array_y[i], radius);
