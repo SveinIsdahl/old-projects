@@ -1,4 +1,3 @@
-//se linje 36-50
 
 
 /*
@@ -32,9 +31,9 @@ slider_y.oninput = function () {
     output_y.innerHTML = this.value;
 }
 
+let idx = 0;
 
 //startposisjon:
-
 
 let start_x = parseInt(slider_x.value);
 let start_y = parseInt(slider_y.value);
@@ -46,7 +45,7 @@ let vel = 0.4;
 let radius = parseInt(slider.value);
 
 //posisjon
-let p_pos
+let pos
 
 //hastighet
 let p_vel
@@ -75,7 +74,7 @@ function setup() {
 function resetSketch() {
     array_x = [];
     array_y = [];
-    p_pos = { x: start_x, y: start_y };
+    pos = { x: start_x, y: start_y };
     p_vel = { x: 0, y: 0 };
 
 
@@ -83,43 +82,58 @@ function resetSketch() {
 
 function draw() {
     background(10);
-    frameRate(30)
+    frameRate(15);
+    fill(150);
     start_x = parseInt(slider_x.value);
     start_y = parseInt(slider_y.value);
     radius = parseInt(slider.value);
     middle = createVector(width / 2, height / 2 - 4);
 
-    p_pos.x += p_vel.x;
-    p_pos.y += p_vel.y;
+    pos.x += p_vel.x;
+    pos.y += p_vel.y;
 
     // Hvis posisjon til p ikke er samme som midten, øk hastighet mot midten
-    if (p_pos.x < middle.x) {
+    if (pos.x < middle.x) {
         p_vel.x += vel;
     }
 
-    if (p_pos.x > middle.x) {
+    if (pos.x > middle.x) {
         p_vel.x -= vel;
     }
 
-    if (p_pos.y < middle.y) {
+    if (pos.y < middle.y) {
         p_vel.y += vel;
     }
 
-    if (p_pos.y > middle.y) {
+    if (pos.y > middle.y) {
         p_vel.y -= vel;
     }
 
-    //legger posisjon i array, 
-    array_x.push(p_pos.x);
-    array_y.push(p_pos.y);
+    idx = (idx +1) % 100;
+    console.log(idx);
+    for (let i = 0;i < idx; i++) {
+        array_x[idx] = pos.x;
+        array_y[idx] = pos.y;
+        fill(150);
+        ellipse(array_x[i], array_y[i], radius);
+    }
+
+
+/*
+
+     array_x.push(pos.x);
+     array_y.push(pos.y);        
+
     for (let i = 0; i < array_x.length; i++) {
 
         fill(150);
         ellipse(array_x[i], array_y[i], radius);
     }
+ 
     if (array_x.length > 1000){
         array_x.shift();
         array_y.shift();
     }
     console.log(array_x.length);
+*/
 }
