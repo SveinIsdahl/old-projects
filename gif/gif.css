@@ -21,13 +21,13 @@ footer {
 
 #himmel {
     position: relative;
-    height: 80%;
+    height: 75%;
     background-color: rgb(152, 152, 255);
 }
 
 #jord {
     position: relative;
-    height: 20%;
+    height: 25%;
     background-color: rgb(181, 141, 89);
 }
 
@@ -47,23 +47,39 @@ footer {
 #skjelett {
     position: absolute;
     right: 100px;
-    bottom: 30px;
-    height: 30px;
+    bottom: 0px;
+    height: 90px;
     width: 130px;
-    background-color: grey;
-    border-radius: 7px; 
+    transform: rotate(-90deg);
+    background-repeat: no-repeat;
+    background-image: url(Skeleton.png);
+    background-position: center;
+    background-size: contain;
 
 }
 
-#kaktus {
+#fugl {
     position: absolute;
     right: 30px;
-    bottom: 30px;
-    right: 100px;
-    height: 100px;
-    width: 100px;
-    background-color: black;
+    top: 30px;
+    height: 50px;
+    width: 50px;
+    background-repeat: no-repeat;
+    background-image: url(../posisjon/fuggel.png);
+    background-position: center;
+    background-size: contain;
+}
 
+#busk {
+    position: absolute;
+    left: 130px;
+    bottom: 50px;
+    height: 110px;
+    width: 110px;
+    background-repeat: no-repeat;
+    background-image: url(Dead_Bush.png);
+    background-position: center;
+    background-size: contain;
 }
 
 #sol {
