@@ -59,10 +59,11 @@ footer {
     position: absolute;
     right: 30px;
     bottom: 30px;
-    background-image: "kaktus.png";
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
+    right: 100px;
+    height: 100px;
+    width: 100px;
+    background-color: black;
+
 }
 
 #sol {
