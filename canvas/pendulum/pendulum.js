@@ -113,6 +113,7 @@ function draw() {
     console.log(idx);        
     array_x[idx] = pos.x;
     array_y[idx] = pos.y;
+    
     for (let i = 0;i < idx; i++) {
 
         fill(150);
