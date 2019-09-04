@@ -44,6 +44,26 @@ footer {
 @keyframes slide {
  100% {left: 100vw; }
 }
+#skjelett {
+    position: absolute;
+    right: 100px;
+    bottom: 30px;
+    height: 30px;
+    width: 130px;
+    background-color: grey;
+    border-radius: 7px; 
+
+}
+
+#kaktus {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    background-image: "kaktus.png";
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 
 #sol {
     position: absolute;
@@ -56,6 +76,6 @@ footer {
     animation: flimmer 2s infinite linear alternate;
 }
 @keyframes flimmer {
-    100% {width: 48px; height: 48px;};
+    100% {width: 45px; height: 45px;};
 }
 
