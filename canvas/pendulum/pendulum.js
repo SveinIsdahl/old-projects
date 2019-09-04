@@ -34,21 +34,10 @@ slider_y.oninput = function () {
 
 
 //startposisjon:
-/*
-parseInt(slider_x) og parseInt(sldier_y) er ikke tall ifølge console
-Samme metode virket helt fint for radius, parseInt(slider) er et tall og virker fint
-start_x og start_y virker helt fint med verdi 30, virker ikke med parseInt(slider_x)
 
-hvorfor er ikke parseInt(slider_x) et tall??????????????????
-*/
 
-let start_x = 30;
-let start_y = 30;
-//let start_x = parseInt(slider_x);
-//let start_y = parseInt(slider_y);
-console.log(start_x);
-console.log(start_y);
-
+let start_x = parseInt(slider_x.value);
+let start_y = parseInt(slider_y.value);
 
 //hastighet
 let vel = 0.4;
@@ -89,12 +78,15 @@ function resetSketch() {
     p_pos = { x: start_x, y: start_y };
     p_vel = { x: 0, y: 0 };
 
+
 }
 
 function draw() {
-
-    let radius = parseInt(slider.value);
     background(10);
+    frameRate(30)
+    start_x = parseInt(slider_x.value);
+    start_y = parseInt(slider_y.value);
+    radius = parseInt(slider.value);
     middle = createVector(width / 2, height / 2 - 4);
 
     p_pos.x += p_vel.x;
