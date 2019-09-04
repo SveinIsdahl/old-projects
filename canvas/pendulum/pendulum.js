@@ -117,4 +117,9 @@ function draw() {
         fill(150);
         ellipse(array_x[i], array_y[i], radius);
     }
+    if (array_x.length > 1000){
+        array_x.shift();
+        array_y.shift();
+    }
+    console.log(array_x.length);
 }
