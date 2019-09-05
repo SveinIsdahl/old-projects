@@ -1,3 +1,6 @@
+:root {
+    --walktime: 4s;
+}
 header h1 {
     color: rgb(125, 162, 255);
     text-align: center;
@@ -33,39 +36,76 @@ footer {
 
 #person {
     position: absolute;
-    left: -100px;
+    opacity: 1.0;
+    left: -60px;
     bottom: 30px;
-    height: 120px;
-    width: 30px;
-    background-color: grey;
-    border-radius: 7px;
-    animation: slide 55s linear;
+    width: 112px;
+    height: 112px;
+    background-image: url("puppet_audun.png");
+    background-position-x: 0;
+    background-position-y: calc(-112px * 2);
+    animation: walk 1.4s steps(8) infinite, 
+                slide var(--walktime) linear forwards;
+    
 }
+
 @keyframes slide {
- 100% {left: 100vw; }
+    0% {left: 60px; opacity: 1;}
+    99.9% {left: 79vw; opacity: 1;}
+    100% {left: 79vw; opacity: 0;}
+} 
+@keyframes walk {
+    100% { background-position-x: calc( -112px * 8 ); }
+}
+
+#portal {
+    position: absolute;
+    right: 150px;
+    bottom: 00px;
+    height: 190px;
+    width: 130px;
+    transform: rotate(0deg);
+    background-repeat: no-repeat;
+    background-image: url(netherportal.png);
+    background-position: center;
+    background-size: contain;
+
 }
 #skjelett {
     position: absolute;
-    right: 100px;
-    bottom: 0px;
+    opacity: 1;
+    right: 110px;
+    bottom: 25px;
     height: 90px;
     width: 130px;
-    transform: rotate(-90deg);
+    transform: rotate(90deg);
     background-repeat: no-repeat;
     background-image: url(Skeleton.png);
     background-position: center;
     background-size: contain;
+    animation: skjelett var(--walktime) linear, skjelett_fall 4.5s linear;
+
+}
+@keyframes skjelett{
+    0% {opacity: 0;}
+    96% {opacity: 0;}
+    100% {opacity: 1;}
+}
+@keyframes skjelett_fall {
+    0% {transform: rotate(0deg)}
+    95% {transform: rotate(0deg)}
+    100%{transform: rotate(90deg)}
 
 }
 
 #fugl {
     position: absolute;
     right: 30px;
-    top: 30px;
-    height: 50px;
+    bottom: 00px;
+    height: 40px;
     width: 50px;
     background-repeat: no-repeat;
-    background-image: url(../posisjon/fuggel.png);
+    background-image: url(parrot.png);
     background-position: center;
     background-size: contain;
 }
@@ -89,10 +129,72 @@ footer {
     width: 40px;
     height: 40px;
     background-color: yellow;
-    border-radius: 50%;
+/*    border-radius: 100%; */
     animation: flimmer 2s infinite linear alternate;
 }
 @keyframes flimmer {
     100% {width: 45px; height: 45px;};
 }
+/*
+div.shadow {
+    position: absolute;
+    left: 10px;
+    bottom: -30px;
+    height: 30px;
+    width: 30px;
+    background-color: rgb(75, 60, 49);
+    border-radius: 7px;
+    animation: shift 55s linear;
+    opacity: 0.5;
+}
+*/
+@keyframes shift {
+    100% {left: 50px; }
+}
 
+div.shadow.moving {
+    left: -45px;
+    animation: shift 60s linear;
+}
+
+#busk_shadow {
+    position: absolute;
+    left: -33px;
+    bottom: -45px;
+    height: 110px;
+    width: 110px;
+    background-repeat: no-repeat;
+    background-image: url(Dead_Bush.png);
+    background-position: center;
+    background-size: contain;
+    opacity: 0.3;
+    transform: rotate(-108deg);
+    filter: brightness(30%);
+
+}
+#kaktus_shadow {
+    position: absolute;
+    left: 22px;
+    bottom: -75px;
+    height: 110px;
+    width: 110px;
+    background-repeat: no-repeat;
+    background-image: url(cactus.png);
+    background-position: center;
+    background-size: contain;
+    opacity: 0.3;
+    transform: rotate(-200deg);
+    filter: brightness(30%);
+}
+
+#kaktus {
+    position: absolute;
+    right: 40%;
+    bottom: 90px;
+    height: 100px;
+    width: 100px;
+    background-repeat: no-repeat;
+    background-image: url(cactus.png);
+    background-position: center;
+    background-size: contain;
+}
