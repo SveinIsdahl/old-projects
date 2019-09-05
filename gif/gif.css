@@ -1,5 +1,5 @@
 :root {
-    --walktime: 4s;
+    --walktime: 10s;
 }
 header h1 {
     color: rgb(125, 162, 255);
@@ -83,7 +83,7 @@ footer {
     background-image: url(Skeleton.png);
     background-position: center;
     background-size: contain;
-    animation: skjelett var(--walktime) linear, skjelett_fall 4.5s linear;
+    animation: skjelett var(--walktime) linear, skjelett_fall 10.7s linear;
 
 }
 @keyframes skjelett{
