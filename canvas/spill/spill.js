@@ -1,4 +1,4 @@
-let max = 5;
+let max = 6;
 class template {
     constructor(r, x, y, velX, velY, accX, accY) {
         this.r = r;
@@ -23,7 +23,7 @@ function draw() {
     clear();
     fill(0,0,0,0);
     rect(0, 0, windowWidth-26, windowHeight-26);
-    fill(100);
+    fill(250);
     ellipse(player.x, player.y, player.r);
 
     player.x += player.velX;
@@ -34,19 +34,19 @@ function draw() {
 
     //S
     if (keyIsDown(83)) {
-        player.velY += 0.2;
+        player.velY += 0.5;
     }
     //D
     if (keyIsDown(68)) {
-        player.velX += 0.2;
+        player.velX += 0.5;
     }
     //W
     if (keyIsDown(87)) {
-        player.velY -= 0.2;
+        player.velY -= 0.5;
     }
     //A
     if (keyIsDown(65)) {
-        player.velX -= 0.2;
+        player.velX -= 0.5;
     }
 
     if (player.x > windowWidth-10-player.r || player.x < player.r/2){
@@ -68,10 +68,4 @@ function draw() {
     if (player.velY < -max){
         player.velY = -max;
     }
-   console.log(player.velX);
-   console.log(player.velY)
 }
-
-
-// Bruke keyRelease til å 
-// øke/redusere vel ved å holde inne
