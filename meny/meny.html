@@ -5,17 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MenyEksempel</title>    
+    <title>MenyEksempel</title>
     <link rel="stylesheet" href="../style.css">
 
     <link rel="stylesheet" href="meny.css">
 </head>
 
 <body>
-    <header>
+    <header id="home">
         <h1>Enkelt Menysystem</h1>
         <ul id="meny">
-            <li><a href="../index.html">Home</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="../index.html">Index</a></li>
+            <li><a href="#tabeller">Tabeller</a></li>
+            <li><a href="#lister">Lister</a></li>
             <li><a href="../canvas/spill/spill.html">Test</a></li>
             <li><a href="../gif/gif.html">Gif</a></li>
             <li><a href="../emmet/emmet.txt">Emmet</a></li>
@@ -23,11 +26,61 @@
         </ul>
     </header>
     <main>
-        <article>
-            Lorem ipsum dolor sit amet.
+        <article id="tabeller">
+            <h2>Tabeller i html</h2>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fabrikant</th>
+                            <th>Merke</th>
+                            <th>Merke2</th>
+                            <th>Merke3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ford</td>
+                            <td>Taunus</td>
+                            <td>Focus</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Volvo</td>
+                            <td>Amazon</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Tesla</td>
+                            <td>Model S</td>
+                            <td>Model 3</td>
+                            <td>Model X</td>
+                        </tr>
+                        <tr>
+                            <td>Toyota</td>
+                            <td>Previa</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </article>
-        <article>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis, nihil?
+        <article id="lister">
+            <ul>
+                <li>a</li>
+                <li>b</li>
+                <li>c</li>
+                <li>d</li>
+                <li>e</li>
+            </ul>
+            <ol>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
         </article>
     </main>
     <footer>

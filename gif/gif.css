@@ -12,6 +12,7 @@ main {
 
 header {
     height: 10vh;
+    padding-top: 6em;
 }
 
 footer {
@@ -83,7 +84,7 @@ footer {
     background-image: url(Skeleton.png);
     background-position: center;
     background-size: contain;
-    animation: skjelett var(--walktime) linear, skjelett_fall 10.7s linear;
+    animation: skjelett var(--walktime) linear, skjelett_fall 10.7s linear, translate 10.7s linear;
 
 }
 @keyframes skjelett{
@@ -93,9 +94,15 @@ footer {
 }
 @keyframes skjelett_fall {
     0% {transform: rotate(0deg)}
-    95% {transform: rotate(0deg)}
+    90% {transform: rotate(0deg)}
+    95% {transform: rotate(45deg)}
     100%{transform: rotate(90deg)}
 
+}
+@keyframes translate {
+    0% {transform: translateX(0)}
+    95% {transform: translateX(0)}
+    100% {transform: translateX(2em)}
 }
 
 #fugl {
