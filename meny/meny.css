@@ -65,3 +65,27 @@ th, td, table {
 tbody tr:nth-child(odd) {
     background-color: rgb(145, 118, 67);
 }
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 10px;
+
+}
+
+#grid > div {
+    border: 2px solid white;
+    border-radius: 10%;
+
+}
+#grid > div > img {
+    width: 9em;
+    padding: 15px;
+    filter: contrast(0%) blur(4px);
+    min-width: 100px;
+    transition: 0.5s;
+}
+#grid>div>img:hover {
+    filter: contrast(100%) blur(0px);
+    min-width: 400px;
+}
