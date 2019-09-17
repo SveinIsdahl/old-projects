@@ -1,12 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="">
     <title>Index</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+            padding: 10px;
+
+        }
+
+        .grid>div {
+            border: 3px solid green;
+            border-radius: 20%;
+            padding: 10px;
+            background-color: bisque;
+        }
+
+        .grid>div>a {
+            padding: 10px;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <header></header>
+    <main>
+        <div id="skole">
+            <h1>Skole</h1>
+            <hr>
+            <div class="grid">
+                <div><a href="joker/joker.html">Joker</a></div>
+                <div><a href="plan/plan.html">Læreplan i It</a></div>
+                <div><a href="listene/liste.html">Film-Liste</a></div>
+                <div><a href="posisjon/pos.html">Fuggel Posisjon</a></div>
+                <div><a href="gif/gif.html">Gif</a></div>
+                <div><a href="meny/meny.html">Meny</a></div>
+            </div>
+        </div>
+        <h1>Html/css</h1>
+        <div class="html/css">
+            <hr>
+            <div class="grid">
+            </div>
+        </div>
+        <div class="canvas">
+            <h1>Javascript-Canvas</h1>
+            <hr>
+            <div class="grid">
+                <div><a href="canvas/canvas/canvas.html">Canvas</a></div>
+                <div><a href="canvas/sinuskurve/sinuskurve.html">Sinuskurve</a></div>
+                <div><a href="canvas/ball/ball.html">Ball</a></div>
+                <div><a href="canvas/dots/dots.html">Dots</a></div>
+                <div><a href="canvas/kollisjon/kollisjon.html">FargeBaller</a></div>
+                <div><a href="canvas/sortering/sortering.html">Sortering-Høyde</a></div>
+                <div><a href="canvas/sortering-farge/sortering-farge.html">Sortering-Farge</a></div>
+                <div><a href="canvas/matter/matter.html">Partikler</a></div>
+                <div><a href="canvas/chase/chase.html">Chase</a></div>
+                <div><a href="canvas/pendulum/pendulum.html">Pendel</a></div>
+                <div><a href="canvas/spill/spill.html">Spill</a></div>
+            </div>
+        </div>
+        <div class="javascript">
+            <h1>Javascript-Annet</h1>
+            <hr>
+            <div class="grid">
+
+            </div>
+        </div>
+    </main>
+    <footer></footer>
 </body>
+
 </html>
