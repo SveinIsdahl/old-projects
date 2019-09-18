@@ -8,6 +8,7 @@
     <title>Index</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        div a:hover
         .grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -17,14 +18,33 @@
         }
 
         .grid>div {
-            border: 3px solid green;
-            border-radius: 20%;
+            /*border: 3px solid rgb(27, 27, 104);*/
+            border-radius: 10%;
             padding: 10px;
-            background-color: bisque;
+            background-color: rgb(71, 66, 160);
         }
 
         .grid>div>a {
             padding: 10px;
+        }
+        .content {
+			display: none;
+			position: absolute;
+			background-color: #1d1d1d;
+			min-width: 160px;
+			box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+			z-index: 1;
+        }
+        
+		.content div {
+			color: rgb(255, 255, 255);
+			padding: 12px 16px;
+			text-decoration: none;
+			display: block;
+			text-align: left;
+		}
+        a {
+            color: aliceblue;
         }
     </style>
 </head>
@@ -35,7 +55,7 @@
         <div id="skole">
             <h1>Skole</h1>
             <hr>
-            <div class="grid">
+            <div class="grid content">
                 <div><a href="joker/joker.html">Joker</a></div>
                 <div><a href="plan/plan.html">Læreplan i It</a></div>
                 <div><a href="listene/liste.html">Film-Liste</a></div>
