@@ -27,8 +27,24 @@
             padding: 10px;
         }
 
-        a {
+        a,
+        a:active a:visited {
             color: aliceblue;
+            text-decoration: none;
+        }
+
+        button,
+        button:focus,
+        button:hover {
+            position: relative;
+            background-color: rgb(71, 66, 160);
+            border: 2px solid rgb(0, 2, 99);
+            color: white;
+            font-size: 2em;
+            border-radius: 10px;
+            left: 15px;
+            outline: none;
+
         }
     </style>
 </head>
@@ -36,10 +52,10 @@
 <body>
     <header></header>
     <main>
-        <div id="skole" class="">
-            <h1>Skole</h1>
+        <div id="skole">
+            <button onclick="revealSkole()">Skole</button>
             <hr>
-            <div class="grid">
+            <div class="grid" id="skole-grid">
                 <div><a href="joker/joker.html">Joker</a></div>
                 <div><a href="plan/plan.html">Læreplan i It</a></div>
                 <div><a href="listene/liste.html">Film-Liste</a></div>
@@ -48,16 +64,10 @@
                 <div><a href="meny/meny.html">Meny</a></div>
             </div>
         </div>
-        <h1>Html/css</h1>
-        <div class="html/css">
+        <div id="html/css">
+            <button onclick="revealHTML()">Html/css</button>
             <hr>
-            <div class="grid">
-            </div>
-        </div>
-        <div class="canvas">
-            <h1>Javascript-Canvas</h1>
-            <hr>
-            <div class="grid">
+            <div class="grid" id="html/css-grid">
                 <div><a href="canvas/canvas/canvas.html">Canvas</a></div>
                 <div><a href="canvas/sinuskurve/sinuskurve.html">Sinuskurve</a></div>
                 <div><a href="canvas/ball/ball.html">Ball</a></div>
@@ -71,15 +81,85 @@
                 <div><a href="canvas/spill/spill.html">Spill</a></div>
             </div>
         </div>
-        <div class="javascript">
-            <h1>Javascript-Annet</h1>
+        <div id="canvas">
+            <button onclick="revealCanvas()">Javascript-Canvas</button>
             <hr>
-            <div class="grid">
-
+            <div class="grid" id="canvas-grid">
+                <div><a href="canvas/canvas/canvas.html">Canvas</a></div>
+                <div><a href="canvas/sinuskurve/sinuskurve.html">Sinuskurve</a></div>
+                <div><a href="canvas/ball/ball.html">Ball</a></div>
+                <div><a href="canvas/dots/dots.html">Dots</a></div>
+                <div><a href="canvas/kollisjon/kollisjon.html">FargeBaller</a></div>
+                <div><a href="canvas/sortering/sortering.html">Sortering-Høyde</a></div>
+                <div><a href="canvas/sortering-farge/sortering-farge.html">Sortering-Farge</a></div>
+                <div><a href="canvas/matter/matter.html">Partikler</a></div>
+                <div><a href="canvas/chase/chase.html">Chase</a></div>
+                <div><a href="canvas/pendulum/pendulum.html">Pendel</a></div>
+                <div><a href="canvas/spill/spill.html">Spill</a></div>
+            </div>
+        </div>
+        <div id="javascript">
+            <button onclick="revealJavascript()">Javascript-Annet</button>
+            <hr>
+            <div class="grid" id="javascript-grid">
+                <div><a href="canvas/canvas/canvas.html">Canvas</a></div>
+                <div><a href="canvas/sinuskurve/sinuskurve.html">Sinuskurve</a></div>
+                <div><a href="canvas/ball/ball.html">Ball</a></div>
+                <div><a href="canvas/dots/dots.html">Dots</a></div>
+                <div><a href="canvas/kollisjon/kollisjon.html">FargeBaller</a></div>
+                <div><a href="canvas/sortering/sortering.html">Sortering-Høyde</a></div>
+                <div><a href="canvas/sortering-farge/sortering-farge.html">Sortering-Farge</a></div>
+                <div><a href="canvas/matter/matter.html">Partikler</a></div>
+                <div><a href="canvas/chase/chase.html">Chase</a></div>
+                <div><a href="canvas/pendulum/pendulum.html">Pendel</a></div>
+                <div><a href="canvas/spill/spill.html">Spill</a></div>
             </div>
         </div>
     </main>
     <footer></footer>
+    <script>
+        function setup() {
+            document.getElementById("skole-grid").style.display = "none";
+            document.getElementById("html/css-grid").style.display = "none";
+            document.getElementById("canvas-grid").style.display = "none";
+            document.getElementById("javascript-grid").style.display = "none";
+
+        }
+        setup();
+
+        function revealSkole() {
+            var x = document.getElementById("skole-grid");
+            if (x.style.display === "grid") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "grid";
+            }
+        }
+        function revealHTML() {
+            var x = document.getElementById("html/css-grid");
+            if (x.style.display === "grid") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "grid";
+            }
+        }
+        function revealCanvas() {
+            var x = document.getElementById("canvas-grid");
+            if (x.style.display === "grid") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "grid";
+            }
+        }
+        function revealJavascript() {
+            var x = document.getElementById("javascript-grid");
+            if (x.style.display === "grid") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "grid";
+            }
+        }
+    </script>
 </body>
 
 </html>
