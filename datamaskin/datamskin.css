@@ -4,3 +4,21 @@ article h1 {
 article > h1 {
     color: rgb(97, 97, 252);
 }
+
+tr {
+    border-collapse: collapse;
+
+}
+th {
+    border: 1px solid black;
+    padding: 5px;
+
+}
+thead {
+    background-color: rgb(49, 108, 88);
+
+}
+table {
+    border-collapse: collapse;
+
+}
