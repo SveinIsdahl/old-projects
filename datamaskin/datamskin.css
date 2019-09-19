@@ -1,3 +1,7 @@
+p {
+    position: relative;
+    width: 70vw;
+}
 article h1 {
     color: green;
 }
@@ -21,4 +25,13 @@ thead {
 table {
     border-collapse: collapse;
 
+}
+h1 {
+    font-size: 2em;
+}
+
+#intel {
+    position: absolute;
+    right: 10px;
+    width: 15em;
 }

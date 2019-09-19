@@ -13,14 +13,18 @@
 <body>
     <header>
         <h1>Datamaskinens oppbygning og virkemåte</h1>
-    </header>
+    </header>            
+    <hr>
     <main>
         <article>
             <h1>Prosessor</h1>
             <div>
                 <h3>Generelt</h3>
+                <hr>
                 <p>
-                    Prosessoren er hjernen i datamaskinen.
+                    Prosessoren er hjernen i datamaskinen, forkortet CPU (Central Processing Unit).
+                    <br>
+                    Prosessoren får en liste med instruksjoner den skal utføre. Den kjører deretter disse instruksjonene i rekkefølge, disse instruksjonene kalles et program.
                     <br>
                     En mikroprosessor kalles ofte bare en prosessor, men er egentlig satt sammen av flere prosessorer, kalt cores.
                     <br>
@@ -29,15 +33,22 @@
                     Den er mellom 2 - 4GHz for nye maskiner.
                     <br>
                 </p>
-
                 <h3>ARM og x86</h3>
+                <hr>
                 <p>
-                    ARM, tidligere kalt Advanced RISC machine er en CPU-familie som bruker RISK: "Reduced Instruction Set Computing". 
-                    <br>
+                    ARM, er en CPU-familie som bruker RISK: "Reduced Instruction Set Computing".
+                    ARM holdings har utviket og produsert ARM-prosessorer, men lisensierer også ut, slik at andre selskap kan produsere dem.
+                    <br> 
                     x86 er CPU-familie som bruker CISC: "Complex Instruction Set Arcitecture".
+                    <br>
+                    Forskjellen på disse er at RISK utfører en insturksjon på en syklus. 
+                    CISC er mer komplisert og utfører færre insturksjoner. CISC-arkitekturer har mer innebugd logikk som kan utføre en oppgave på færre instruksjoner.
+                    Dette fører generelt til at ARM trenger mindre areal til silisium på chipen, og bruker ofte mindre strøm.
+                    x86 har dermed ofte høyere hastighet og høyere strømforbruk.
                 </p>
-
                 <h3>Intel</h3>
+                <hr>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Intel_Core_i7-3770.jpg/1024px-Intel_Core_i7-3770.jpg" alt="" id="intel">
                 <p>
                     Intel er det andre største halvlederselskapet, kun Samsung har en høyere verdi og inntjening. 
                     <br>
@@ -125,16 +136,26 @@
                     </tbody>
                 </table>
                 <h3>AMD</h3>
+                <hr>
                 <p>
-
+                    Advanced Micro Devices er på lik linje med Intel et halvlederselskap som produserer prosessorer. 
+                    De er Intel sine største konkurenter på x86 prosessorer, men de er ikke like store som Intel.
+                    Amd produserer også skjermkort (GPU) til blant annet gaming.
                 </p>
-
+                <h3>Nvidia</h3>
+                <hr>
+                <p>
+                        Nvidia er et halvlederselskap som fokuserer på utvikling og produksjon av skjermkort. Deres største rival er AMD, sammen holder disse et duopol på skjermkort, slik AMD og Intel gjør på x86-prosessorer.
+                </p>
                 <h3>Qualcomm (Snapdragon)</h3>
+                <hr>
                 <p>
                     Qualcomm produserer chipsets til android-mobiler som heter Snapdragon.
+                    <br>
+                    Snapdragon bruker arm-arkitekturer, dette gjør at de egner seg godt til mobiler som avhenger av lavt strømforbruk.
                 </p>
-
                 <h3>Samsung</h3>
+                <hr>
                 <p>
                     Samsung bruker Snapdragon og produserer sine egene Exynos-prosessorer.
                     <br>
@@ -144,27 +165,74 @@
         </article>
         <article>
             <h1>RAM og ROM</h1>
+            <hr>
             <div>
                 <p>
                     RAM er en forkortelse som betyr:
-                    Random Access Momory
+                    Random Access Momory, dette er minnet i en datamaskin.
+                    Dette betyr at man har tilgang til data i hvilken som helst rekkefølge.
+                    Alle programmer som kjører på en pc vil lagre data til RAM, dette gjør at pcen vil være raskere ettersom at det hadde tatt mye lengre tid å lagre og hente data fra en HDD.
+                    All data som lagres i RAM vil bli slettet hvis pcen mister strøm, derfor lagres all data man vil beholde til en SSD/HDD.
+                </p>
+                <p>
+                    Read-Only Memory (ROM) er minne som ikke kan endres, kun leses.
+                    Dette brukes derfor til oppgaver som firmware hvor brukeren av dette ikke trenger å endre på det.
+                    Et eksempel på dette kan være BIOS (Basic Input Output Sytem). 
+                    BIOS er firmware som ligger på hovedkortet til en pc og brukes til å forberede maksinvaren, sånn at et OS kan starte (oppstart).
+                    Boot loader er et firmware som fungerer som BIOS, men brukes om andre enheter som telefoner og lignende.
                 </p>
             </div>
         </article>
         <article>
             <h1>Lagring</h1>
+            <hr>
             <div>
                 <p>
                     Standard lagringsmedia i dag er SSD
-                    Tidligere (Bare for år siden) var HDD det mest brukte   
+                    Tidligere (Bare for år siden) var HDD det mest brukte.
+                    En hardisk er et lagringsmedium som bruker en roterende disk til å lagre data. 
+                    En Solid State Drive (SSD) er, som navnet tilsier et lagrinsmedium som ikke har bevegelige deler og bruker heller flashminne.
+                    SSD er mye raskere og mer stabilt enn en HDD. 
+                    De 2 store problemene med SSD som gjør at HDD enda brukes er at HDD har mer lagringskapasitet (Til nå hvertfall) og de er mye dyrere hvis man skal ha mye kapasitet.
                 </p>
             </div>
         </article>
         <article>
             <h1>Etc</h1>
+            <hr>
+            <div>
+                <h3>Hovedkort</h3>
+                <p>
+                    Hovedkortet er kretskortet som holder på de fleste av de andre delene i en datamskin og gjør det mulig for dem å kommunisere.
+                </p>
+            </div>
+        </article>        
+        <article>
+        Eksempel på forskjellen mellom stasjonær PC og en mac:    
+        <br>
+        <br>
+        Stasjonær:
+        <ul>
+            <li>i7 3400MHz</li>
+            <li>GTX 1080 8000mb</li>
+            <li>16gb DDR3</li>
+            <li>1600GB total lagring</li>
+        </ul>
+        <br>
+        Macbook pro:
+        <ul>
+            <li>i5 2300MHz</li>
+            <li>Intel Graphics 128mb</li>
+            <li>8GB DDR3</li>
+            <li>128GB lagring</li>
+        </ul>
         </article>
+
     </main>
-    <footer></footer>
+    <footer>
+
+
+    </footer>
 </body>
 
 </html>
