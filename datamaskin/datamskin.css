@@ -33,5 +33,15 @@ h1 {
 #intel {
     position: absolute;
     right: 10px;
-    width: 15em;
+    width: 25vw;
+}
+#amd {
+    position: absolute;
+    right: 10px;
+    width: 25vw;
+}
+#nvidia {
+    position: absolute;
+    right: 10px;
+    width: 25vw;
 }
