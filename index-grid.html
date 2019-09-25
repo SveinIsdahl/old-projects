@@ -10,7 +10,7 @@
     <style>
         .grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(6, 1fr);
             grid-gap: 10px;
             padding: 10px;
 
@@ -18,7 +18,7 @@
 
         .grid>div {
             /*border: 3px solid rgb(27, 27, 104);*/
-            border-radius: 10%;
+            border-radius: 5%;
             padding: 10px;
             background-color: rgb(71, 66, 160);
         }
@@ -46,14 +46,21 @@
             outline: none;
 
         }
+
+        main {
+            width: 60vw;
+        }
+        #skole-grid {
+            display:grid;
+        }
     </style>
 </head>
 
 <body>
     <header></header>
     <main>
-        <div id="skole">
-            <button onclick="revealSkole()">Skole</button>
+        <div id="skole1">
+            <button id="skole" onclick="button(id)">Skole</button>
             <hr>
             <div class="grid" id="skole-grid">
                 <div><a href="joker/joker.html">Joker</a></div>
@@ -64,8 +71,8 @@
                 <div><a href="meny/meny.html">Meny</a></div>
             </div>
         </div>
-        <div id="html/css">
-            <button onclick="revealHTML()">Html/css</button>
+        <div id="html/css1">
+            <button id="html/css" onclick="button(id)">Html/css</button>
             <hr>
             <div class="grid" id="html/css-grid">
                 <div><a href="grids/grid1.html">grid1</a></div>
@@ -73,11 +80,11 @@
                 <div><a href="grids/grid3.html">grid3</a></div>
                 <div><a href="klokke/klokke.html">Klokke</a></div>
                 <div><a href="emmet/emmet.txt">Emmet.txt</a></div>
-                <div></div>
+                <div><a href=""></a></div>
             </div>
         </div>
-        <div id="canvas">
-            <button onclick="revealCanvas()">Javascript-Canvas</button>
+        <div id="canvas1">
+            <button id="canvas" onclick="button(id)">Javascript-Canvas</button>
             <hr>
             <div class="grid" id="canvas-grid">
                 <div><a href="canvas/canvas/canvas.html">Canvas</a></div>
@@ -93,8 +100,8 @@
                 <div><a href="canvas/spill/spill.html">Spill</a></div>
             </div>
         </div>
-        <div id="javascript">
-            <button onclick="revealJavascript()">Javascript-Annet</button>
+        <div id="javascript1">
+            <button id="javascript" onclick="button(id)">Javascript-Annet</button>
             <hr>
             <div class="grid" id="javascript-grid">
                 <div><a href="hack/hack1.html">hack1</a></div>
@@ -110,46 +117,24 @@
     </main>
     <footer></footer>
     <script>
-        function setup() {
-            document.getElementById("skole-grid").style.display = "none";
-            document.getElementById("html/css-grid").style.display = "none";
-            document.getElementById("canvas-grid").style.display = "none";
-            document.getElementById("javascript-grid").style.display = "none";
+        let x
 
-        }
-        setup();
+        function button(id) {
 
-        function revealSkole() {
-            var x = document.getElementById("skole-grid");
-            if (x.style.display === "grid") {
+            x = document.getElementById(id + "-grid");
+            console.log(x);
+            if (x.style.display == "grid") {
+                console.log(x+"1");
                 x.style.display = "none";
-            } else {
+            }
+            else if (x.style.display == "none") {
+                console.log(x+"2");
                 x.style.display = "grid";
             }
-        }
-        function revealHTML() {
-            var x = document.getElementById("html/css-grid");
-            if (x.style.display === "grid") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "grid";
-            }
-        }
-        function revealCanvas() {
-            var x = document.getElementById("canvas-grid");
-            if (x.style.display === "grid") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "grid";
-            }
-        }
-        function revealJavascript() {
-            var x = document.getElementById("javascript-grid");
-            if (x.style.display === "grid") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "grid";
-            }
+
+            console.log(x.style.display);
+
+
         }
     </script>
 </body>
