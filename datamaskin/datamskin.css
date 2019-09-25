@@ -30,18 +30,25 @@ h1 {
     font-size: 2em;
 }
 
-#intel {
-    position: absolute;
+.intel {
+    position: relative;
     right: 10px;
     width: 25vw;
+    padding: 1em;
 }
 #amd {
-    position: absolute;
+    position: relative;
     right: 10px;
     width: 25vw;
 }
 #nvidia {
-    position: absolute;
+    position: relative;
     right: 10px;
     width: 25vw;
+
+}
+#qualcomm {
+    position: relative;
+    left: -110px;
+
 }

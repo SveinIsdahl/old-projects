@@ -11,9 +11,18 @@
 </head>
 
 <body>
+    <script>
+        function tilbake() {
+            //document.location.href = "../index.html"
+        }
+        function hide(e) {
+            e.target.style.display = "none";
+        }
+    </script>
     <header>
         <h1>Datamaskinens oppbygning og virkemåte</h1>
-    </header>            
+        <button onclick="tilbake()" onmousehover="hide(e)">Tilbake</button>
+    </header>
     <hr>
     <main>
         <article>
@@ -24,40 +33,67 @@
                 <p>
                     Prosessoren er hjernen i datamaskinen, forkortet CPU (Central Processing Unit).
                     <br>
-                    Prosessoren får en liste med instruksjoner den skal utføre. Den kjører deretter disse instruksjonene i rekkefølge, disse instruksjonene kalles et program.
+                    Prosessoren får en liste med instruksjoner den skal utføre. Den kjører deretter disse instruksjonene
+                    i rekkefølge, disse instruksjonene kalles et program.
                     <br>
-                    En mikroprosessor kalles ofte bare en prosessor, men er egentlig satt sammen av flere prosessorer, kalt cores.
+                    En mikroprosessor kalles ofte bare en prosessor, men er egentlig satt sammen av flere prosessorer,
+                    kalt cores.
                     <br>
                     Hastigheten på en CPU måles i antall operasjoner per sekund(Hz).
                     <br>
                     Den er mellom 2 - 4GHz for nye maskiner.
+                    <br>
+                    <br>
+                    Dagens CPUer er 64bit, 4bit gir 2ˆ4 som største tall, altså 16
+                    <br>
+                    64bit git største tall som 2ˆ64 som er 18446744073709551616
+                    <br>
+                    For 5-6 år siden var standard størrelse 32bit
                     <br>
                 </p>
                 <h3>ARM og x86</h3>
                 <hr>
                 <p>
                     ARM, er en CPU-familie som bruker RISK: "Reduced Instruction Set Computing".
-                    ARM holdings har utviket og produsert ARM-prosessorer, men lisensierer også ut, slik at andre selskap kan produsere dem.
-                    <br> 
+                    ARM holdings har utviket og produsert ARM-prosessorer, men lisensierer også ut, slik at andre
+                    selskap kan produsere dem.
+                    <br>
                     x86 er CPU-familie som bruker CISC: "Complex Instruction Set Arcitecture".
                     <br>
-                    Forskjellen på disse er at RISK utfører en insturksjon på en syklus. 
-                    CISC er mer komplisert og utfører færre insturksjoner. CISC-arkitekturer har mer innebugd logikk som kan utføre en oppgave på færre instruksjoner.
-                    Dette fører generelt til at ARM trenger mindre areal til silisium på chipen, og bruker ofte mindre strøm.
+                    Forskjellen på disse er at RISK utfører en insturksjon på en syklus.
+                    CISC er mer komplisert og utfører færre insturksjoner. CISC-arkitekturer har mer innebugd logikk som
+                    kan utføre en oppgave på færre instruksjoner.
+                    Dette fører generelt til at ARM trenger mindre areal til silisium på chipen, og bruker ofte mindre
+                    strøm.
                     x86 har dermed ofte høyere hastighet og høyere strømforbruk.
+                    <br>
+                    <br>
+                    Audun forklaring:
+                    <br>
+                    Risc CPUer har få og enkle instruksjoner (Motsetning til intel).
+                    Hver instruskjon skal ta minst mulig tid.
+                    <div>
+                        <img id="qualcomm"
+                            src="https://www.qualcomm.com/sites/ember/files/styles/scale_480/public/components/two-column-hdi/side/sd-chip-new_0.png?itok=ivu3C0Gy"
+                            alt="">
+                    </div>
+
                 </p>
                 <h3>Intel</h3>
                 <hr>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Intel_Core_i7-3770.jpg/1024px-Intel_Core_i7-3770.jpg" alt="" id="intel">
+                <img class="intel"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Intel_Core_i7-3770.jpg/1024px-Intel_Core_i7-3770.jpg"
+                    alt="" id="intel">
                 <p>
-                    Intel er det andre største halvlederselskapet, kun Samsung har en høyere verdi og inntjening. 
+                    Intel er det andre største halvlederselskapet, kun Samsung har en høyere verdi og inntjening.
                     <br>
                     Intel er oppfinnerene av x86 mikroprosessor arkitektur-familien.
                     <br>
-                    x86 arkitekturene er de vanligste typene i personlige datamaskiner (f.eks mac). 
+                    x86 arkitekturene er de vanligste typene i personlige datamaskiner (f.eks mac).
                     <br>
                     <br>
                     <h4>Noen av disse arkitekturene inkluderer:</h4>
+
                 </p>
                 <table>
                     <thead>
@@ -135,27 +171,43 @@
                         </tr>
                     </tbody>
                 </table>
+                <div>
+                    <img class="intel" src="https://upload.wikimedia.org/wikipedia/commons/2/2d/I8086.jpg" alt="">
+                </div>
                 <h3>AMD</h3>
                 <hr>
-                <img id="amd" src="https://i.dlpng.com/static/png/340875_preview.png" alt="">
                 <p>
-                    Advanced Micro Devices er på lik linje med Intel et halvlederselskap som produserer prosessorer. 
+                    Advanced Micro Devices er på lik linje med Intel et halvlederselskap som produserer prosessorer.
                     De er Intel sine største konkurenter på x86 prosessorer, men de er ikke like store som Intel.
                     Amd produserer også skjermkort (GPU) til blant annet gaming.
+                    <br>
+                    Deres første CPU: 8080 AM9080 (Klone av intel 8080).
+                    <div>
+                        <img id="amd" src="https://i.dlpng.com/static/png/340875_preview.png" alt="">
+                    </div>
                 </p>
                 <br>
                 <br>
                 <h3>Nvidia</h3>
                 <hr>
-                <img id="nvidia" src="https://tek.vgc.no/1873/1873638/GeForce_GTX_1080_3qtr_Front_Left_1463236721.png" alt="">
                 <p>
-                    Nvidia er et halvlederselskap som driver med utvikling og produksjon av skjermkort. Deres største rival på skjermkort er AMD, sammen holder disse et duopol på skjermkort, slik AMD og Intel gjør på x86-prosessorer.
+                    Nvidia er et halvlederselskap som driver med utvikling og produksjon av skjermkort. Deres største
+                    rival på skjermkort er AMD, sammen holder disse et duopol på skjermkort, slik AMD og Intel gjør på
+                    x86-prosessorer.
                     <br>
-                    Hovedlnjen deres med skjermkort heter GeForce. 
+                    Hovedlnjen deres med skjermkort heter GeForce.
                     <br>
-                    Nvidia har gått fra å kun fokusere på gaming til å drive med både gaming, profesjonell visualisering, datasenter, kunstig intligens og mer.
+                    Nvidia har gått fra å kun fokusere på gaming til å drive med både gaming, profesjonell
+                    visualisering, datasenter, kunstig intligens og mer.
                     <br>
-                    Ettersom at Nvidia ikke bare fokuserer på skjermkort lengre, har de andre rivaler enn AMD, disse inkluderer hovedsakelig: Intel, Qualcomm og Arm.
+                    Ettersom at Nvidia ikke bare fokuserer på skjermkort lengre, har de andre rivaler enn AMD, disse
+                    inkluderer hovedsakelig: Intel, Qualcomm og Arm.
+                    <div>
+                        <img id="nvidia"
+                            src="https://tek.vgc.no/1873/1873638/GeForce_GTX_1080_3qtr_Front_Left_1463236721.png"
+                            alt="">
+
+                    </div>
                 </p>
                 <br>
                 <br>
@@ -166,7 +218,8 @@
                 <p>
                     Qualcomm produserer chipsets til android-mobiler som heter Snapdragon.
                     <br>
-                    Snapdragon bruker arm-arkitekturer, dette gjør at de egner seg godt til mobiler som avhenger av lavt strømforbruk.
+                    Snapdragon bruker arm-arkitekturer, dette gjør at de egner seg godt til mobiler som avhenger av lavt
+                    strømforbruk.
                 </p>
                 <h3>Samsung</h3>
                 <hr>
@@ -185,15 +238,22 @@
                     RAM er en forkortelse som betyr:
                     Random Access Momory, dette er minnet i en datamaskin.
                     Dette betyr at man har tilgang til data i hvilken som helst rekkefølge.
-                    Alle programmer som kjører på en pc vil lagre data til RAM, dette gjør at pcen vil være raskere ettersom at det hadde tatt mye lengre tid å lagre og hente data fra en HDD.
-                    All data som lagres i RAM vil bli slettet hvis pcen mister strøm, derfor lagres all data man vil beholde til en SSD/HDD.
+                    Alle programmer som kjører på en pc vil lagre data til RAM, dette gjør at pcen vil være raskere
+                    ettersom at det hadde tatt mye lengre tid å lagre og hente data fra en HDD.
+                    All data som lagres i RAM vil bli slettet hvis pcen mister strøm, derfor lagres all data man vil
+                    beholde til en SSD/HDD.
                 </p>
+                <div>
+                    <img width="300"src="http://www.pngmart.com/files/7/RAM-PNG-Photos.png" alt="">
+                </div>
                 <p>
                     Read-Only Memory (ROM) er minne som ikke kan endres, kun leses.
                     Dette brukes derfor til oppgaver som firmware, hvor brukeren av dette ikke trenger å endre på det.
-                    Et eksempel på dette kan være BIOS (Basic Input Output Sytem). 
-                    BIOS er firmware som ligger på hovedkortet til en pc og brukes til å forberede maksinvaren, sånn at et OS kan starte (oppstart).
-                    Boot loader er et firmware som fungerer som BIOS, men brukes om andre enheter som telefoner og lignende.
+                    Et eksempel på dette kan være BIOS (Basic Input Output Sytem).
+                    BIOS er firmware som ligger på hovedkortet til en pc og brukes til å forberede maksinvaren, sånn at
+                    et OS kan starte (oppstart).
+                    Boot loader er et firmware som fungerer som BIOS, men brukes om andre enheter som telefoner og
+                    lignende.
                 </p>
             </div>
         </article>
@@ -204,11 +264,16 @@
                 <p>
                     Standard lagringsmedia i dag er SSD
                     Tidligere (Bare for år siden) var HDD det mest brukte.
-                    En hardisk er et lagringsmedium som bruker en roterende disk til å lagre data. 
-                    En Solid State Drive (SSD) er, som navnet tilsier et lagrinsmedium som ikke har bevegelige deler og bruker heller flashminne.
-                    SSD er mye raskere og mer stabilt enn en HDD. 
-                    De 2 store problemene med SSD som gjør at HDD enda brukes er at HDD har mer lagringskapasitet (Til nå hvertfall) og de er mye dyrere hvis man skal ha mye kapasitet.
+                    En hardisk er et lagringsmedium som bruker en roterende disk til å lagre data.
+                    En Solid State Drive (SSD) er, som navnet tilsier et lagrinsmedium som ikke har bevegelige deler og
+                    bruker heller flashminne.
+                    SSD er mye raskere og mer stabilt enn en HDD.
+                    De 2 store problemene med SSD som gjør at HDD enda brukes er at HDD har mer lagringskapasitet (Til
+                    nå hvertfall) og de er mye dyrere hvis man skal ha mye kapasitet.
                 </p>
+                <div>
+                    <img src="https://www.estorm.com.au/wp-content/uploads/2016/04/SSD_vs_HDD_vs_Hybrid.png" alt="">
+                </div>
             </div>
         </article>
         <article>
@@ -217,30 +282,31 @@
             <div>
                 <h3>Hovedkort</h3>
                 <p>
-                    Hovedkortet er kretskortet som holder på de fleste delene i en datamskin og gjør det mulig for alle delene å kommunisere.
+                    Hovedkortet er kretskortet som holder på de fleste delene i en datamskin og gjør det mulig for alle
+                    delene å kommunisere.
                 </p>
             </div>
-        </article>        
+        </article>
         <article>
-        <h3>Forksjell på bærbar og stasjonær</h3>
-        Eksempel på forskjellen mellom stasjonær PC og en mac:    
-        <br>
-        <br>
-        Stasjonær:
-        <ul>
-            <li>i7 3400MHz</li>
-            <li>GTX 1080 8000mb</li>
-            <li>16gb DDR3</li>
-            <li>1600GB total lagring</li>
-        </ul>
-        <br>
-        Macbook pro:
-        <ul>
-            <li>i5 2300MHz</li>
-            <li>Intel Graphics 128mb</li>
-            <li>8GB DDR3</li>
-            <li>128GB lagring</li>
-        </ul>
+            <h3>Forksjell på bærbar og stasjonær</h3>
+            Eksempel på forskjellen mellom stasjonær PC og en mac:
+            <br>
+            <br>
+            Stasjonær:
+            <ul>
+                <li>i7 3400MHz</li>
+                <li>GTX 1080 8000mb</li>
+                <li>16gb DDR3</li>
+                <li>1600GB total lagring</li>
+            </ul>
+            <br>
+            Macbook pro:
+            <ul>
+                <li>i5 2300MHz</li>
+                <li>Intel Graphics 128mb</li>
+                <li>8GB DDR3</li>
+                <li>128GB lagring</li>
+            </ul>
         </article>
 
     </main>
