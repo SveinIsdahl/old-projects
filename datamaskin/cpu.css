@@ -151,3 +151,8 @@ div.pil:nth-child(2) {
 .firkant.selected {
     box-shadow: 3px 3px 3px black, inset 0 0 6px gold;
 }
+
+#test {
+    position: absolute;
+    right: 3em;
+}
