@@ -1,6 +1,4 @@
-article {
-    background-color: antiquewhite;
-}
+
 
 article h1 {
     color: green;
@@ -13,8 +11,39 @@ article > h1 {
 img {
   width: 200px;
 }
+tr {
+  border-collapse: collapse;
 
-#intel {
-  width: 300px;
 }
+th {
+  border: 1px solid black;
+  padding: 5px;
 
+}
+thead {
+  background-color: rgb(49, 108, 88);
+
+}
+table {
+  border-collapse: collapse;
+
+}
+h1 {
+  font-size: 2em;
+}
+#intel {
+  position: absolute;
+  right: 10px;
+  width: 15em;
+  width: 25vw;
+}
+#amd {
+  position: absolute;
+  right: 10px;
+  width: 25vw;
+}
+#nvidia {
+  position: absolute;
+  right: 10px;
+  width: 25vw;
+} 
