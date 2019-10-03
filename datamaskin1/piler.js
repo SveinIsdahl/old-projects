@@ -9,29 +9,69 @@ function setup() {
   let panel = document.createElement("div");
   panel.id = "panel";
   bod.appendChild(panel);
-  panel.innerHTML = `<span>New</span><i>Lag ny pil</i> <span>Clear</span><i>Slett piler</i>
-             <span>Flytt boxer</span><i>Du kan flytte boxer</i>`;
+  panel.innerHTML = `<span>Ny pil</span><i>Lag ny pil</i> <span>Clear</span><i>Slett piler</i>
+                    <span>Flytt bokser</span><i>Du kan flytte bokser</i><span>Ny Boks</span><i>Lager en ny boks</i>
+                    <span>Slett Bokser</span><i>Slett 8 bokser</i>`;
   let nu = panel.querySelector("span:nth-of-type(1)");
   let info = panel.querySelector("i:nth-of-type(1)");
   let clear = panel.querySelector("span:nth-of-type(2)");
   let move = panel.querySelector("span:nth-of-type(3)");
   let flytt = panel.querySelector("i:nth-of-type(3)");
+  let ny = panel.querySelector("span:nth-of-type(4)");
+  let fjern = panel.querySelector("span:nth-of-type(5)");
+  let fjerne = panel.querySelector("i:nth-of-type(5)");
+
+
+
+  let antallBokser = 8;
+  let liste;
+  let farge = "red";
 
   let state = "off";
-
-  let liste;
-
   let movingDiv = null;
 
   clear.addEventListener("click", cleansvg);
   nu.addEventListener("click", startLine);
   move.addEventListener("click", moveBoxes);
+  ny.addEventListener("click", nyBoks);
+  fjern.addEventListener("click", clearBox);
+
+
+  function nyBoks() {
+    antallBokser += 1;
+    if (antallBokser == 1) {
+        fjerne.innerHTML = "Slett boksen";
+    }
+    else {
+      fjerne.innerHTML = "Slett " + antallBokser + " bokser"
+    }
+    let x = document.createElement("div");
+    let navn = prompt("Skriv inn navn på boks", "Navn");
+    x.style.backgroundColor = farge;
+    x.className = "firkant";
+    x.innerHTML = navn;
+    document.getElementById("mal").appendChild(x);
+  }
+
+  function clearBox() {
+    if (antallBokser !== 0) {
+      [].forEach.call(document.querySelectorAll('.firkant'),
+        function (e) {
+          e.parentNode.removeChild(e);
+        });
+
+      fjerne.innerHTML = "Ingen bokser tegnet"
+      antallBokser = 0;
+    }
+
+  }
+
 
   function moveBoxes() {
     if (state !== "move") {
       state = "move";
       flytt.innerHTML = "klikk for å slippe";
-    } else  {
+    } else {
       state = "off";
       movingDiv = null;
       flytt.innerHTML = "Du kan flytte";
@@ -92,7 +132,7 @@ function setup() {
       case "move":
         try {
           movingDiv.removeEventListener("mousemove", follow);
-        } catch (e) {}
+        } catch (e) { }
         div.addEventListener("mousemove", follow);
         movingDiv = div;
         state = "moving";
@@ -100,7 +140,7 @@ function setup() {
       case "moving":
         try {
           movingDiv.removeEventListener("mousemove", follow);
-        } catch (e) {}
+        } catch (e) { }
         state = "move";
         movingDiv = null;
         break;
@@ -123,10 +163,20 @@ function setup() {
       w: +d2.clientWidth,
       h: +d2.clientHeight
     };
+    let boks1 = {
+      vx: (p1.x),
+      vy: (p1.y + p1.h / 2),
+      hx: (p1.x + p1.w),
+      hy: (p1.y + p1.h / 2),
+      tx: (p1.x + p1.w / 2),
+      ty: (p1.y),
+      bx: (p1.x + p1.w),
+      by: (p1.y + p1.h)
+    }
     console.log(p1, p2);
     let l1;
     //Ned høyre
-    if (p1.y < p2.y && p1.x < p2.x) {
+    if ((p1.y + p1.h) < p2.y && (p1.x + p1.w) < p2.x) {
       let x1 = Math.trunc(p1.x + p1.w / 2);
       let y1 = p1.y + p1.h + 2;
       let x2 = x1;
@@ -134,10 +184,10 @@ function setup() {
       l1 = nuline(x1, y1, x2, y2);
       x1 = p2.x - 20;
       y1 = y2;
-      l1 += nuline(x2, y2, x1, y1,'marker-end="url(#arrowhead)"');
+      l1 += nuline(x2, y2, x1, y1, 'marker-end="url(#arrowhead)"');
     }
     //Ned venstre
-    if (p1.y < p2.y && p1.x > p2.x) {
+    if ((p1.y + p1.h) < p2.y && (p1.x - p1.w) > p2.x) {
       let x1 = Math.trunc(p1.x + p1.w / 2);
       let y1 = p1.y + p1.h + 2;
       let x2 = x1;
@@ -145,30 +195,30 @@ function setup() {
       l1 = nuline(x1, y1, x2, y2);
       x1 = p2.w + p2.x + 20 + 2;
       y1 = y2;
-      console.log(x1,x2);
-      l1 += nuline(x2, y2, x1, y1,'marker-end="url(#arrowhead)"');    
+      console.log(x1, x2);
+      l1 += nuline(x2, y2, x1, y1, 'marker-end="url(#arrowhead)"');
     }
     //Opp høyre
-    if (p1.y > p2.y && p1.x < p2.x) {
+    if ((p1.y - p1.h) > p2.y && (p1.x + p1.w) < p2.x) {
       let x1 = Math.trunc(p1.x + p1.w / 2);
       let y1 = p1.y + p1.h - 1;
       let x2 = x1;
       let y2 = Math.trunc(p2.y + p2.h / 2 - 2);
-      l1 = nuline(x1, y1-p1.h, x2, y2);
+      l1 = nuline(x1, y1 - p1.h, x2, y2);
       x1 = p2.x - 20;
       y1 = y2;
-      l1 += nuline(x2, y2, x1, y1,'marker-end="url(#arrowhead)"');    
+      l1 += nuline(x2, y2, x1, y1, 'marker-end="url(#arrowhead)"');
     }
     //Opp Venstre
-    if (p1.y > p2.y && p1.x > p2.x) {
+    if ((p1.y - p1.h) > p2.y && (p1.x - p1.y) > p2.x) {
       let x1 = Math.trunc(p1.x + p1.w / 2);
       let y1 = p1.y + p1.h - 1;
       let x2 = x1;
       let y2 = Math.trunc(p2.y + p2.h / 2 - 2);
-      l1 = nuline(x1, y1-p1.h, x2, y2);
+      l1 = nuline(x1, y1 - p1.h, x2, y2);
       x1 = p2.w + p2.x + 20 + 2;
       y1 = y2;
-      l1 += nuline(x2, y2, x1, y1,'marker-end="url(#arrowhead)"');    
+      l1 += nuline(x2, y2, x1, y1, 'marker-end="url(#arrowhead)"');
     }
 
     if (l1) {
@@ -178,3 +228,4 @@ function setup() {
     }
   }
 }
+//Bytt ut if statements me switch, p1/p2 som expression

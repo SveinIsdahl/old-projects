@@ -128,7 +128,7 @@ div.pil:nth-child(2) {
     left:0px;
     padding: 15px;
     height: 30px;
-    width: 700px;
+    width: 850px;
     background-color: darkslategrey;
 }
 
@@ -138,13 +138,13 @@ div.pil:nth-child(2) {
     text-align: center;
     height: 1.2em;
     border: solid gray 1px;
-    padding:2px;
+    padding:1px;
     background-color: gainsboro;
     box-shadow: 2px 2px 2px gray;
 }
 #panel i {
     display: inline-block;
-    padding: 3px;
+    padding: 1px;
     color:white;
 }
 
