@@ -25,7 +25,8 @@ function setup() {
 
   let antallBokser = 8;
   let liste;
-  let farge = "red";
+  let farger = ["red", "blue", "green", "purple", "pink", "orange"];
+  let farge = 0;
 
   let state = "off";
   let movingDiv = null;
@@ -37,8 +38,10 @@ function setup() {
   fjern.addEventListener("click", clearBox);
 
 
-  function nyBoks() {
+  function nyBoks() {      
     antallBokser += 1;
+    farge = antallBokser%6;
+
     if (antallBokser == 1) {
         fjerne.innerHTML = "Slett boksen";
     }
@@ -47,7 +50,7 @@ function setup() {
     }
     let x = document.createElement("div");
     let navn = prompt("Skriv inn navn på boks", "Navn");
-    x.style.backgroundColor = farge;
+    x.style.backgroundColor = farger[farge];
     x.className = "firkant";
     x.innerHTML = navn;
     document.getElementById("mal").appendChild(x);
