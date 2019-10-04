@@ -151,3 +151,18 @@ div.pil:nth-child(2) {
 .firkant.selected {
     box-shadow: 3px 3px 3px black, inset 0 0 6px gold;
 }
+#farger {
+    position: absolute;
+    left: 1000px;
+    bottom: 100px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1px;
+    grid-auto-rows: minmax(1px, auto);    
+}
+
+#farger>div {
+    padding: 5px;
+    border-radius: 5%;
+    background: beige;
+}

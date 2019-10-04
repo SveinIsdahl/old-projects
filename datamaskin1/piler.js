@@ -21,8 +21,6 @@ function setup() {
   let fjern = panel.querySelector("span:nth-of-type(5)");
   let fjerne = panel.querySelector("i:nth-of-type(5)");
 
-
-
   let antallBokser = 8;
   let liste;
   let farger = ["red", "blue", "green", "purple", "pink", "orange"];
@@ -31,12 +29,32 @@ function setup() {
   let state = "off";
   let movingDiv = null;
 
+  let f = document.getElementById("farger");
+  let f1 = f.querySelector("div:nth-of-type(1)");
+  let f2 = f.querySelector("div:nth-of-type(2)");
+  let f3 = f.querySelector("div:nth-of-type(3)");
+  let f4 = f.querySelector("div:nth-of-type(4)");
+  let f5 = f.querySelector("div:nth-of-type(5)");
+  let f6 = f.querySelector("div:nth-of-type(6)");
+  let f7 = f.querySelector("div:nth-of-type(7)");
+  let f8 = f.querySelector("div:nth-of-type(8)");
+  let f9 = f.querySelector("div:nth-of-type(9)");
+  f1.addEventListener("click", endreFarge);
+  f2.addEventListener("click", endreFarge);
+
+
+  function endreFarge(e) {
+    e = farge;
+    console.log(e);
+    
+  }
+
+
   clear.addEventListener("click", cleansvg);
   nu.addEventListener("click", startLine);
   move.addEventListener("click", moveBoxes);
   ny.addEventListener("click", nyBoks);
   fjern.addEventListener("click", clearBox);
-
 
   function nyBoks() {      
     antallBokser += 1;
