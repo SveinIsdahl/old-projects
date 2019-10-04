@@ -46,7 +46,7 @@ function setup() {
   function endreFarge(e) {
     e = farge;
     console.log(e);
-    
+
   }
 
 
@@ -86,7 +86,6 @@ function setup() {
     }
 
   }
-
 
   function moveBoxes() {
     if (state !== "move") {
