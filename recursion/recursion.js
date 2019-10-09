@@ -5,10 +5,18 @@ function setup() {
     function createDiv(id, x) {
         let div = document.createElement("div");
         div.id = id;
-        div.width = x;
+        div.width = x*10;        
+        div.height = 10;
+        div.offsetTop = id*10;
+        div.style.top = id*10;
+        div.style.position = "absolute";
         div.style.background = "red";
-        div.innerHTML = id;
+        let node = document.createTextNode(id);
+        div.appendChild(node);
+        //div.innerHTML = id;
+        
         document.getElementById("a").appendChild(div);
+        
         return div
     }
 
@@ -18,14 +26,17 @@ function setup() {
     let size = 5;
 
     for (let i = 0; i < size; i++) {
-        arrA.push(createDiv(i+1,10+i*100));
+        arrA.push(createDiv(i, 20 + i * 20));
+        //let y = document.getElementById(i);
+        //document.getElementById(i).appendChild(id)
     }
 
 
-    function flytt(f, t){
-        console.log("Flytt disk "+ f + " til disk " + t);
+    function flytt(f, t) {
+        console.log("Flytt disk " + f + " til disk " + t);
         let x = f.pop();
         console.log(x);
+        console.log(f,t);
         t.push(x);
         let id
         let arr = t;
@@ -33,7 +44,7 @@ function setup() {
             case arrA:
                 id = "a";
                 break;
-        
+
             case arrB:
                 id = "b";
                 break;
@@ -42,23 +53,21 @@ function setup() {
                 id = "c"
                 break;
         }
-        let y = document.getElementById
-        document.getElementById(id).appendChild()
+        /*console.log(document.getElementById(id));
+        let div = document.getElementById(f[f.length])
+        document.getElementById(id).appendChild(div);*/
         //Bytte switch til create div eller for loop?
         //switch for å vite hvilken div t er
 
     }
-  
-    function rec(n, a, b, c) {
-        if (n==0){
 
-        }
-        else {
-        rec(n-1, a, c, b);
-        flytt(a, c);
-        rec(n-1, b, a, c);
+    function rec(n, a, b, c) {
+        if (n !== 0) {
+            rec(n - 1, a, c, b);
+            flytt(a, c);
+            rec(n - 1, b, a, c);
         }
     }
-    rec(size, arrA, arrB, arrC);        
-    console.log(arrA,arrB,arrC);
+    rec(size, arrA, arrB, arrC);
+    console.log(arrA, arrB, arrC);
 }   
