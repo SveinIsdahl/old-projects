@@ -55,7 +55,73 @@
                     <br>
                     For 5-6 år siden var standard størrelse 32bit
                     <br>
+                    <br>
+                    Første instruksjon som utføres er et hopp (jmp 0ffff0) til en adresse
+                    som ligger i datamaskinens ROM. Her ligger et program som laster in BIOS
+                    fra ROM. Bios programmet vil utføre en oppstart selvtest og finner ut hvilke
+                    komponenter som kan brukes til POST av oppstartsektoren. Dersom det finner
+                    en bootable device (en enhet som kan brukes til oppstart), da leser bios inn
+                    operativsystemet fra denne enheten (mbr). Her ligger kode som vil laste
+                    inn resten av operativsystemet som ligger på denne komponenten.
+                    Operativsystemet vil først bytte ut bios koden med sin egen kode som
+                    vanligvis er mer avansert. Deretter starter selve operativsystemet
+                    med alle tjenester som skal til for at moderne grafikkbaserte program
+                    skal kunne fungere.
+                    <br>
+
                 </p>
+
+                <h3>8-bit vs 64-bit</h3>
+                <hr>
+
+                <h4>RAM</h4>
+                <p>
+                    En 8-bit prosessor burde i teorien kunne ha 256 bytes med ram (2ˆ8).
+                    Men ettersom at mange av 8-bit prosessorer har 16-bit adressebusser kan de ofte ha 64kb ram.
+                    Teoretisk sett kan en 64.bit prosessor ha flere milliarde gigabytes med ram.
+                </p>
+                <h4>Transistorer</h4>
+                <p>
+                    En
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Forskjell</th>
+                            <th>8-bit</th>
+                            <th>64-bit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Temperatur</td>
+                            <td>50+c</td>
+                            <td>370c+</td>
+                        </tr>
+                        <tr>
+                            <td>Antall Transistorer</td>
+                            <td>3510</td>
+                            <td>1 750 000 000</td>
+                        </tr>
+                        <tr>
+                            <td>Tranistorer per mmˆ2</td>
+                            <td>10 mmˆ2</td>
+                            <td>17.5 millioner/mmˆ2</td>
+                        </tr>
+                        <tr>
+                            <td>Hastighet</td>
+                            <td>1 000hz</td>
+                            <td>2 000 000 000 Hz</td>
+                        </tr>
+                        <tr>
+                            <td>Pris</td>
+                            <td>25$</td>
+                            <td>360$</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
                 <h3>ARM og x86</h3>
                 <hr>
                 <p>
@@ -282,7 +348,8 @@
                     En Solid State Drive (SSD) er, som navnet tilsier et lagrinsmedium som ikke har bevegelige deler og
                     bruker heller flashminne.
                     SSD er mye raskere og mer stabilt enn en HDD.
-                    De 2 store utfordringene med SSD som gjør at HDD enda brukes er at HDD har mer lagringskapasitet (Til
+                    De 2 store utfordringene med SSD som gjør at HDD enda brukes er at HDD har mer lagringskapasitet
+                    (Til
                     nå hvertfall) og de er mye dyrere hvis man skal ha mye kapasitet.
                 </p>
                 <div>

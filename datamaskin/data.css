@@ -13,20 +13,28 @@ img {
 }
 tr {
   border-collapse: collapse;
+  border: 2px black solid;
 
 }
 th {
-  border: 1px solid black;
+  border: 2px solid black;
   padding: 5px;
 
 }
 thead {
   background-color: rgb(49, 108, 88);
+  padding: 8px;
 
+}
+tbody tr:nth-child(odd) {
+  background-color: rgb(34, 72, 60);
 }
 table {
   border-collapse: collapse;
 
+}
+td {
+  border: 2px black solid;
 }
 h1 {
   font-size: 2em;
