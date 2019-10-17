@@ -21,7 +21,7 @@ function setup() {
   let fjern = panel.querySelector("span:nth-of-type(5)");
   let fjerne = panel.querySelector("i:nth-of-type(5)");
 
-  let antallBokser = 8;
+  let antallBokser = 0;
   let liste;
   let farger = ["red", "blue", "green", "purple", "pink", "orange"];
   let farge = 0;
