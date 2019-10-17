@@ -35,8 +35,9 @@ function setup() {
     function flytt(f, t) {
         console.log("Flytt disk " + f + " til disk " + t);
         let x = f.pop();
-        console.log(x);
-        console.log(f,t);
+        //console.log(x);
+        //console.log(f,t);
+        console.log(arrA, arrB, arrC);
         t.push(x);
         let id
         let arr = t;

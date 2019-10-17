@@ -31,6 +31,7 @@ function setup() {
 
   let f = document.getElementById("farger");
   let f1 = f.querySelector("div:nth-of-type(1)");
+  /*
   let f2 = f.querySelector("div:nth-of-type(2)");
   let f3 = f.querySelector("div:nth-of-type(3)");
   let f4 = f.querySelector("div:nth-of-type(4)");
@@ -39,14 +40,18 @@ function setup() {
   let f7 = f.querySelector("div:nth-of-type(7)");
   let f8 = f.querySelector("div:nth-of-type(8)");
   let f9 = f.querySelector("div:nth-of-type(9)");
+  */
   f1.addEventListener("click", endreFarge);
-  f2.addEventListener("click", endreFarge);
+
+ // f2.addEventListener("click", endreFarge);
 
 
   function endreFarge(e) {
-    e = farge;
+    
+    //.style.backgroundColor = farger[Math.floor(Math.random()*6)]
+    
     console.log(e);
-
+    
   }
 
 
@@ -71,7 +76,9 @@ function setup() {
     x.style.backgroundColor = farger[farge];
     x.className = "firkant";
     x.innerHTML = navn;
+    x.classList.remove("selected")
     document.getElementById("mal").appendChild(x);
+    liste = [];
   }
 
   function clearBox() {
