@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sorterings-algoritmer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <head>
+        <h1 style="text-align: center;">Oversikt over sorterings-algoritmer</h1>
+    </head>
+    <main>
+        <p>
+            <b>Sammenligningsbasert:</b> Sammenligner to elementer for å se hvem som skal stå først i sekvensen. Her er
+            algoritmene begrenset av Ω(nlgn) som nedre kjøretid.
+            <br>
+            <b>Split og hersk:</b> Deler opp sekvensen i mindre biter for å få kontroll over listen.
+            <br>
+            <b>In-place:</b> Bruker eksisterende struktur uten å lage en ny kopi.
+            <br>
+            <b>Stabil:</b> Like elementer blir "samlet" i samme rekkefølge som før sortering.
+            <br>
+            <br>
+            O: Øvre grense
+            <br>
+            Ω: Nedre grense
+            <br>
+            Θ: Øvre og nedre grense
+            <br>
+            <br>
+            ω > Θ(f(n)) (Lille Omega)
+            <br>
+            Ω ≧ Θ(f(n)) (Store Omega)
+            <br>
+            Θ = Θ(f(n)) (Store Theta)
+            <br>
+            O ≦ Θ(f(n)) (Store O)
+            <br>
+            o < Θ(f(n)) (Lille o)
+            <br>
+        </p>
+        <p>
+                <h2>Splitt og hersk:</h2>
+                <br>
+                Splitt problemet inn i subproblemer som er mindre instanser av det samme problemet.
+                <br>
+                Hersk subproblemene ved å løse dem rekursivt. Hvis et subproblems størrelse er lite nok, løs subproblemene på en rett frem måte.
+                <br>
+                Kombiner løsningene på subproblemene inn i løsningen på problemet i utgangspunktet.
+                <br>
+                Vi deler opp problemet helt til vi kommer til minste mulige instans av problemet, så sier vi at rekursjonen har ”bottoms out” og vi har kommet til base case og får resultatet når vi kombinerer løsningene.
+                <br>
+                <br>
+        </p>    
+        <div>
+            <h2>Egenskaper til algoritmene</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Algoritme</th>
+                        <th>Sammenligningsbasert</th>
+                        <th>Splitt og hersk</th>
+                        <th>In-place</th>
+                        <th>Stabil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th><a href="bubble.html">Bubble-sort</a></th>
+                        <td>Ja</td>
+                        <td>Nei</td>
+                        <td>Ja</td>
+                        <td>Ja</td>
+                    </tr>
+                    <tr>
+                        <th><a href="quick.html">Quick-sort</a></th>
+                        <td>Ja</td>
+                        <td>Ja</td>
+                        <td>Ja</td>
+                        <td>Nei</td>
+                    </tr>
+                    <tr>
+                        <th><a href="selection.html">Selection-sort</a></th>
+                        <td>Ja</td>
+                        <td>Nei</td>
+                        <td>Ja</td>
+                        <td>Ja</td>
+                    </tr>
+                    <tr>
+                        <th><a href="merge.html">Merge-sort</a></th>
+                        <td>Ja</td>
+                        <td>Ja</td>
+                        <td>Nei</td>
+                        <td>Ja</td>
+                    </tr>
+                    <tr>
+                        <th><a href="insertion.html">Insertion-sort</a></th>
+                        <td>Ja</td>
+                        <td>Nei</td>
+                        <td>Ja</td>
+                        <td>Ja</td>
+                    </tr>
+                    <tr>
+                        <th><a href="counting.html">Counting-sort</a></th>
+                        <td>Nei</td>
+                        <td>Nei</td>
+                        <td>Nei</td>
+                        <td>Ja</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <br>
+
+        <div>
+            <h2>Kjøretider</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Algoritme</th>
+                        <th>Best Case</th>
+                        <th>Average Case</th>
+                        <th>Worst Case</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Bubble-sort</th>
+                        <td>O(n)</td>
+                        <td>O(n²)</td>
+                        <td>O(n²)</td>
+                    </tr>
+                    <tr>
+                        <th>Quick-sort</th>
+                        <td>Θ(nlg(n))</td>
+                        <td>Θ(nlg(n))</td>
+                        <td>Θ(n²)</td>
+                    </tr>
+                    <tr>
+                        <th>Selection-sort</th>
+                        <td>O(n²)</td>
+                        <td>O(n²)</td>
+                        <td>O(n²)</td>
+                    </tr>
+                    <tr>
+                        <th>Merge-sort</th>
+                        <td>Θ(nlg(n))</td>
+                        <td>Θ(nlg(n))</td>
+                        <td>Θ(nlg(n))</td>
+                    </tr>
+                    <tr>
+                        <th>Insertion-sort</th>
+                        <td>Θ(n)</td>
+                        <td>Θ(n²)</td>
+                        <td>Θ(n²)</td>
+                    </tr>
+                    <tr>
+                        <th>Counting-sort</th>
+                        <td>Θ(n+k)</td>
+                        <td>Θ(n+k)</td>
+                        <td>Θ(n+k)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+
+</html>
+

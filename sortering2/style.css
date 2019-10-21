@@ -1,0 +1,25 @@
+body {
+    background-color: rgb(255, 255, 255);
+}
+body>table {
+    position: absolute;
+    top: 200px;
+}
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: rgb(201, 184, 159);
+}
+
+/*td:nth-child??????*/
+tr:nth-child(even) {
+    background-color: rgb(213, 157, 136);
+}
+a {
+    text-decoration: none;
+    color: rgb(55, 55, 194);
+}
+
