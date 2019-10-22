@@ -20,5 +20,19 @@ a {
 }
 
 
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: rgb(79, 94, 133);
+}
+
+li {
+	float: left;
+}
+
+
+
 
 
