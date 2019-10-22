@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <canvas id="canvas" width="800" height="360">
+    <canvas id="canvas" width="1200" height="600">
 
     </canvas>
     <script>
@@ -19,10 +19,9 @@
         let i = 0;
         let j = 0;
         let verdier = [];
-        let width = 2;
         function setup() {
-            for (let i = 0; i < 800; i++) {
-                verdier[i] = Math.floor(Math.random()*360);
+            for (let i = 0; i < 1200; i++) {
+                verdier[i] = Math.floor(Math.random()*600);
             }
         }
 
@@ -31,8 +30,8 @@
             for (let i = 0; i < verdier.length; i++) {
                 //set timer
                 ctx.beginPath();
-                ctx.lineWidth = width;
-                ctx.moveTo(i, 800);
+                ctx.lineWidth = 2;
+                ctx.moveTo(i, 1200);
                 ctx.lineTo(i, verdier[i]);
                 ctx.stroke();
             }
@@ -52,10 +51,10 @@
                 for (let j = 0; j < verdier.length - i - 1; j++) {
                     a = verdier[j];
                     b = verdier[j + 1];
-                    if (a < b) {
+                    if (a > b) {
                         bytt(verdier, j, j + 1);
 
-                        ctx.clearRect(0, 0, 800, 360)
+                        ctx.clearRect(0, 0, 1200, 600)
                         tegn();
                     }
                 }
@@ -71,7 +70,7 @@
 
         setup();
         //sorter();
-        setInterval(sorter, 10);
+        setInterval(sorter, 100);
     </script>
 </body>
 

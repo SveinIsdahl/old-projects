@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
         }
     </style>
 </head>
+
 <body>
     <canvas id="canvas" width="1200" height="600"></canvas>
 
@@ -23,66 +25,87 @@
         let canvas = document.getElementById("canvas");
         let ctx = canvas.getContext("2d");
         let verdier = [];
-        
+
         function setup() {
             for (let i = 0; i < canvas.width; i++) {
-                verdier[i] = Math.floor(Math.random()*canvas.height);
+                verdier[i] = Math.round(Math.random() * canvas.height);
             }
         }
-        console.log(verdier);
+        setup();
+
         function tegn() {
 
             for (let i = 0; i < canvas.width; i++) {
+                ctx.clearRect(0, 0, canvas.length, canvas.width);
                 ctx.beginPath();
                 ctx.lineWidth = 2;
                 ctx.moveTo(i, canvas.width);
                 ctx.lineTo(i, verdier[i]);
                 ctx.stroke();
-            }            
+                ctx.closePath();
+            }
         }
+        tegn();
         function swap(arr, a, b) {
             let rep = arr[a];
             arr[a] = arr[b];
             arr[b] = rep;
-        }            
-
-
-        function partition(verdier, low, high) {
-            
-            let j
-            let i
-
-            pivot = verdier[high];
-
-            i = low-1;
-
-            for (j = low; j <= high-1; j++) {
-                if (verdier[j] < pivot) {
-                    i++
-                    swap(verdier, i, j);
-                }
-            } 
-            swap(verdier, (i+1), high);
-            return (i+1);
-
         }
 
-        function sorter(verdier, low, high) {
 
-            if (low < high) {
-                ctx.clearRect(0,0,canvas.length,canvas.height);
-                let pi = partition(verdier, low, high);
+        function partition(verdier, start, end) {
 
-                sorter(verdier, low, pi-1);
-                sorter(verdier, pi+1, pi)
-                console.log(verdier);
-                tegn();
+            let pivotIndex = start;
+            let pivotValue = verdier[end];
+
+            for (let j = start; j <= end; j++) {
+                if (verdier[j] < pivotValue) {
+                    swap(verdier, pivotIndex, j);
+                    pivotIndex++
+                }
+            }
+            swap(verdier, pivotIndex, end);
+            return pivotIndex;
+
+
+        }
+        let tid = 800;
+        async function sorter(verdier, start, end) {
+            tid -= 1;
+            console.log(tid);
+            await sleep(tid);
+            canvas.width = canvas.width;
+            //Dårlig metode for å cleare canvas, men clear rect virker ikke.
+            tegn();
+            if (start < end) {
+                let pi = partition(verdier, start, end);
+
+                sorter(verdier, start, pi - 1);
+                canvas.width = canvas.width;
+                tegn();                
+                await sleep(tid/10);
+                sorter(verdier, pi + 1, end);
+                canvas.width = canvas.width;
+                tegn();   
+                await sleep(tid/10);
+
             }
 
-        }
-        setup();
-        sorter(verdier, 0, (verdier.length-1));
+
+        }  
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }      
+
+        sorter(verdier, 0, (verdier.length - 1));
         console.log(verdier);
+        //ctx.clearRect(0, 0, canvas.length, canvas.width);
+        canvas.width = canvas.width;
+        tegn();
+
+
+
     </script>
 </body>
+
 </html>
