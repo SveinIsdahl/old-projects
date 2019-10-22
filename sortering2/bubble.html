@@ -29,10 +29,11 @@
         function tegn() {
 
             for (let i = 0; i < verdier.length; i++) {
+                //set timer
                 ctx.beginPath();
                 ctx.lineWidth = width;
-                ctx.moveTo(i, 0);
-                ctx.lineTo(verdier.length, verdier[i]);
+                ctx.moveTo(i, 800);
+                ctx.lineTo(i, verdier[i]);
                 ctx.stroke();
             }
 
@@ -54,7 +55,7 @@
                     if (a < b) {
                         bytt(verdier, j, j + 1);
 
-                        ctx.clearRect(0, 0, canvas.clientHeight, canvas.width)
+                        ctx.clearRect(0, 0, 800, 360)
                         tegn();
                     }
                 }
@@ -63,15 +64,14 @@
                 console.log("Ferdig");
                 clearInterval(sorter);
                 tegn();
+                //end timer
 
             }
-            i++
         }
 
         setup();
-        sorter();
-        //setInterval(sorter, 30);
-        console.log(verdier);
+        //sorter();
+        setInterval(sorter, 10);
     </script>
 </body>
 

@@ -5,25 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Quicksort</title>
-    <script>
-        let canvas = document.getElementById("canvas");
-        let ctx = canvas.getContext("2d");
 
-        function setup() {
-            let verdier = new Array(width);
-            for (let i = 0; i < verdier.length; i++) {
-                verdier[i] = random(height);
-            }
-        }
-        function tegn() {
-            
-        }
 
-        function partition() {
 
-        }
-        
-    </script>
     <style>
         canvas {
             border: 2px solid black;
@@ -32,5 +16,73 @@
 </head>
 <body>
     <canvas id="canvas" width="1200" height="600"></canvas>
+
+
+
+    <script>
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        let verdier = [];
+        
+        function setup() {
+            for (let i = 0; i < canvas.width; i++) {
+                verdier[i] = Math.floor(Math.random()*canvas.height);
+            }
+        }
+        console.log(verdier);
+        function tegn() {
+
+            for (let i = 0; i < canvas.width; i++) {
+                ctx.beginPath();
+                ctx.lineWidth = 2;
+                ctx.moveTo(i, canvas.width);
+                ctx.lineTo(i, verdier[i]);
+                ctx.stroke();
+            }            
+        }
+        function swap(arr, a, b) {
+            let rep = arr[a];
+            arr[a] = arr[b];
+            arr[b] = rep;
+        }            
+
+
+        function partition(verdier, low, high) {
+            
+            let j
+            let i
+
+            pivot = verdier[high];
+
+            i = low-1;
+
+            for (j = low; j <= high-1; j++) {
+                if (verdier[j] < pivot) {
+                    i++
+                    swap(verdier, i, j);
+                }
+            } 
+            swap(verdier, (i+1), high);
+            return (i+1);
+
+        }
+
+        function sorter(verdier, low, high) {
+
+            if (low < high) {
+                ctx.clearRect(0,0,canvas.length,canvas.height);
+                let pi = partition(verdier, low, high);
+
+                sorter(verdier, low, pi-1);
+                sorter(verdier, pi+1, pi)
+                console.log(verdier);
+                tegn();
+            }
+
+        }
+        setup();
+        sorter(verdier, 0, (verdier.length-1));
+        console.log(verdier);
+    </script>
 </body>
 </html>
