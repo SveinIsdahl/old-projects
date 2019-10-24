@@ -21,7 +21,7 @@
         <li><a href="counting.html">Counting</a></li>
     </ul>
     <canvas id="canvas" width="1200" height="600"></canvas>
-    <script>
+    <script type="">
         let canvas = document.getElementById("canvas");
         let ctx = canvas.getContext("2d");
         let verdier = [];
@@ -46,6 +46,23 @@
             }
         }
         tegn();
+
+        function sorter(array) {
+            let n = array.length;
+
+
+            for (let i = 0; i < n - 1; i++) {
+                let min_index = i;
+                let j = i+1;
+                
+                if (j < n) {
+
+                }
+                else {
+                    swap(array, min_index, j);
+                }
+            }
+        }
     </script>
 </body>
 
