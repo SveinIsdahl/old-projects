@@ -21,7 +21,13 @@
         <li><a href="counting.html">Counting</a></li>
     </ul>
     <canvas id="canvas" width="1200" height="600"></canvas>
-    <script type="">
+    <script>
+        function swap(arr, a, b) {
+            let temp = arr[a];
+            arr[a] = arr[b];
+            arr[b] = temp;
+        }
+
         let canvas = document.getElementById("canvas");
         let ctx = canvas.getContext("2d");
         let verdier = [];
@@ -47,22 +53,35 @@
         }
         tegn();
 
-        function sorter(array) {
+        async function sorter(array) {
             let n = array.length;
 
 
-            for (let i = 0; i < n - 1; i++) {
-                let min_index = i;
-                let j = i+1;
-                
-                if (j < n) {
+            for (let i = 0; i < n; i++) {
 
+                let min_index = i;
+                for (let j = i + 1; j < n; j++) {
+                    if (array[j] < array[min_index]) {
+                        min_index = j;
+                    }
                 }
-                else {
-                    swap(array, min_index, j);
-                }
+                if (min_index !== i) {
+                   swap(array, i, min_index);
+                }            
+                canvas.width = canvas.width;
+                tegn();
+                await sleep(10);
+
+
             }
-        }
+        }        
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }    
+        sorter(verdier);
+        tegn(verdier);
+
+
     </script>
 </body>
 

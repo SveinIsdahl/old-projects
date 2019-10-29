@@ -1,5 +1,5 @@
 export function swap(arr, a, b) {
-    let rep = arr[a];
+    let temp = arr[a];
     arr[a] = arr[b];
-    arr[b] = rep;
+    arr[b] = temp;
 }

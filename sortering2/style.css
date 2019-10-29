@@ -8,16 +8,16 @@ table, th, td {
 }
 
 th {
-    background-color: rgb(201, 184, 159);
+    background-color: rgb(92, 76, 52);
 }
 
 /*td:nth-child??????*/
 tr:nth-child(even) {
-    background-color: rgb(213, 157, 136);
+    background-color: rgb(182, 129, 110);
 }
 a {
     text-decoration: none;
-    color: rgb(55, 55, 194);
+    color: rgb(255, 255, 255);
 }
 
 #meny {
@@ -56,7 +56,7 @@ a {
 }
 
 canvas {
-    position: absolute;
+    position: relative;
     top: 100px;
     border: 3px solid black ;
 }
