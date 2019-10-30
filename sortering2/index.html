@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <header>
-            <ul id="meny">
+        <ul id="meny">
             <li><a href="index.html">Hjem</a></li>
             <li><a href="bubble.html">Bubble</a></li>
             <li><a href="quick.html">Quick</a></li>
@@ -28,58 +29,42 @@
     <br>
     <main>
         <h1 style="text-align: center;">Oversikt over sorteringsalgoritmer</h1>
+        <div style="color:red">Kun bubble, quick og selection er ferdige til nå.</div>
         <p>
-            <b>Sammenligningsbasert:</b> Sammenligner to elementer for å se hvem som skal stå først i sekvensen. Her er
+            <h2>Terminologi:</h2>
+
+            <span>Sammenligningsbasert:</span> Sammenligner to elementer for å se hvem som skal stå først i sekvensen. Her er
             algoritmene begrenset av Ω(nlgn) som nedre kjøretid.
             <br>
-            <b>Split og hersk:</b> Deler opp sekvensen i mindre biter for å få kontroll over listen.
+
+            <span>Split og hersk:</span> Deler opp sekvensen i mindre biter for å få kontroll over listen.
             <br>
-            <b>In-place:</b> Bruker eksisterende struktur uten å lage en ny kopi.
+            Splitt problemet inn i subproblemer som er mindre instanser av det samme problemet.
             <br>
-            <b>Stabil:</b> Like elementer blir "samlet" i samme rekkefølge som før sortering.
+            Hersk subproblemene ved å løse dem rekursivt. Hvis et subproblems størrelse er lite nok, løs subproblemene
+            på en rett frem måte.
             <br>
+            Kombiner løsningene på subproblemene inn i løsningen på problemet i utgangspunktet.
             <br>
-            O: Øvre grense
+
+            <span>In-place:</span> Bruker eksisterende struktur uten å lage en ny kopi.
             <br>
-            Ω: Nedre grense
-            <br>
-            Θ: Øvre og nedre grense
-            <br>
-            <br>
-            ω > Θ(f(n)) (Lille Omega)
-            <br>
-            Ω ≧ Θ(f(n)) (Store Omega)
-            <br>
-            Θ = Θ(f(n)) (Store Theta)
-            <br>
-            O ≦ Θ(f(n)) (Store O)
-            <br>
-            o < Θ(f(n)) (Lille o)
+
+            <span>Stabil:</span> Like elementer blir "samlet" i samme rekkefølge som før sortering.
             <br>
         </p>
-        <p>
-                <h2>Splitt og hersk:</h2>
-                <br>
-                Splitt problemet inn i subproblemer som er mindre instanser av det samme problemet.
-                <br>
-                Hersk subproblemene ved å løse dem rekursivt. Hvis et subproblems størrelse er lite nok, løs subproblemene på en rett frem måte.
-                <br>
-                Kombiner løsningene på subproblemene inn i løsningen på problemet i utgangspunktet.
-                <br>
-                Vi deler opp problemet helt til vi kommer til minste mulige instans av problemet, så sier vi at rekursjonen har ”bottoms out” og vi har kommet til base case og får resultatet når vi kombinerer løsningene.
-                <br>
-                <br>
-        </p>    
+
+
         <div>
             <h2>Egenskaper til algoritmene</h2>
-            <table>
+            <table id="">
                 <thead>
                     <tr>
                         <th>Algoritme</th>
-                        <th>Sammenligningsbasert</th>
-                        <th>Splitt og hersk</th>
-                        <th>In-place</th>
-                        <th>Stabil</th>
+                        <th><span>Sammenligningsbasert</span></th>
+                        <th><span>Splitt og hersk</span></th>
+                        <th><span>In-place</span></th>
+                        <th><span>Stabil</span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -133,6 +118,7 @@
 
         <div>
             <h2>Kjøretider</h2>
+
             <table>
                 <thead>
                     <tr>
@@ -181,6 +167,25 @@
                     </tr>
                 </tbody>
             </table>
+            <p>
+                <br>
+                O: Øvre grense
+                <br>
+                Ω: Nedre grense
+                <br>
+                Θ: Øvre og nedre grense
+                <br>
+                <br>
+                ω > Θ(f(n)) (Lille Omega)
+                <br>
+                Ω ≧ Θ(f(n)) (Store Omega)
+                <br>
+                Θ = Θ(f(n)) (Store Theta)
+                <br>
+                O ≦ Θ(f(n)) (Store O)
+                <br>
+                o < Θ(f(n)) (Lille o) <br>
+            </p>
         </div>
     </main>
     <footer>
@@ -189,4 +194,3 @@
 </body>
 
 </html>
-
