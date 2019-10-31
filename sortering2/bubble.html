@@ -20,7 +20,7 @@
                 <li><a href="insertion.html">Insertion</a></li>
                 <li><a href="counting.html">Counting</a></li>
             </ul>
-    <canvas id="canvas" width="1200" height="600">
+    <canvas id="canvas" width="1200" height="600" style="background-color: black;">
 
     </canvas>
 
@@ -45,6 +45,7 @@
                 //set timer
                 ctx.beginPath();
                 ctx.lineWidth = 2;
+                ctx.strokeStyle = "grey";
                 ctx.moveTo(i, 1200);
                 ctx.lineTo(i, verdier[i]);
                 ctx.stroke();
