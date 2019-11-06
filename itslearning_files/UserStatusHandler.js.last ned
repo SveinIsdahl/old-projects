@@ -1,0 +1,2 @@
+function UserStatusHandler(d){function b(){CCL.CommonFunctions.safeAjaxPost({url:d.keepAliveServiceUrl,success:function(a){var c=window[d.onUpdateInboxFuncName],b=window[d.setOnlineUsersFuncName];$.isFunction(c)&&c(a.UnreadMessages,a.UnreadOffice365CloudEmailMessages,a.UnreadGmailCloudEmailMessages,a.UnreadNotifications,a.UnreadEmailMessages,a.TopEmailAccountId,a.UnreadSkoleIntraMessages);$.isFunction(b)&&b(a.OnlineUsers,a.MessengerStatus)}})}this.initialize=function(a,c){setTimeout(b,a);setInterval(b,
+c)}};

@@ -1,0 +1,2 @@
+var imagesToReset=[];function reportSetImageSize(a,b){imagesToReset.push({object:a,width:b})}function resetImageSizes(){for(var a=0;a<imagesToReset.length;a++){var b=imagesToReset[a].object,c=imagesToReset[a].width;b&&(b.clientWidth>c?(b.className=b.parentNode.className,b.parentNode.className="ntt-report-image-holder-inline-width"):b.parentNode.className="ntt-report-image-holder-inline")}}
+function reportFindParent(a,b){return a.tagName?a.tagName.toLowerCase()==b.toLowerCase()?a:a.parentNode?reportFindParent(a.parentNode,b):null:null};
