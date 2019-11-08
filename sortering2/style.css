@@ -66,3 +66,8 @@ span {
     color: rgb(248, 169, 255);
 
 }
+
+#lopl {
+    bottom: -200px;
+    position: absolute;
+}
