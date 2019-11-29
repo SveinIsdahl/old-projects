@@ -1,6 +1,6 @@
 // @ts-check
 
-const CONNECTSTRING = "postgres://svein@localhost/bib";
+const CONNECTSTRING = "postgres://bib@123/bib";
 
 const PORT = 3000;
 
@@ -27,7 +27,7 @@ app.post("/runsql", function (req, res) {
 });
 
 app.listen(3000, function () {
-  console.log(`Quiz server started on port ${PORT}`);
+  console.log(`Server starta på port ${PORT}`);
 });
 
 async function runsql(res, obj) {

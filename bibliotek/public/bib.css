@@ -1,0 +1,35 @@
+#main {
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 1fr 4fr 4fr 1fr;
+  grid-template-areas:
+    ". editor  view .";
+}
+
+#main > * {
+    justify-self: center;
+}
+
+#table {
+    grid-area: view;
+}
+
+#form {
+    grid-area: editor;
+}
+
+db-table {
+    width: 20em;
+   --alternate: slategray;
+   --head: bisque;
+}
+
+@media screen and (max-width: 850px) {
+    #username , #info { display:none; }
+    #main {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "editor"
+        "view";
+    }
+  }
