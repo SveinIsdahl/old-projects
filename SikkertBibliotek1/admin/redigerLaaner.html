@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rediger forfatter</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="/components/DbUpdate.js"></script>
+    <script src="/components/DbTable.js"></script>
+    <script src="/components/Homebar.js"></script>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+
+
+    <home-bar heading="Skolebibliotek Skeisvang" crumb="rediger laaner" getlinks="/htmlfiler/admin"
+        username="/myself">
+    </home-bar>
+
+
+    <div id="admin">
+        <db-update id="form" key="laanerid" update="true"
+                fields="laanerid,fornavn,etternavn" table="laaner">
+            <span slot="heading">Rediger Låner</span>
+        </db-update>
+
+        <div class="table">
+            <db-table connected="form:laanerid" fields="fornavn" sql="select laaner.* from laaner">
+                <span slot="caption">Fornavn</span>
+            </db-table>
+            <db-table connected="form:laanerid" fields="etternavn"
+                sql="select laaner.etternavn from laaner">
+                <span slot="caption">Etternavn</span>
+            </db-table>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+<!--
+sql="select count(u.utlaanid) as antall from utlaan u join eksemplar e on (u.eksemplarid=e.eksemplarid) join bok b on (b.bokid=e.bokid)">
