@@ -52,16 +52,16 @@
             }
 
         }
-
-        function sorter() {
-            let a
-            let b
-            function bytt(arr, a, b) {
+        function bytt(arr, a, b) {
                 let rep = arr[a];
                 arr[a] = arr[b];
                 arr[b] = rep;
 
             }
+        function sorter() {
+            let a
+            let b
+
             if (i < verdier.length) {
                 for (let j = 0; j < verdier.length - i - 1; j++) {
                     a = verdier[j];
@@ -71,6 +71,7 @@
 
                         ctx.clearRect(0, 0, 1200, 600)
                         tegn();
+                        
                     }
                 }
             }
