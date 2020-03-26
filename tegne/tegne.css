@@ -1,0 +1,88 @@
+#main {
+    position: relative;
+    width: 800px;
+    height: 800px;
+    border: solid blue 1px;
+}
+#tools, #canvas, #farger {
+    position: absolute;
+    background-color: whitesmoke;
+    border: solid red 1px;
+}
+#tools {
+    left: 0px;
+    top: 0px;
+    height: 780px;
+    width: 180px;
+}
+#canvas {
+    left: 200px;
+    top: 0px;
+    height: 600px;
+    width: 600px;
+}
+
+#farger {
+    left: 200px;
+    top: 630px;
+    height: 150px;
+    width: 600px;
+}
+#tools > div {
+    width: 70px;
+    text-align: center;
+    height: 70px;
+    margin: 30px;
+    margin-bottom: 60px;
+
+}
+
+#tools > div:nth-child(1) {
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 40px solid gray;
+    transform: rotate(-40deg);
+}
+
+#tools > div:nth-child(2) {
+    border: solid brown 2px;
+}
+
+#tools > div:nth-child(3) {
+    border: solid rgb(255, 0, 0) 2px;
+    border-radius: 50%;
+}
+
+#tools > div:nth-child(4) {
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 40px solid green;
+    margin-bottom: -20px;
+
+}
+#tools > div:nth-child(5) {
+    border-bottom: solid 4px blue;
+    transform: rotate(-20deg);
+    margin-bottom: 90px;
+}
+
+#tools > div:nth-child(6) {
+    border: solid 1px black;
+    height: 35px;
+    background: linear-gradient(to right, red 50%, blue 50%);
+    transform: rotate(-40deg);
+}
+
+#farger {
+    display: grid;
+}
+#farger > div {
+    width: 30px;
+    height: 30px;
+    background-color: blue;
+    
+}
