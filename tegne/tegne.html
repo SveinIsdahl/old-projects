@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tegning</title>
     <link rel="stylesheet" href="tegne.css">
+
 </head>
 
 <body>
@@ -18,15 +19,22 @@
             <div title="strek"></div>
             <div title="visk"></div>
         </div>
-        <canvas id="canvas" width="600" height="600"></canvas>
+        <canvas onmousedown="draw(event)" onmouseup="mouseUp(event)" onmousemove="mouseMove(event)" id="canvas" width="600" height="600"></canvas>
         <div id="farger">
-            <div>rød</div>
-            <div>grønn</div>
-            <div>blå</div>
-            <div>gul</div>
-            <div>svart</div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
+        
     </div>
+    <div class="container">
+        <span><b>LineWidth:</b></span>
+        <div id="widthValue"></div>
+        <input type="range" min="1" max="50" value="3" class="slider" id="lineWidth">
+    </div>
+    <script src="tegne.js"></script>
 </body>
 
 </html>
