@@ -8,11 +8,13 @@ var xPrev;
 var yPrev;
 let farge = "#000000";
 let lineWidth;
+let cords = [];
 
 //Eventlisteners, forteller tegnfunksjonen hvilket verktøy som er valgt
 document.querySelector("#tools > div:nth-child(1)").addEventListener("click", function () { setDrawState("draw") });
 document.querySelector("#tools > div:nth-child(2)").addEventListener("click", function () { setDrawState("firkant") });
 document.querySelector("#tools > div:nth-child(3)").addEventListener("click", function () { setDrawState("sirkel") });
+document.querySelector("#tools > div:nth-child(4)").addEventListener("click", function () { setDrawState("trekant") });
 document.querySelector("#tools > div:nth-child(5)").addEventListener("click", function () { setDrawState("strek") });
 document.querySelector("#tools > div:nth-child(6)").addEventListener("click", function () { setDrawState("visk") });
 
@@ -79,6 +81,32 @@ function draw(evt) {
                 ctx.beginPath();
                 xPrev = x;
                 yPrev = y;
+                strekState = 1;
+            }
+            break;
+        case "trekant":
+            if (strekState == 2) {
+                cords[4] = getMousePos(evt).x;
+                cords[5] = getMousePos(evt).y;
+                ctx.lineTo(cords[4], cords[5]);
+                ctx.moveTo(cords[4], cords[5]);
+                ctx.stroke();
+                ctx.lineTo(cords[0], cords[1]);
+                ctx.stroke();
+                strekState = 0;
+            }
+            else if (strekState == 1) {
+                cords[2] = getMousePos(evt).x;
+                cords[3] = getMousePos(evt).y;
+                ctx.lineTo(cords[2], cords[3]);
+                ctx.stroke();
+                strekState = 2;
+            }
+            else {
+                cords[0] = getMousePos(evt).x;
+                cords[1] = getMousePos(evt).y;
+                ctx.beginPath();
+                ctx.moveTo(cords[0], cords[1]);
                 strekState = 1;
             }
             break;
