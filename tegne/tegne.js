@@ -22,7 +22,7 @@ function setDrawState(state) {
     drawState = state;
 }
 
-//Funksjon for å lage en circel med fyll, ofte en dott
+//Funksjon for å lage en sirkel med fyll, ofte en dott
 function dot(x, y, color, str) {
     ctx.beginPath();
     ctx.strokeStyle = color;
