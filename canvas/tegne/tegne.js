@@ -171,11 +171,11 @@ function setColor(color) {
 //Line width slider:
 var slider = document.getElementById("lineWidth");
 var output = document.getElementById("widthValue");
-output.innerHTML = slider.value; 
+output.innerHTML = slider.value;
 
-slider.oninput = function() {
-  output.innerHTML = this.value;
-  lineWidth = this.value;
+slider.oninput = function () {
+    output.innerHTML = this.value;
+    lineWidth = this.value;
 }
 
 //Musepekerposisjon:
