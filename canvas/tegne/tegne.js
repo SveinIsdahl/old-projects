@@ -35,7 +35,7 @@ function dot(x, y, color, str) {
     ctx.fill();
     ctx.stroke();
     ctx.strokeStyle = farge;
-    ctx.fillStyle = "#ffffff";
+    ctx.fillStyle = color;
 }
 
 
@@ -48,9 +48,7 @@ function mouseUp(evt) {
         ctx.stroke();
         strekState = 0;
     }
-    if (ctx.strokeStyle == "#ffffff") {
-        ctx.strokeStyle = farge;
-    }
+
 }
 function mouseMove(evt) {
     if ((strekState == 1 && drawState == "draw") || (strekState == 1 && drawState == "visk")) {
@@ -60,7 +58,7 @@ function mouseMove(evt) {
         ctx.stroke();
     }
 }
-if (fill == true) {}
+
 //Tegnefunksjonen, 
 //hva den gjør er avhengig av hvilket verktøy som er valgt
 //hadde kanskje vært bedre å hatt individuelle funskjoner, men for mye jobb å endre.
@@ -80,6 +78,9 @@ function draw(evt) {
                 x = getMousePos(evt).x;
                 y = getMousePos(evt).y;
                 ctx.rect(xPrev, yPrev, x - xPrev, y - yPrev);
+                if (fill == true) {
+                    ctx.fill();
+                }
                 ctx.stroke();
                 strekState = 0;
             }
@@ -98,6 +99,9 @@ function draw(evt) {
                 ctx.moveTo(cords[4], cords[5]);
                 ctx.stroke();
                 ctx.lineTo(cords[0], cords[1]);
+                if (fill == true) {
+                    ctx.fill();
+                }
                 ctx.stroke();
                 strekState = 0;
             }
@@ -136,13 +140,14 @@ function draw(evt) {
                 y = getMousePos(evt).y;
                 let radius = Math.sqrt((xPrev - x) * (xPrev - x) + (yPrev - y) * (yPrev - y));
                 ctx.arc(xPrev, yPrev, radius, 0, Math.PI * 2);
+                if (fill == true) {
+                    ctx.fill();
+                }
                 ctx.stroke();
-                dot(xPrev, yPrev, "white", 2);
                 ctx.lineWidth = lineWidth;
                 strekState = 0;
             }
             else {
-                dot(x, y, farge, 1);
                 ctx.beginPath();
                 xPrev = x;
                 yPrev = y;

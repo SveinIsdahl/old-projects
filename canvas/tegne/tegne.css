@@ -7,13 +7,13 @@
     position: relative;
     max-width: 1224px;
     height: 1150px;
-    border: solid blue 1px;
+    border: solid black 1px;
     padding: 10px;
 }
 #fill, #tools, #canvas, #farger {
     position: absolute;
     background-color: rgb(208, 208, 208);
-    border: solid red 1px;
+
 }
 #tools {
     left: 0px;
@@ -28,6 +28,7 @@
     min-width: 300px;
     max-width: 1024px;
     background-color: white;
+    border: solid gray 2px;
 }
 
 #fill, #farger {
@@ -44,6 +45,12 @@
     margin-bottom: 60px;
 
 }
+
+input:checked {
+    box-shadow: 2px 2px deeppink;
+
+}
+
 
 #tools > div:nth-child(1) {
     margin-left: 10px;
