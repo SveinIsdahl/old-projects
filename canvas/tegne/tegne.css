@@ -1,11 +1,16 @@
+#cdiv {
+    min-width: 300px;
+    max-width: 1024px;
+    overflow: hidden;
+}
 #main {
     position: relative;
-    width: 800px;
-    height: 800px;
+    max-width: 1224px;
+    height: 1150px;
     border: solid blue 1px;
     padding: 10px;
 }
-#tools, #canvas, #farger {
+#fill, #tools, #canvas, #farger {
     position: absolute;
     background-color: rgb(208, 208, 208);
     border: solid red 1px;
@@ -13,20 +18,21 @@
 #tools {
     left: 0px;
     top: 0px;
-    height: 780px;
-    width: 180px;
+    height: 800px;
+    width: 150px;
 }
 #canvas {
     left: 200px;
     top: 0px;
-    height: 600px;
-    width: 600px;
+    height: 800px;
+    min-width: 300px;
+    max-width: 1024px;
     background-color: white;
 }
 
-#farger {
+#fill, #farger {
     left: 200px;
-    top: 630px;
+    top: 830px;
     height: 150px;
     width: 600px;
 }
@@ -89,10 +95,14 @@
     transform: rotate(-40deg);
 }
 
+#fill,
 #farger {
     display: grid;
     grid-auto-flow: column;
+    height: 130px;
+    width: auto;
 }
+#fill > div, 
 #farger > div {
     width: 50px;
     height: 50px;
@@ -100,25 +110,51 @@
 }
 
 #farger > div:nth-child(1) {
-    background-color: red;
+    border: solid 3px red;
 }
 #farger > div:nth-child(2) {
-    background-color: green;
+    border: solid 3px green;
 }
 #farger > div:nth-child(3) {
-    background-color: blue;
+    border: solid 3px blue;
 }
 #farger > div:nth-child(4) {
-    background-color: #f0f000;
+    border: solid 3px #f0f000;
 }
 #farger > div:nth-child(5) {
-    background-color: black;
+    border: solid 3px black;
 }
+
+#fill {
+    top: 990px;
+}
+
+#fill > div:nth-child(1) {
+    background-color: red;
+    border: solid 3px red;
+}
+#fill > div:nth-child(2) {
+    background-color: green;
+    border: solid 3px green;
+}
+#fill > div:nth-child(3) {
+    background-color: blue;
+    border: solid 3px blue;
+}
+#fill > div:nth-child(4) {
+    background-color: #f0f000;
+    border: solid 3px #f0f000;
+}
+#fill > div:nth-child(5) {
+    background-color: black;
+    border: solid 3px black;
+}
+
 
 .container {
     width: 350px;
     position: absolute;
-    top: 50px;
+    top: 837px;
     left: 850px;
 }
 .slider {

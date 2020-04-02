@@ -1,14 +1,18 @@
 //Deklarering av variabler
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
-let drawState
 let strekState = 0;
-ctx.lineWidth = 3;
-var xPrev;
-var yPrev;
+let xPrev;
+let yPrev;
 let farge = "#000000";
-let lineWidth;
-let cords = [];
+let lineWidth, drawState;
+let cords = []; 
+let fill = false;
+
+function setup() {
+    ctx.fillStyle = "black";
+    ctx.lineWidth = 3;
+}
 
 //Eventlisteners, forteller tegnfunksjonen hvilket verktøy som er valgt
 document.querySelector("#tools > div:nth-child(1)").addEventListener("click", function () { setDrawState("draw") });
@@ -56,6 +60,7 @@ function mouseMove(evt) {
         ctx.stroke();
     }
 }
+if (fill == true) {}
 //Tegnefunksjonen, 
 //hva den gjør er avhengig av hvilket verktøy som er valgt
 //hadde kanskje vært bedre å hatt individuelle funskjoner, men for mye jobb å endre.
@@ -63,6 +68,7 @@ function draw(evt) {
     ctx.lineWidth = lineWidth;
     let x = getMousePos(evt).x;
     let y = getMousePos(evt).y;
+    console.log(fill);
     switch (drawState) {
         case "draw":
             ctx.beginPath();
@@ -156,17 +162,27 @@ function draw(evt) {
 }
 
 //Finner alle div i farge-velger, og setter på eventlistener
-document.querySelector("#farger > div:nth-child(1)").addEventListener("click", function () { setColor("#ff0000") });
-document.querySelector("#farger > div:nth-child(2)").addEventListener("click", function () { setColor("#008000") });
-document.querySelector("#farger > div:nth-child(3)").addEventListener("click", function () { setColor("#0000ff") });
-document.querySelector("#farger > div:nth-child(4)").addEventListener("click", function () { setColor("#f0f000") });
-document.querySelector("#farger > div:nth-child(5)").addEventListener("click", function () { setColor("#000000") });
+document.querySelector("#farger > div:nth-child(1)").addEventListener("click", function () { setColor("#ff0000", false) });
+document.querySelector("#farger > div:nth-child(2)").addEventListener("click", function () { setColor("#008000", false) });
+document.querySelector("#farger > div:nth-child(3)").addEventListener("click", function () { setColor("#0000ff", false) });
+document.querySelector("#farger > div:nth-child(4)").addEventListener("click", function () { setColor("#f0f000", false) });
+document.querySelector("#farger > div:nth-child(5)").addEventListener("click", function () { setColor("#000000", false) });
 
 //Farge selector:
-function setColor(color) {
+function setColor(color, fyll) {
     farge = color;
     ctx.strokeStyle = farge;
+    ctx.fillStyle = farge;
+    fill = fyll;
 }
+
+//Finner alle div i fill-velger, og setter på eventlistener
+document.querySelector("#fill > div:nth-child(1)").addEventListener("click", function () { setColor("#ff0000", true) });
+document.querySelector("#fill > div:nth-child(2)").addEventListener("click", function () { setColor("#008000", true) });
+document.querySelector("#fill > div:nth-child(3)").addEventListener("click", function () { setColor("#0000ff", true) });
+document.querySelector("#fill > div:nth-child(4)").addEventListener("click", function () { setColor("#f0f000", true) });
+document.querySelector("#fill > div:nth-child(5)").addEventListener("click", function () { setColor("#000000", true) });
+
 
 //Line width slider:
 var slider = document.getElementById("lineWidth");
@@ -186,3 +202,5 @@ function getMousePos(evt) {
         y: (evt.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
     };
 }
+
+setup();
