@@ -29,13 +29,13 @@ function setDrawState(state) {
 //Funksjon for å lage en sirkel med fyll, ofte en dott
 function dot(x, y, color, str) {
     ctx.beginPath();
-    ctx.strokeStyle = color;
-    ctx.fillStyle = color;
+    ctx.strokeStyle = farge;
+    ctx.fillStyle = farge;
     ctx.arc(x, y, str, 0, 2 * Math.PI);
     ctx.fill();
     ctx.stroke();
     ctx.strokeStyle = farge;
-    ctx.fillStyle = color;
+    ctx.fillStyle = farge;
 }
 
 
@@ -47,6 +47,7 @@ function mouseUp(evt) {
         ctx.lineTo(x, y);
         ctx.stroke();
         strekState = 0;
+        
     }
 
 }
@@ -66,10 +67,11 @@ function draw(evt) {
     ctx.lineWidth = lineWidth;
     let x = getMousePos(evt).x;
     let y = getMousePos(evt).y;
-    console.log(fill);
+    ctx.strokeStyle = farge;
     switch (drawState) {
         case "draw":
             ctx.beginPath();
+            console.log(farge);
             ctx.lineTo(x, y);
             strekState = 1;
             break;
