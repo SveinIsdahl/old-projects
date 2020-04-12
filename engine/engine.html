@@ -11,10 +11,24 @@
         canvas {
             background-color: grey;
         }
+        #button {
+            width: 100px;
+            height: 30px;
+            background-color: goldenrod;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <canvas onmousedown="mouseDown(event)" onmouseup="mouseUp(event)" onmousemove="mouseMove(event)" id="canvas" width="800" height="800" style="border: 2px black solid;"></canvas>
+    <div id="button">Static</div>
+
+    <div class="container">
+        <span><b>Størrelse:</b></span>
+        <div id="sizeOut"></div>
+        <input type="range" min="1" max="50" value="3" class="slider" id="sizeIn">
+    </div>
+
     <script src="engine.js"></script>
 </body>
 </html>
