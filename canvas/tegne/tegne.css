@@ -146,3 +146,12 @@ input:checked ~ div{
     background: rgb(98, 0, 255); 
     border-radius: 25%;
   }
+
+  div.icon {
+    font-size: 0.1rem;
+  }
+  
+  #tools label > div:nth-of-type(1) span {
+    display:inline-block;
+    padding-top:16px;
+  }
