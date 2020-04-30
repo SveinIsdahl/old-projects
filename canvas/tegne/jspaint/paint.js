@@ -23,6 +23,8 @@ let pointerActive; // function to check input:radio for pointers
 let shapesActive; // ditto for shapes
 let swatchAdjust;
 
+let ctx;
+
 const mouse = {}; // stores mouse pos for document
 
 /**
@@ -48,23 +50,19 @@ function setup() {
   cleanGhost = () => gtx.clearRect(0, 0, 1024, 800);
   cleanCanvas = () => ctx.clearRect(0, 0, 1024, 800);
 
-  const current = g("current");
   const divTools = g("tools");
   // cast from html-element to canvas
   const canCanvas = /** @type {HTMLCanvasElement} */ (g("canvas"));
   const canGhost = /** @type {HTMLCanvasElement} */ (g("ghost"));
   const divColors = g("colors");
   const divShapelist = g("shapelist");
-  const ctx = canCanvas.getContext("2d");
+   ctx = canCanvas.getContext("2d");
   const gtx = canGhost.getContext("2d"); // preview next drawing operation
   const inpPointers = g("pointers"); // turned on by keys
   const inpShapes = g("shapes"); // turned on by keys
   B = canCanvas.getBoundingClientRect(); // x,y for top left corner of canvas
 
-  AT.showfillAndColor = () => {
-    //current.style.color = AT.color;
-    //current.style.backgroundColor = AT.fill;
-  };
+  document.addEventListener("menu",e => menuAction(e,ctx,gtx,divShapelist));
 
   divColors.innerHTML = makeSwatch(baseColor);
   swatchAdjust = () => adjustColors(divColors); // bind to divColors
@@ -106,7 +104,7 @@ function setup() {
     keyAction(e, canCanvas, ctx, divShapelist)
   );
 
-  /**
+  /** 
    * Handle mouse-down on canvas
    * @instance test
    * @param {MouseEvent} e
