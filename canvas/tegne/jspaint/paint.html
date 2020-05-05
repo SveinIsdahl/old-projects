@@ -13,6 +13,7 @@
     <script src="MakeShapes.js"></script>
     <script src="ActionTools.js"></script>
     <script src="ActionKeys.js"></script>
+    <script src="NewPage.js"></script>
     <script src="paint.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -24,38 +25,9 @@
         <li>a</li>
     </home-bar>
     <div id="newpage" class="hidden">
-        
-        <select>
-            <label>Page size
-            <option>A4</option>
-            <option>A5</option>
-        </select>
-        <div><label>Orientation: <input name="orientation" type="radio"> Portrait
-            <input name="orientation" type="radio"> Landscape</label></div>
-        <div><label>Width 
-            <input type="number" id="width" value="500"></label></div>
-        <div><label>Height 
-            <input type="number" id="height" value="500"></label></div>
-        <div>
-            <label>hvit<input type="radio" id="hvit" name="velg">
-            <label>transparent<input type="radio" id="transparent" name="velg">
-        </div>
     </div>
-    
     <div id="main">
         <div id="tools">
-            <div>
-                <label>
-                    <div><span>File</span></div>
-                    <div>
-                        <div>
-                            <label>
-                                <div title="new"><span title="new">New</span></div>
-                            </label>
-                        </div>
-                    </div>
-                </label>
-            </div>
             <div>
                 <label>
                     <input id="pointers" name="main" type="radio" checked>
@@ -160,6 +132,40 @@
     <script>
         setup();
     </script>
+    <template id="form">
+        <div><label>Page size<select name="pagesize" id="pagesize">
+                    <option value="A4">A4</option>
+                    <option value="A5">A5</option>
+                    <option value="A3">A3</option>
+                    <option value="letter">letter</option>
+                </select></label></div>
+        <div>Orientation<label> <input value="portrait" name="orientation" type="radio"> Portrait
+                <input value="landscape" checked name="orientation" type="radio"> Landscape</label></div>
+        <div><label>Width <input type="number" id="width" value="500"></label></div>
+        <div><label>Height <input type="number" id="height" value="500"></label></div>
+        <div><label>Background
+                <div>
+                    <label><input value="rgba(0,0,0,0)"
+                        checked name="bg" type="radio"> <span></span></label>
+                    <label><input value = "#ffffff"
+                        name="bg" type="radio"> <span></span></label>
+                </div>
+            </label></div>
+        <div><label>Fill <input type="color" id="color"></label></div>
+        <div>
+            <label><button id="ok">OK</button>
+                <button id="cancel">Cancel</button>
+            </label>
+        </div>
+    </template> 
+    
+    <template id="form2">
+        <label for="">Navn: <input type="text" title="Navn" style="padding: 5px;"></label>
+            <label><button id="ok">Save</button>
+                <button id="cancel">Cancel</button>
+            </label>
+        </div>
+    </template>
 </body>
 
 </html>
