@@ -1,5 +1,5 @@
-//export
-
+//static 
+"use strict";
 function degToRad(angle) {
     return angle / (2 * Math.PI) * 360
 }
