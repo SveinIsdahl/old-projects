@@ -6,7 +6,7 @@ let width = canvas.width;
 let height = canvas.height;
 
 
-let antall = 500;
+let antall = 600;
 
 
 let ball = [];
@@ -99,10 +99,10 @@ function draw() {
 
     //Loop gjennom alle baller i arrayet
     for (let i = 0; i < ball.length; i++) {
-        if (ball[i].x <= 0) {ball[i].x = width};
-        if (ball[i].x > width){ball[i].x = 0};
-        if (ball[i].y <= 0) {ball[i].y = height};
-        if (ball[i].y > height){ball[i].y = 0};
+        if (ball[i].x <= 0) {ball[i].x = width*Math.random()};
+        if (ball[i].x > width){ball[i].x = width*Math.random()};
+        if (ball[i].y <= 0) {ball[i].y = height*Math.random()};
+        if (ball[i].y > height){ball[i].y = height*Math.random()};
 
         ball[i].apply();
         //Om farten til en ball er for lav settes den til null
@@ -187,7 +187,7 @@ function draw() {
 
 
 setup();
-setInterval(draw, fps(550));
+setInterval(draw, fps(950));
 //Fps til ms/frame
 function fps(fps) {
     return (1 / fps) * 1000;
