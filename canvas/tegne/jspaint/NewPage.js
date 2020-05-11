@@ -3,7 +3,7 @@
 function startNewPage() {
   const np = g("newpage");
   np.classList.remove("hidden");
-  const template = /** @type {HTMLTemplateElement} */ (g("form2"));
+  const template = /** @type {HTMLTemplateElement} */ (g("form"));
   const clone = template.content.cloneNode(true);
   np.innerHTML = "";
   np.append(clone);
