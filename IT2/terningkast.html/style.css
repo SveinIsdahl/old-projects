@@ -1,0 +1,33 @@
+#spill {
+    border: solid black 2px;
+    width: 600px;
+    height: 600px;
+    position: absolute;
+    top: 10px;
+    left: 30px;
+}
+#knapper {
+    border: solid black 2px;
+    width: 500px;
+    height: 290px;
+    position: absolute;
+    top: 10px;
+    left: 650px;
+}
+
+#meldinger {
+    border: solid black 2px;
+    width: 500px;
+    height: 290px;
+    position: absolute;
+    top: 320px;
+    left: 650px;
+}
+#roll {
+    width: 100px;
+    height: 100px;
+}
+#autoButton {
+    width: 100px;
+    height: 100px;
+}
