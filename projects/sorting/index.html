@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sorteringsalgoritmer</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <ul id="meny">
+            <li><a href="index.html">Hjem</a></li>
+            <li><a href="bubble.html">Bubble</a></li>
+            <li><a href="quick.html">Quick</a></li>
+            <li><a href="selection.html">Selection</a></li>
+            <li><a href="merge.html">Merge</a></li>
+            <li><a href="insertion.html">Insertion</a></li>
+            <li><a href="counting.html">Counting</a></li>
+        </ul>
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <main>
+        <h1 style="text-align: center;">Oversikt over sorteringsalgoritmer</h1>
+        <div style="color:red">Kun bubble, quick og selection er ferdige til nå.</div>
+        <p>
+            <h2>Terminologi:</h2>
+
+            <span>Sammenligningsbasert:</span> 
+            Sammenligner to elementer for å se hvem som skal stå først i sekvensen. 
+            <br>
+            Her er algoritmene begrenset av Ω(nlgn) som nedre kjøretid.
+            <br>
+
+            <span>Split og hersk:</span>
+            <br>
+            Splitt problemet inn i subproblemer som er mindre instanser av det samme problemet.
+            <br>
+            Hersk subproblemene ved å løse dem rekursivt. Hvis et subproblems størrelse er lite nok, løs subproblemene
+            på en rett frem måte.
+            <br>
+            Kombiner løsningene på subproblemene inn i løsningen på problemet i utgangspunktet.
+            <br>
+
+            <span>In-place:</span> Bruker eksisterende struktur uten å lage en ny kopi.
+            <br>
+
+            <span>Stabil:</span> Like elementer blir "samlet" i samme rekkefølge som før sortering.
+            <br>
+        </p>
+
+
+        <div>
+            <h2>Egenskaper til algoritmene</h2>
+            <table id="">
+                <thead>
+                    <tr>
+                        <th>Algoritme</th>
+                        <th><span>Sammenligningsbasert</span></th>
+                        <th><span>Splitt og hersk</span></th>
+                        <th><span>In-place</span></th>
+                        <th><span>Stabil</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th><a href="bubble.html">Bubble-sort</a></th>
+                        <td>Ja</td>
+                        <td>Nei</td>
+                        <td>Ja</td>
+                        <td>Ja</td>
+                    </tr>
+                    <tr>
+                        <th><a href="quick.html">Quick-sort</a></th>
+                        <td>Ja</td>
+                        <td>Ja</td>
+                        <td>Ja</td>
+                        <td>Nei</td>
+                    </tr>
+                    <tr>
+                        <th><a href="selection.html">Selection-sort</a></th>
+                        <td>Ja</td>
+                        <td>Nei</td>
+                        <td>Ja</td>
+                        <td>Ja</td>
+                    </tr>
+                    <tr>
+                        <th><a href="merge.html">Merge-sort</a></th>
+                        <td>Ja</td>
+                        <td>Ja</td>
+                        <td>Nei</td>
+                        <td>Ja</td>
+                    </tr>
+                    <tr>
+                        <th><a href="insertion.html">Insertion-sort</a></th>
+                        <td>Ja</td>
+                        <td>Nei</td>
+                        <td>Ja</td>
+                        <td>Ja</td>
+                    </tr>
+                    <tr>
+                        <th><a href="counting.html">Counting-sort</a></th>
+                        <td>Nei</td>
+                        <td>Nei</td>
+                        <td>Nei</td>
+                        <td>Ja</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <br>
+
+        <div>
+            <h2>Kjøretider</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Algoritme</th>
+                        <th>Best Case</th>
+                        <th>Average Case</th>
+                        <th>Worst Case</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Bubble-sort</th>
+                        <td>O(n)</td>
+                        <td>O(n²)</td>
+                        <td>O(n²)</td>
+                    </tr>
+                    <tr>
+                        <th>Quick-sort</th>
+                        <td>Θ(nlg(n))</td>
+                        <td>Θ(nlg(n))</td>
+                        <td>Θ(n²)</td>
+                    </tr>
+                    <tr>
+                        <th>Selection-sort</th>
+                        <td>O(n²)</td>
+                        <td>O(n²)</td>
+                        <td>O(n²)</td>
+                    </tr>
+                    <tr>
+                        <th>Merge-sort</th>
+                        <td>Θ(nlg(n))</td>
+                        <td>Θ(nlg(n))</td>
+                        <td>Θ(nlg(n))</td>
+                    </tr>
+                    <tr>
+                        <th>Insertion-sort</th>
+                        <td>Θ(n)</td>
+                        <td>Θ(n²)</td>
+                        <td>Θ(n²)</td>
+                    </tr>
+                    <tr>
+                        <th>Counting-sort</th>
+                        <td>Θ(n+k)</td>
+                        <td>Θ(n+k)</td>
+                        <td>Θ(n+k)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <br>
+                O: Øvre grense
+                <br>
+                Ω: Nedre grense
+                <br>
+                Θ: Øvre og nedre grense
+                <br>
+                <br>
+                ω > Θ(f(n)) (Lille Omega)
+                <br>
+                Ω ≧ Θ(f(n)) (Store Omega)
+                <br>
+                Θ = Θ(f(n)) (Store Theta)
+                <br>
+                O ≦ Θ(f(n)) (Store O)
+                <br>
+                o < Θ(f(n)) (Lille o) <br>
+            </p>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+
+</html>

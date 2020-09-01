@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tegning</title>
+    <link rel="stylesheet" href="tegne.css">
+
+</head>
+
+<body>
+    <div id="main">
+        <div id="tools">
+            <div title="pointer"></div>
+            <div title="firkant"></div>
+            <div title="sirkel"></div>
+            <div title="trekant"></div>
+            <div title="strek"></div>
+            <div title="visk"></div>
+        </div>
+        <div id="cdiv">
+            <canvas onmousedown="draw(event)" onmouseup="mouseUp(event)" onmousemove="mouseMove(event)" id="canvas"
+                width="1324" height="800"></canvas>
+        </div>
+        <div id="farger">
+            <div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+            </div>
+        </div>
+
+        <div id="fill">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+    </div>
+    <div class="container">
+        <span><b>LineWidth:</b></span>
+        <div id="widthValue"></div>
+        <input type="range" min="1" max="50" value="3" class="slider" id="lineWidth">
+    </div>
+    <script src="tegne.js"></script>
+</body>
+
+</html>

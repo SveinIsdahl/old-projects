@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <ul id="meny">
+        <li><a href="index.html">Hjem</a></li>
+        <li><a href="bubble.html">Bubble</a></li>
+        <li><a href="quick.html">Quick</a></li>
+        <li><a href="selection.html">Selection</a></li>
+        <li><a href="merge.html">Merge</a></li>
+        <li><a href="insertion.html">Insertion</a></li>
+        <li><a href="counting.html">Counting</a></li>
+    </ul>
+    <canvas id="canvas" width="1200" height="600"></canvas>
+    <script>
+            let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        let verdier = [];
+
+        function setup() {
+            for (let i = 0; i < canvas.width; i++) {
+                verdier[i] = Math.round(Math.random() * canvas.height);
+            }
+        }
+        setup();
+
+        function tegn() {
+
+            for (let i = 0; i < canvas.width; i++) {
+                ctx.clearRect(0, 0, canvas.length, canvas.width);
+                ctx.beginPath();
+                ctx.lineWidth = 2;
+                ctx.moveTo(i, canvas.width);
+                ctx.lineTo(i, verdier[i]);
+                ctx.stroke();
+                ctx.closePath();
+            }
+        }
+        function sorter(array) {
+            let n = array.length;
+            for(let i = 1; i < n; i++){
+                
+
+            }
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        } 
+
+
+        tegn();
+    </script>
+</body>
+</html>

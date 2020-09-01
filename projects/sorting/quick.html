@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quicksort</title>
+    <style>
+        canvas {
+            border: 2px solid black;
+        }
+    </style>
+        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="style.css">
+</head>
+
+<body>    
+    <ul id="meny">
+        <li><a href="index.html">Hjem</a></li>
+        <li><a href="bubble.html">Bubble</a></li>
+        <li><a href="quick.html">Quick</a></li>
+        <li><a href="selection.html">Selection</a></li>
+        <li><a href="merge.html">Merge</a></li>
+        <li><a href="insertion.html">Insertion</a></li>
+        <li><a href="counting.html">Counting</a></li>
+    </ul>
+    <canvas id="canvas" width="1200" height="600" style="background-color: black;"></canvas>
+    <br>
+    <article>
+        <p id="lopl">
+            Quicksort bruker en splitt og hersk metode for å sortere et array. 
+            Den velger først en pivot. 
+            Måten den velges varierer avhengig av hvilken implementasjon man bruker, min bruker siste tall i arrayet. 
+            Når pivot er valgt plasseres alle tall større enn pivot på en side, og alle de som er mindre (eller lik) på den andre siden.
+            Da har man altså delt opp arrayet i 2.
+            Disse to delene i arrayet splitter man opp på samme måte slik at man får 4 deler, deretter deler man opp i 8 så 16 osv.
+            Til slutt har man delt opp arrayet slik at alle "under-array" har ett eller ingen tall i seg.
+            Da kan man sette sammen disse under-arrayene i rekkefølge ettersom at hver gang de ble splittet ble de sortert rundt en pivot.
+        </p>
+    </article>
+
+
+    <script>
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        let verdier = [];
+
+        function setup() {
+            for (let i = 0; i < canvas.width; i++) {
+                verdier[i] = Math.round(Math.random() * canvas.height);
+            }
+        }
+        setup();
+
+        function tegn() {
+
+            for (let i = 0; i < canvas.width; i++) {
+                ctx.clearRect(0, 0, canvas.length, canvas.width);
+                ctx.beginPath();
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = "grey";
+                ctx.moveTo(i, canvas.width);
+                ctx.lineTo(i, verdier[i]);
+                ctx.stroke();
+                ctx.closePath();
+            }
+        }
+        tegn();
+        function swap(arr, a, b) {
+            let rep = arr[a];
+            arr[a] = arr[b];
+            arr[b] = rep;
+        }
+
+
+        function partition(verdier, start, end) {
+
+            let pivotIndex = start;
+            let pivotValue = verdier[end];
+
+            for (let j = start; j <= end; j++) {
+                if (verdier[j] < pivotValue) {
+                    swap(verdier, pivotIndex, j);
+                    pivotIndex++
+                }
+            }
+            swap(verdier, pivotIndex, end);
+            return pivotIndex;
+
+
+        }
+        let tid = 800;
+        async function sorter(verdier, start, end) {
+            tid -= 1;
+            console.log(tid);
+            await sleep(tid);
+            canvas.width = canvas.width;
+            //Dårlig metode for å cleare canvas, men clear rect virker ikke.
+            tegn();
+            if (start < end) {
+                let pi = partition(verdier, start, end);
+
+                sorter(verdier, start, pi - 1);
+                canvas.width = canvas.width;
+                tegn();                
+                await sleep(tid/10);
+                sorter(verdier, pi + 1, end);
+                canvas.width = canvas.width;
+                tegn();   
+                await sleep(tid/10);
+
+            }
+
+
+        }  
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }      
+
+        sorter(verdier, 0, (verdier.length - 1));
+        console.log(verdier);
+        //ctx.clearRect(0, 0, canvas.length, canvas.width);
+        canvas.width = canvas.width;
+        tegn();
+
+
+
+    </script>
+</body>
+
+</html>
