@@ -6,12 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elevliste</title>
     <script src="elevliste.js"></script>
+    <style>
+        div {
+            margin: 20px;
+        }
+    </style>
 </head>
 
 <body>
+    <div id="registrer">
+        <div>
+            <label> Fornavn
+                <input type="text" id="fornavn">
+            </label>
+        </div>
+        <div>
+            <label> Etternavn   
+                <input type="text" id="etternavn">
+            </label>
+        </div>
+        <div>
+            <label> Adresse
+                <input type="text" id="adresse">
+            </label>
+        </div>
+        <div>
+            <label> Klasse
+                <input type="text" id="klasse">
+            </label>
+        </div>
+
+        <div>
+            <button id="lagre">Lagre elev</button>
+        </div>
+    </div>
+    Elever i liste:
     <div id="elever"></div>
+    <div>
+        <div>
+            <label>Søk
+                <input type="text" id="inputSearch">
+            </label>
+        </div>
+        <div>
+            <button id="search"> Søk etter elev</button>
+        </div>
+    </div>
+    Søkeresulater:
     <div id="funnet"></div>
-    <div><button id="vis">Finn elever</button></div>
+
     <script>
         setup()
     </script>
