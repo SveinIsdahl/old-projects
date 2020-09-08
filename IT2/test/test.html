@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let str = "dette er en tekst";
+
+        console.log(str.length)
+        console.log(str.charAt(str.length - 1))
+        console.log(str.includes("de"));
+        console.log(str.split(" "));
+
+
+        fetch('http://localhost/IT2/test/test.csv')
+            .then(response => response.text())
+            .then((data) => {
+                console.log(data)
+            })
+
+        console.log(str)
+        let arr = str.split(";");
+        console.log(arr);
+    </script>
+</body>
+
+</html>

@@ -5,58 +5,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elevliste</title>
+    <link rel="stylesheet" href="elevliste.css">
     <script src="elevliste.js"></script>
-    <style>
-        div {
-            margin: 20px;
-        }
-    </style>
 </head>
 
 <body>
     <div id="registrer">
         <div>
-            <label> Fornavn
+            <label>Fornavn
                 <input type="text" id="fornavn">
             </label>
         </div>
         <div>
-            <label> Etternavn   
+            <label>Etternavn
                 <input type="text" id="etternavn">
             </label>
         </div>
         <div>
-            <label> Adresse
+            <label>Adresse
                 <input type="text" id="adresse">
             </label>
         </div>
         <div>
-            <label> Klasse
+            <label>Klasse
                 <input type="text" id="klasse">
             </label>
         </div>
-
         <div>
-            <button id="lagre">Lagre elev</button>
-        </div>
-    </div>
-    Elever i liste:
-    <div id="elever"></div>
-    <div>
-        <div>
-            <label>Søk
-                <input type="text" id="inputSearch">
+            <label>Kontaktlerar
+                <input type="text" id="kontaktlerar">
             </label>
         </div>
         <div>
-            <button id="search"> Søk etter elev</button>
+            <button id="lagre">
+                Lagre Elev
+            </button>
         </div>
     </div>
-    Søkeresulater:
+    <div id="elever"></div>
+    <div>
+        <div>
+            <label for="">
+                <input type="text" id="letefelt">
+            </label>
+        </div>
+        <div>
+            <button id="finn">Søk på etternavn</button>
+        </div>
+    </div>
     <div id="funnet"></div>
-
     <script>
-        setup()
+        setup();
     </script>
 </body>
 

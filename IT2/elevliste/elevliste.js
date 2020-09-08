@@ -1,92 +1,76 @@
 // @ts-check
-
-const elevListe = [];
-
 class Elev {
     fornavn = "";
     etternavn = "";
     adresse = "";
     klasse = "";
+    kontaktlerar = "";
 }
+
+const elevListe = [];
 
 
 function setup() {
-    let divFunnet = document.getElementById("funnet");
-    let divElever = document.getElementById("elever");
-    let inputSearch = document.getElementById("inputSearch")
-    let inputFornavn = document.getElementById("fornavn");
-    let inputEtternavn = document.getElementById("etternavn");
-    let inputAdresse = document.getElementById("adresse");
-    let inputKlasse = document.getElementById("klasse");
-
-
-    inputSearch.addEventListener("keyup", (event) => {
-        // 13 === enter-tast
-        if (event.keyCode === 13) {
-            btnSearch.click();
-        }
-    })
+    const divElever = document.getElementById("elever");
+    const divFunnet = document.getElementById("funnet");
+    // forklarer vs-code at inpFornavn osv  er et HTMLInputElement, ikke et vanlig HTMLElement
+    // slipper da å skrive // @ts-ignore alle plasser hvor jeg bruker .value
+    const inpFornavn = /**  @type {HTMLInputElement} */ (document.getElementById("fornavn"));
+    const inpEtternavn = /**  @type {HTMLInputElement} */ (document.getElementById("etternavn"));
+    const inpAdresse = /**  @type {HTMLInputElement} */ (document.getElementById("adresse"));
+    const inpKlasse = /**  @type {HTMLInputElement} */ (document.getElementById("klasse"));
+    const inpKontaktlerar = /**  @type {HTMLInputElement} */ (document.getElementById("kontaktlerar"));
+    const inpLetefelt = /**  @type {HTMLInputElement} */ (document.getElementById("letefelt"));
 
     let btnLagre = document.getElementById("lagre");
     btnLagre.addEventListener("click", lagreElev);
 
-    let btnSearch = document.getElementById("search");
-    btnSearch.addEventListener("click", searchElev);
+    let btnFinn = document.getElementById("finn");
+    btnFinn.addEventListener("click", finnElev);
 
-    function searchElev() {
+    function finnElev() {
+        divFunnet.innerHTML = "";
         // @ts-ignore
-
-        let navn = inputSearch.value;
-        let funnet = "";
-
-        for (let i = 0; i < elevListe.length; i++) {
+        let navn = inpLetefelt.value;
+        let antall = elevListe.length;
+        for (let i = 0; i < antall; i += 1) {
             let elev = elevListe[i];
-
-            if (elev.fornavn.includes(navn) || elev.etternavn.includes(navn)) {
-                funnet += elev.fornavn + " " + elev.etternavn + " " + elev.klasse + " " + elev.adresse + "<br>"
-
-                //break;
+            if (elev.etternavn.includes(navn)) {
+                divFunnet.innerHTML +=
+                    elev.fornavn + " " +
+                    elev.adresse + "<br>";
+                // break;
             }
-            divFunnet.innerHTML = funnet;
         }
-    }
-
-
-    function visElever() {
-        let s = "";
-        for (let i = 0; i < elevListe.length; i++) {
-            let elev = elevListe[i];
-            s += elev.fornavn + " " + elev.etternavn + "<br>";
-        }
-        divElever.innerHTML = s;
     }
 
     function lagreElev() {
-        // @ts-ignore
-        let fornavn = inputFornavn.value;
-        let etternavn = inputEtternavn.value;
-        let adresse = inputAdresse.value;
-        let klasse = inputKlasse.value;
-
-
+        const fornavn = inpFornavn.value;
+        const etternavn = inpEtternavn.value;
+        const adresse = inpAdresse.value;
+        const klasse = inpKlasse.value;
+        const kontaktlerar = inpKontaktlerar.value;
         if (fornavn === "") {
-            alert("Skriv inn ett navn");
+            alert("Skriv ett gyldig navn");
             return;
         }
-        let elev = new Elev;
+        let elev = new Elev();
         elev.fornavn = fornavn;
         elev.etternavn = etternavn;
         elev.adresse = adresse;
         elev.klasse = klasse;
+        elev.kontaktlerar = kontaktlerar;
         elevListe.push(elev);
-
-        /*
-        inputNavn.focus();
-        inputNavn.value = "";
-        */
         visElever();
-        //elevListe[elevListe.length] = navn;
+    }
+
+    function visElever() {
+        let s = "";
+        const antall = elevListe.length;
+        for (let i = 0; i < antall; i += 1) {
+            const elev = elevListe[i];
+            s += elev.fornavn + " " + elev.etternavn + "<br>";
+        }
+        divElever.innerHTML = s;
     }
 }
-//Push pop, bak
-//Shift unshift framme
