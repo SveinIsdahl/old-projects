@@ -1,0 +1,23 @@
+#kalender {
+    border: grey 3px solid;
+    border-radius: 1%;
+    padding: 4px;
+}
+
+.uke {
+    margin: 0px;
+    border-radius: 5%;
+    width: auto;
+    height: 100px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.dag {
+    text-align: center;
+    border: none 1px solid;
+    border-radius: 3%;
+    background: lightgray;
+    margin: 2px;
+    font-size: small;
+}

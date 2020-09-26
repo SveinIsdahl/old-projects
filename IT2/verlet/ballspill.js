@@ -62,11 +62,12 @@ function setup() {
     }
 
 
-    let b = new Ball(30, 30, 25, 29);
-
+    let b1 = new Ball(30, 30, 25, 29);
+    let b2 = new Ball(30, 30, 20, 20)
 
     function draw() {
-        b.update();
+        b1.update();
+        b2.update();
 
         requestAnimationFrame(draw);
     }

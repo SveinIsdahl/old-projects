@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Diagram</title>
     <link rel="stylesheet" href="diagram.css">
     <script src="diagram.js"></script>
 </head>
@@ -12,21 +12,20 @@
 <body>
     <div id="skjema">
         <div>
-            <label> Skriv inn tallverdi
+            <label>
+                Skriv inn tallverdi
                 <input type="number" id="tallverdi">
             </label>
         </div>
-        <div>
-            <button id="lagre">Lagre</button>
-        </div>
-        <br>
-        <div>
-            <button id="tegn">Tegn</button>
-        </div>
+        <div><button id="tegn">Tegn Søyler</button></div>
     </div>
     <div id="talldata"></div>
-    <div id="diagram"></div>
+    <div id="diagram">
 
+    </div>
+    <script>
+        setup();
+    </script>
 </body>
 
 </html>
