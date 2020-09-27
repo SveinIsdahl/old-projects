@@ -4,6 +4,9 @@ let ref;
 let retrievedDataArray = [];
 let stagedDataArray = [];
 let keys;
+//Antall dager fra nåværende dato
+let dateAccumulator = 0;
+
 
 function setup() {
     // irebase configuration
@@ -39,6 +42,7 @@ function setup() {
             retrievedDataArray.push(data[k]);
         }
         createCalendar();
+        dateAccumulator = 0;
     }
 
     /**
@@ -59,15 +63,16 @@ function setup() {
         return weekNo;
     }
 
-    // Array som inneholder ukene som er igjen av året, som igjen inneholder array for hver uke som inneholder 7 uke-div-elementer
-    let dagUkeArray = [];
 
-    //Antall dager fra nåværende dato
-    let dateAccumulator = 0;
 
     function createCalendar() {
+        // Array som inneholder ukene som er igjen av året, som igjen inneholder array for hver uke som inneholder 7 uke-div-elementer
+
+        let dagUkeArray = [];
+
         let date = new Date();
         let kalender = document.getElementById("kalender");
+        kalender.innerHTML = "";
         //1-52
         let ukenr = getWeekNumber(date);
 
@@ -108,6 +113,7 @@ function setup() {
                     if (retrievedDataArray[k]["date"] === tempDateString) {
                         if ((retrievedDataArray[k]["text"] == tempDateString) || string.includes(tempDateString) !== true || string.includes(tempDateString + "\n") !== true) {
                             dagDiv.value = tempDateString + "\r\n";
+
                             break;
                         }
                         dagDiv.value = retrievedDataArray[k]["text"];
