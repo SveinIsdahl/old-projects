@@ -1,7 +1,7 @@
 #kalender {
-    border: grey 3px solid;
     border-radius: 1%;
     padding: 4px;
+    background-color: lightgray;
 }
 
 .uke {
@@ -17,7 +17,11 @@
     text-align: center;
     border: none 1px solid;
     border-radius: 3%;
-    background: lightgray;
+    background: #889090;
     margin: 2px;
     font-size: small;
+}
+
+body {
+    background-color: lightgray;
 }
