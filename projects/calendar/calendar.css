@@ -29,4 +29,7 @@ body {
   #kalender {
     padding: 1px;
   }
+  .dag {
+    margin: 1px;
+  }
 }
