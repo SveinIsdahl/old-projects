@@ -1,0 +1,88 @@
+:root {
+    --board:calc(12*32px);
+}
+
+#main {
+    position: relative;
+    width:600px;
+    height: 500px;
+    margin:20px;
+}
+#main > div {
+    border: solid gray 1px;
+}
+
+
+#board {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width:var(--board);
+    height: var(--board);
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+}
+#monsters,
+#actors {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width:var(--board);
+    height: var(--board);
+}
+
+#actors.attack {
+    background-color: rgba(255,0,0,0.1);
+    transition: 0.1s;
+}
+#avatar {
+    position: absolute;
+    width:32px;
+    height:32px; 
+    left: calc(32px*5);
+    top: calc(32px*5);
+    background-image: url("../images/creature32.png");
+    background-position-x: calc(-32px * 0);
+    background-position-y: calc(-32px * 0)
+}
+.monster {
+    position: absolute;
+    width:32px;
+    height:32px; 
+    left: calc(32px*5);
+    top: calc(32px*5);
+    background-image: url("../images/creature32.png");
+    background-position-x: calc(-32px * 0);
+    background-position-y: calc(-32px * 12)
+}
+#board > div {
+    width:32px;
+    height:32px;
+    background-image: url("../images/tiles32.png");
+    background-position-x: calc(-32px * 0);
+    background-position-y: calc(-32px * 3)
+}
+
+#info {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    width:calc(600px - 16px - var(--board));
+    height: var(--board);
+}
+#minimap {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width:100px;
+    height: 100px;
+}
+#status {
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    width:var(--board);
+    height: 100px;
+}
+
+
