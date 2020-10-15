@@ -23,16 +23,46 @@
             height: 20px;
             background-color: red;
         }
+        
+        #main {
+            position: relative;
+            left: 20px;
+            border: solid 1px gray;
+            width: 400px;
+            height: 400px;
+        }
+        
+        .soyler {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 16px;
+            background-color: rgba(0, 0, 255, 0.146);
+        }
+        
+        .lett {
+            background-color: green;
+        }
+        
+        .middels {
+            background-color: orange;
+        }
+        
+        .tung {
+            background-color: red;
+        }
     </style>
 </head>
 
 <body>
     <div id="gui">
-        <div><label>Vekt på sekken din <input type="number" id="vekt"> kg </label></div>
+        <div><label>Vekt på sekken din
+                <input type="number" id="vekt"> kg </label></div>
         <div><button id="beregn">Beregn vanskegrad</button></div>
     </div>
     <div id="main">
-        <div class="soyle"></div>
+        <div class="soyle" id="s"></div>
     </div>
 </body>
 

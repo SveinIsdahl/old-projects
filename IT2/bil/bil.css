@@ -1,0 +1,59 @@
+#bil {
+    --imgsize: 200px;
+    position: absolute;
+    left: 100px;
+    background-image: url("mc.png");
+    background-position-x: center;
+    background-size: contain;
+    width: var(--imgsize);
+    height: calc(var(--imgsize) / 3);
+    top: 500px;
+}
+
+#bil.aktiv {
+    animation: drive 2.5s forwards linear;
+}
+
+@keyframes drive {
+    99% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        left: 500px;
+    }
+}
+
+#bil2 {
+    --imgsize: 200px;
+    position: absolute;
+    transform: scaleX(-1);
+    left: 800px;
+    background-image: url("mc.png");
+    background-position-x: center;
+    background-size: contain;
+    width: var(--imgsize);
+    height: calc(var(--imgsize) / 3);
+    top: 100px;
+}
+
+#bil2.aktiv {
+    animation: drive2 2.5s forwards linear;
+}
+
+#bil2.krasj {
+    background-image: url("part.png");
+    left: 500px;
+    top: 500px;
+}
+
+@keyframes drive2 {
+    99% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        left: 500px;
+        top: 500px;
+    }
+}

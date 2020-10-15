@@ -1,0 +1,75 @@
+#main {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    border: solid 2px black;
+}
+
+#ball {
+    position: absolute;
+    top: 468px;
+    left: 0px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #dd1060;
+    animation: sprett 2s linear alternate infinite;
+}
+
+@keyframes sprett {
+    0% {
+        left: 0px;
+        top: 468px
+    }
+    20% {
+        left: 20px;
+        top: 350px
+    }
+    25% {
+        left: 50px;
+        top: 300px
+    }
+    30% {
+        left: 60px;
+        top: 350px
+    }
+    50% {
+        left: 80px;
+        top: 468px
+    }
+    70% {
+        left: 100px;
+        top: 350px
+    }
+    75% {
+        left: 110px;
+        top: 300px
+    }
+    80% {
+        left: 120px;
+        top: 350px
+    }
+    100% {
+        left: 140px;
+        top: 468px
+    }
+}
+
+#propell {
+    font-size: 3em;
+    position: absolute;
+    text-align: center;
+    top: 550px;
+    left: 550px;
+    width: 0em;
+    height: 0em;
+    border: lime 1px solid;
+    transform: rotate(0);
+    animation: roter 1s linear infinite forwards;
+}
+
+@keyframes roter {
+    100% {
+        transform: rotate(360deg);
+    }
+}
