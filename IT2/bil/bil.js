@@ -28,3 +28,9 @@ window.onload = () => {
     })
 
 }
+
+/*
+divBil.classList.remove("aktiv")
+void divBil.offsetWidth;
+lydfil.play
+*/

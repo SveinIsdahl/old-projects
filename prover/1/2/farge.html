@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="del2-3.js"></script>
+    <style>
+        #tekst {
+            opacity: 0;
+        }
+        
+        #fargeDiv {
+            width: 100px;
+            height: 100px;
+            top: 100px;
+            left: 10px;
+            position: absolute;
+            background-color: #Ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div><label>Skriv inn farge: <input type="text" id="farge" value="#00ff00"></label></div>
+    <button id="button">Vis farge</button>
+    <div id="tekst">Du valgte fargen <span id="fargeSpan"></span> - den har koden <span id="hex"></span></div>
+    <div id="fargeDiv"></div>
+</body>
+
+</html>

@@ -1,0 +1,241 @@
+########### HTML #########
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="farge.js"></script>
+    <style>
+        #tekst {
+            opacity: 0;
+        }
+        
+        #fargeDiv {
+            width: 100px;
+            height: 100px;
+            top: 100px;
+            left: 10px;
+            position: absolute;
+            background-color: #Ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div><label>Skriv inn farge: <input type="text" id="farge" value=""></label></div>
+    <button id="button">Vis farge</button>
+    <div id="tekst">Du valgte fargen <span id="fargeSpan"></span> - den har koden <span id="hex"></span></div>
+    <div id="fargeDiv"></div>
+</body>
+
+</html>
+
+########### JS OPPG1 ###########
+//@ts-check
+
+window.onload = () => {
+    const input = document.getElementById("farge");
+    const btn = document.getElementById("button");
+
+    const fargeSpan = document.getElementById("fargeSpan")
+    const hexSpan = document.getElementById("hex")
+
+    //Div som inneholde begge span, blir synelig etter knapp et trykket
+    const tekstDiv = document.getElementById("tekst");
+
+    btn.addEventListener("click", () => {
+        //@ts-ignore
+        let farge = input.value;
+        let hex = "ikke støttet farge";
+
+        tekstDiv.style.opacity = "1";
+
+        switch (farge) {
+            case "rød":
+                hex = "#ff0000"
+                break;
+            case "grønn":
+                hex = "#00ff00"
+                break;
+            case "blå":
+                hex = "#0000ff"
+                break;
+            case "gul":
+                hex = "#ffff00"
+                break;
+            case "svart":
+                hex = "#000000"
+                break;
+            case "hvit":
+                hex = "#ffffff"
+                break;
+            default:
+                alert("ikke støttet farge");
+                tekstDiv.style.opacity = "0";
+                hex = "ffffff"
+                farge = ""
+                break;
+        }
+        hexSpan.innerHTML = hex.toUpperCase();
+        fargeSpan.innerHTML = farge;
+
+    })
+}
+
+########### JS OPPG2 ###########
+//Dette er oppgave 2.1
+//@ts-check
+
+window.onload = () => {
+    const input = document.getElementById("farge");
+    const btn = document.getElementById("button");
+
+    const fargeSpan = document.getElementById("fargeSpan")
+    const hexSpan = document.getElementById("hex")
+
+    //Div som inneholde begge span, blir synelig etter knapp et trykket
+    const tekstDiv = document.getElementById("tekst");
+
+    const fargeDiv = document.getElementById("fargeDiv");
+
+    btn.addEventListener("click", () => {
+        //@ts-ignore
+        let farge = input.value;
+        let hex = "ikke støttet farge";
+
+        tekstDiv.style.opacity = "1";
+
+        switch (farge) {
+            case "rød":
+                hex = "#ff0000"
+                break;
+            case "grønn":
+                hex = "#00ff00"
+                break;
+            case "blå":
+                hex = "#0000ff"
+                break;
+            case "gul":
+                hex = "#ffff00"
+                break;
+            case "svart":
+                hex = "#000000"
+                break;
+            case "hvit":
+                hex = "#ffffff"
+                break;
+
+            default:
+                alert("ikke støttet farge");
+                tekstDiv.style.opacity = "0";
+                hex = "FFFFFF"
+                farge = ""
+                break;
+        }
+
+        hexSpan.innerHTML = hex.toUpperCase();
+        fargeSpan.innerHTML = farge;
+        fargeDiv.style.backgroundColor = hex;
+
+    })
+}
+
+########### JS OPPG2.3 ###########
+//@ts-check
+
+window.onload = () => {
+    const input = document.getElementById("farge");
+    const btn = document.getElementById("button");
+
+    const fargeSpan = document.getElementById("fargeSpan")
+    const hexSpan = document.getElementById("hex")
+
+    //Div som inneholde begge span, blir synelig etter knapp et trykket
+    const tekstDiv = document.getElementById("tekst");
+
+    const fargeDiv = document.getElementById("fargeDiv");
+
+    let fargeArr = ["rød", "grønn", "blå", "gul", "svart", "hvit", "cyan", "lilla"];
+    let hexArr = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#000000", "#ffffff", "#00ffff", "#ff00ff"];
+
+
+    let div = document.createElement("div")
+    document.querySelector("body").append(div);
+    div.style.width = "100px"
+    div.style.height = "100px";
+    div.style.right = "100px"
+    div.style.position = "absolute"
+
+    btn.addEventListener("click", () => {
+        //@ts-ignore
+
+
+        let farge = input.value;
+        let hex = "";
+
+        //Min løsning for å ikke endre html i tidligere oppgaver er å sjekke om input er hex-kode, 
+        //da finner kode farge som er nærmest
+        if (farge[0] === "#") {
+            div.style.backgroundColor = farge;
+
+            let red = parseInt(farge[1] + farge[2], 16);
+            let green = parseInt(farge[3] + farge[4], 16);
+            let blue = parseInt(farge[5] + farge[6], 16);
+
+            let differanseArr = [];
+
+            for (let i = 0; i < hexArr.length; i++) {
+                let hexVerdi = hexArr[i];
+
+                //avstand mellom farger https://en.wikipedia.org/wiki/Color_difference
+                let arrSum = Math.sqrt(((parseInt(hexVerdi[1] + hexVerdi[2], 16) - red) ** 2) + ((parseInt(hexVerdi[3] + hexVerdi[4], 16) - green) ** 2) + ((parseInt(hexVerdi[5] + hexVerdi[6], 16) - blue) ** 2));
+
+                differanseArr.push(arrSum);
+
+            }
+
+            //Loop finner hvilken indeks i arrayet med differanser som har verdi næmest 0
+            //Den indeksen som velges er den nærmeste fargen
+            let index = 0;
+            for (let i = 0; i < differanseArr.length; i++) {
+
+                if (differanseArr[i] < differanseArr[index]) {
+                    index = i;
+                }
+            }
+            hex = hexArr[index];
+            farge = fargeArr[index];
+
+
+        } else {
+            let state = 0;
+            for (let i = 0; i < fargeArr.length; i++) {
+                if (farge === fargeArr[i]) {
+                    hex = hexArr[i];
+                    state = 1;
+                }
+
+            }
+            if (state === 0) {
+                //Samme som default i switch statement
+
+                alert("ikke støttet farge");
+                tekstDiv.style.opacity = "0";
+                hex = "FFFFFF"
+                farge = ""
+
+            }
+        }
+
+        tekstDiv.style.opacity = "1";
+
+        hexSpan.innerHTML = hex.toUpperCase();
+        fargeSpan.innerHTML = farge;
+        fargeDiv.style.backgroundColor = hex;
+
+
+
+    })
+}

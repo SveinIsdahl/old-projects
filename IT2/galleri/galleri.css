@@ -1,0 +1,36 @@
+#bilder {
+    position: relative;
+}
+
+#bilder>div {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: url("media/b1.jpg");
+    width: 200px;
+    height: 150px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1);
+}
+
+#bilder>div.animert {
+    animation: centerstage 1.5s linear, centerstage 1.5s 1.5s linear reverse;
+}
+
+#bilder>div.ontop {
+    z-index: 2;
+}
+
+@keyframes centerstage {
+    50% {
+        left: 500px;
+        top: 200px;
+    }
+    100% {
+        left: 500px;
+        top: 200px;
+        transform: scale(2);
+    }
+}

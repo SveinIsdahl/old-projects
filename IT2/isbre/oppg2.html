@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="gui">
+        <div><label for="">Verdi 1 <input type="text" id="aar1"></label></div>
+        <div><label for="">Verdi 2 <input type="text" id="aar2"></label></div>
+        <div><button id="beregn">Beregn prosent</button></div>
+    </div>
+    <div id="resultat"></div>
+    <script>
+        let aar1 = document.getElementById("aar1");
+        let aar2 = document.getElementById("aar2");
+        let btn = document.getElementById("beregn");
+        btn.addEventListener("click", () => {
+                document.getElementById("resultat").innerHTML = ((Number(aar2.value) / Number(aar1.value)) * 100) + "%";
+            })
+            // prosent.toFixed(2)
+    </script>
+</body>
+
+</html>

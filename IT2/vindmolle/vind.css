@@ -1,0 +1,86 @@
+#gui {
+    border: 1px red solid;
+    height: 100px;
+}
+
+#bilde {
+    height: 600px;
+    border: 1px black solid;
+}
+
+#tre {
+    position: absolute;
+    top: 300px;
+    left: 550px;
+    background-image: url("Vind/Bjork.png");
+    background-position-x: center;
+    height: 478px;
+    width: 242px;
+    transform: scale(0.5) translateX(0);
+}
+
+#hus {
+    position: absolute;
+    top: 250px;
+    left: 900px;
+    height: 200px;
+    width: 250px;
+    background-color: black;
+}
+
+#vindmolle {
+    top: 100px;
+    left: 100px;
+    width: 200px;
+    height: 400px;
+}
+
+#blad {
+    position: absolute;
+    top: 240px;
+    left: 24px;
+    background-image: url("Vind/rotere.png");
+    background-position-x: center;
+    /*Transfor origin*/
+    background-position-y: 5px;
+    height: 420px;
+    width: 354px;
+    transform: scale(0.4);
+    z-index: 2;
+    animation: roter 0s linear infinite;
+    transform: rotate(0);
+}
+
+@keyframes roter {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#stamme {
+    position: absolute;
+    top: 450px;
+    left: 188px;
+    height: 200px;
+    width: 25px;
+    background-color: grey;
+}
+
+.vind {
+    animation: blaas 1s ease-in-out infinite reverse;
+}
+
+@keyframes blaas {
+    0% {
+        left: 550px;
+    }
+    25% {
+        left: 555px
+    }
+    75% {
+        left: 545px;
+    }
+    100% {
+        left: 550px;
+    }
+}
