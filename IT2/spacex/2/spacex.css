@@ -1,0 +1,81 @@
+#rocket {
+    position: absolute;
+    bottom: 0;
+    left: 300px;
+    width: 12px;
+    height: 126px;
+    background-color: whitesmoke;
+    border: solid black 1px;
+    box-shadow: 2px 2px 2px gray;
+    overflow: hidden;
+}
+
+#rocket>div {
+    transform: rotate(90deg) translate(40px);
+}
+
+#board {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background-color: lightcyan;
+}
+
+#tanker,
+#tanker>div {
+    position: absolute;
+}
+
+#tanker.aktiv {
+    height: 60px;
+    left: 101%;
+    bottom: 1rem;
+    animation: ease-in-out 3s drive alternate 2;
+    animation-delay: 2s;
+}
+
+#front {
+    border: solid gray 1px;
+    background-color: thistle;
+    top: 35px;
+    width: 30px;
+    height: 16px;
+}
+
+#tank {
+    border: solid gray 1px;
+    border-radius: 5px;
+    background-color: wheat;
+    bottom: 3px;
+    left: 30px;
+    width: 130px;
+    height: 50px;
+}
+
+#hjul {
+    top: 50px;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    width: calc(16*10px);
+}
+
+#hjul>div {
+    border: solid black 1px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: roll 1s linear reverse infinite;
+}
+
+@keyframes roll {
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes drive {
+    100% {
+        left: 200px;
+        transform: rotateY(180deg);
+    }
+}

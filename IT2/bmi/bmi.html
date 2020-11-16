@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div><label>Skriv inn vekt: <input type="text" id="weight" value="70">kg</label></div>
+    <div><label>Skriv inn høyde: <input type="text" id="height" value="170">cm</label></div>
+    <div id="output" style="border: 1px solid black;">22</div>
+    <script>
+        ["weight", "height"].forEach(i => {
+            document.getElementById(i).addEventListener("change", () => {
+                document.getElementById("output").innerHTML = ((document.getElementById(i).value) / (document.getElementById(i).value / 100) ** 2).toFixed(2);
+            })
+        })
+    </script>
+</body>
+
+</html>
