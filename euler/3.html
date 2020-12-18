@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let primes = [];
+        let currNum = 600851475143;
+        let i = 1;
+        while(true) {
+            if(currNum%i === 0) {
+                primes.push(i);
+                currNum /= i;
+                let sum = 1;
+                primes.forEach((k)=>{
+                    sum *= k;
+                })
+                if(sum === 600851475143) {
+                    console.log(primes);
+                    break;
+                }
+            }
+            i+=2;
+      
+        }
+      
+    </script>
+</body>
+</html>

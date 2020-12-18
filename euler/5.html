@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const testingArray = [];
+        for (let i = 1; i < 21; i++) {
+            testingArray.push(i);
+        }
+        for (let i = 20; i < 300000000; i += 20) {
+            let factors = [];
+            testingArray.forEach((k) => {
+                if(i%k ===0) {
+                    factors.push(k);
+                }
+            })
+            if(factors.length === 20) {
+                console.log(factors);
+                console.log(i);
+                break
+            }
+        }
+    </script>
+</body>
+</html>

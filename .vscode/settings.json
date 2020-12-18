@@ -10,5 +10,6 @@
             "server": "localhost",
             "username": "svein"
         }
-    ]
+    ],
+    "liveServer.settings.port": 5501
 }

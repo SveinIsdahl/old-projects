@@ -1,0 +1,59 @@
+#sky {
+    width: 1000px;
+    background-image: url("b1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 600px;
+}
+
+#santa {
+    width: 200px;
+    position: absolute;
+    background-image: url("jul.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 200px;
+    top: 200px;
+    left: 1000px;
+    /*animation: ride 10s linear forwards;*/
+}
+#snow {
+    position: absolute;
+    background-color: white;
+    width: 1000px;
+    height: 100px;
+    bottom: 0px;
+}
+body {
+    background-color: black;
+}
+/*
+@keyframes ride {
+    100% {left: -200px};
+}
+*/
+
+.tre {
+    width: 40px;
+    position: absolute;
+    background-image: url("tre.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80px;
+    top: 600px;
+    left: 300px;
+}
+#gryla {
+    width: 100px;
+    position: absolute;
+    background-image: url("Gryla.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100px;
+    top: 650px;
+    left: 10px;
+}
