@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const primes = [2]
+        for (let i = 3; i < 200000; i += 2) {
+            let isPrime = true;
+            //if(i%3 === 0 && i >9) {
+            //    isPrime === false;
+            //}
+            for (let j = 0; j < primes.length; j++) {
+                
+                const k = primes[j];
+                if(k > Math.sqrt(i)) {
+                    break;
+                }
+                if (i % k === 0 && isPrime) {
+                    isPrime = false
+                }
+            }
+            if (isPrime === true) {
+                primes.push(i);
+            }
+        }
+        
+        console.log(primes)
+        console.log(primes[10000])
+        // LAg liste med primtall, og kun test nye tall mot alerede funnet tall
+    </script>
+</body>
+
+</html>
