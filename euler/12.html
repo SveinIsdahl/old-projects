@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let index = 1;
+        while (true) {
+            let triangleNumber = 0;
+            let divisors = 1;
+
+            //Lag triangleNumber
+            for (let i = 1; i <= index; i++) {
+                triangleNumber += i;
+            }
+
+            /*
+            for (let i = 1; i < triangleNumber/2 + 1; i++) {
+                if(triangleNumber%i === 0) {
+                    divisors += 1;
+                }
+                
+            }
+            */
+           
+            //Top down aproach, start fra toppp, når faktor er funnet, gjør checking num mindre
+            let checkingNum = Math.ceil(triangleNumber/2) +1
+            for (let i = checkingNum; i >= 1; i--) {
+                if(triangleNumber%i === 0) {
+                    checkingNum = i-1;
+                    divisors += 1;
+                }
+                
+            }
+
+            if(divisors > 5) {
+                console.log(triangleNumber);
+                break
+            }
+            index++;
+        }
+    </script>
+</body>
+
+</html>
