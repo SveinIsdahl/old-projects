@@ -9,41 +9,38 @@
 
 <body>
     <script>
+        let t0 = performance.now();
+
+        const number = 500;
         let index = 1;
         while (true) {
             let triangleNumber = 0;
-            let divisors = 1;
+            let divisors = 0;
 
             //Lag triangleNumber
             for (let i = 1; i <= index; i++) {
                 triangleNumber += i;
             }
 
-            /*
-            for (let i = 1; i < triangleNumber/2 + 1; i++) {
+            let upperBound = Math.sqrt(triangleNumber)+1;
+            for (let i = 1; i < upperBound; i++) {
                 if(triangleNumber%i === 0) {
-                    divisors += 1;
+                    divisors += 2;
                 }
                 
             }
-            */
+            
            
-            //Top down aproach, start fra toppp, når faktor er funnet, gjør checking num mindre
-            let checkingNum = Math.ceil(triangleNumber/2) +1
-            for (let i = checkingNum; i >= 1; i--) {
-                if(triangleNumber%i === 0) {
-                    checkingNum = i-1;
-                    divisors += 1;
-                }
-                
-            }
+           
 
-            if(divisors > 5) {
+            if(divisors > number) {
                 console.log(triangleNumber);
                 break
             }
             index++;
         }
+        let t1 = performance.now();
+        console.log(t1-t0);
     </script>
 </body>
 
