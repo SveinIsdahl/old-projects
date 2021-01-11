@@ -198,6 +198,12 @@ input:checked~div {
     background: linear-gradient(to right, red 50%, blue 50%);
     transform: rotate(-40deg);
 }
+#tools>div:nth-child(7) {
+    border: solid 1px black;
+    height: 35px;
+    background: linear-gradient(to right, white 50%, white 50%);
+    transform: rotate(-40deg);
+}
 
 /*
   div.icon {

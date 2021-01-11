@@ -1,12 +1,15 @@
+
+//@ts-check
 //Deklarering av variabler
-let canvas = document.getElementById("canvas");
-let ctx = canvas.getContext("2d");
+
+const canvas = /**@type {HTMLCanvasElement} */ (document.getElementById("canvas"));
+const ctx = canvas.getContext("2d");
 let strekState = 0;
 let xPrev;
 let yPrev;
 let farge = "#000000";
 let lineWidth, drawState;
-let cords = []; 
+let cords = [];
 let fill = false;
 
 function setup() {
@@ -14,30 +17,34 @@ function setup() {
     ctx.lineWidth = 3;
 }
 
-//Eventlisteners, forteller tegnfunksjonen hvilket verktøy som er valgt
-document.querySelector("#tools > div:nth-child(1)").addEventListener("click", function () { setDrawState("draw") });
-document.querySelector("#tools > div:nth-child(2)").addEventListener("click", function () { setDrawState("firkant") });
-document.querySelector("#tools > div:nth-child(3)").addEventListener("click", function () { setDrawState("sirkel") });
-document.querySelector("#tools > div:nth-child(4)").addEventListener("click", function () { setDrawState("trekant") });
-document.querySelector("#tools > div:nth-child(5)").addEventListener("click", function () { setDrawState("strek") });
-document.querySelector("#tools > div:nth-child(6)").addEventListener("click", function () { setDrawState("visk") });
+const toolArray = document.getElementById("tools").querySelectorAll("div");
+for (let i = 1; i <= toolArray.length; i++) {
+    document.querySelector(`#tools > div:nth-child(${i})`).addEventListener("click", () => { setDrawState(toolArray[i - 1].title) });
+}
 
+/**
+ * @param {string} state
+ */
 function setDrawState(state) {
     drawState = state;
+    console.log(state);
+    if (drawState === "clear") {
+        ctx.clearRect(0, 0, 1000, 1000);
+    }
 }
 
 //Funksjon for å lage en sirkel med fyll, ofte en dott
+/*
 function dot(x, y, color, str) {
     ctx.beginPath();
     ctx.strokeStyle = farge;
     ctx.fillStyle = farge;
     ctx.arc(x, y, str, 0, 2 * Math.PI);
     ctx.fill();
-    ctx.stroke();
     ctx.strokeStyle = farge;
     ctx.fillStyle = farge;
 }
-
+*/
 
 // mouseUp og mouseMove forteller tegnefunksjonen når man trykker ned og når man beveger musen over canvas, gitt at man har valgt "tegne-verktøyet"
 function mouseUp(evt) {
@@ -47,9 +54,8 @@ function mouseUp(evt) {
         ctx.lineTo(x, y);
         ctx.stroke();
         strekState = 0;
-        
-    }
 
+    }
 }
 function mouseMove(evt) {
     if ((strekState == 1 && drawState == "draw") || (strekState == 1 && drawState == "visk")) {
@@ -71,14 +77,11 @@ function draw(evt) {
     switch (drawState) {
         case "draw":
             ctx.beginPath();
-            console.log(farge);
             ctx.lineTo(x, y);
             strekState = 1;
             break;
         case "firkant":
             if (strekState == 1) {
-                x = getMousePos(evt).x;
-                y = getMousePos(evt).y;
                 ctx.rect(xPrev, yPrev, x - xPrev, y - yPrev);
                 if (fill == true) {
                     ctx.fill();
@@ -124,8 +127,6 @@ function draw(evt) {
             break;
         case "strek":
             if (strekState == 1) {
-                x = getMousePos(evt).x;
-                y = getMousePos(evt).y;
                 ctx.lineTo(x, y);
                 ctx.stroke();
                 strekState = 0;
@@ -138,8 +139,6 @@ function draw(evt) {
             break;
         case "sirkel":
             if (strekState == 1) {
-                x = getMousePos(evt).x;
-                y = getMousePos(evt).y;
                 let radius = Math.sqrt((xPrev - x) * (xPrev - x) + (yPrev - y) * (yPrev - y));
                 ctx.arc(xPrev, yPrev, radius, 0, Math.PI * 2);
                 if (fill == true) {
@@ -168,12 +167,16 @@ function draw(evt) {
     }
 }
 
+const colorArray = ["#ff0000", "#008000", "#0000ff", "#f0f000", "#000000"];
 //Finner alle div i farge-velger, og setter på eventlistener
-document.querySelector("#farger > div:nth-child(1)").addEventListener("click", function () { setColor("#ff0000", false) });
-document.querySelector("#farger > div:nth-child(2)").addEventListener("click", function () { setColor("#008000", false) });
-document.querySelector("#farger > div:nth-child(3)").addEventListener("click", function () { setColor("#0000ff", false) });
-document.querySelector("#farger > div:nth-child(4)").addEventListener("click", function () { setColor("#f0f000", false) });
-document.querySelector("#farger > div:nth-child(5)").addEventListener("click", function () { setColor("#000000", false) });
+for (let i = 1; i <= colorArray.length; i++) {
+    document.querySelector(`#farger > div:nth-child(${i})`).addEventListener("click", () => { setColor(colorArray[i - 1], false) });
+}
+
+//Finner alle div i fill-velger, og setter på eventlistener
+for (let i = 1; i <= colorArray.length; i++) {
+    document.querySelector(`#fill > div:nth-child(${i})`).addEventListener("click", () => { setColor(colorArray[i - 1], true) });
+}
 
 //Farge selector:
 function setColor(color, fyll) {
@@ -183,27 +186,19 @@ function setColor(color, fyll) {
     fill = fyll;
 }
 
-//Finner alle div i fill-velger, og setter på eventlistener
-document.querySelector("#fill > div:nth-child(1)").addEventListener("click", function () { setColor("#ff0000", true) });
-document.querySelector("#fill > div:nth-child(2)").addEventListener("click", function () { setColor("#008000", true) });
-document.querySelector("#fill > div:nth-child(3)").addEventListener("click", function () { setColor("#0000ff", true) });
-document.querySelector("#fill > div:nth-child(4)").addEventListener("click", function () { setColor("#f0f000", true) });
-document.querySelector("#fill > div:nth-child(5)").addEventListener("click", function () { setColor("#000000", true) });
-
-
 //Line width slider:
-var slider = document.getElementById("lineWidth");
+var slider = /**@type {HTMLInputElement} */ (document.getElementById("lineWidth"));
 var output = document.getElementById("widthValue");
 output.innerHTML = slider.value;
 
-slider.oninput = function () {
-    output.innerHTML = this.value;
-    lineWidth = this.value;
+slider.oninput = () => {
+    output.innerHTML = slider.value;
+    lineWidth = slider.value;
 }
 
 //Musepekerposisjon:
 function getMousePos(evt) {
-    var rect = canvas.getBoundingClientRect();
+    let rect = canvas.getBoundingClientRect();
     return {
         x: (evt.clientX - rect.left) / (rect.right - rect.left) * canvas.width,
         y: (evt.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
