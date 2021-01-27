@@ -7,9 +7,6 @@ const $ = (id) => {
     return document.getElementById(id)
 }
 
-//Cm per pixel
-const cmPixel = 50;
-
 const tabell = [
     ["Type Firkant", "Bunnlinje", "Topplinje", "Høyde", "Forskyvning", "Areal"],
     ["Kvadrat", 10, 10, 10, 0, 100],
@@ -19,13 +16,100 @@ const tabell = [
     ["Trapes", 5, 3, 10, 5, 40],
 ]
 
-function displayData(tabellDiv, ctx) {
+//Cm per pixel
+const cmPixel = 50;
+
+//Canvas oppsett
+const canvas = $("canvas");
+// @ts-ignore
+const c = canvas.getContext("2d");
+
+//HTML-elements
+const tabellDiv = $("tabell");
+const btnAdd = $("add");
+const btnupdate = $("update");
+const btnremove = $("remove");
+const divArray = [$("bunn"), $("topp"), $("hoyde"), $("forskyvning")];
+
+//Globale variabler
+let selectedIndex;
+// Array med alle inputvalues
+let valueArray = [];
+
+btnAdd.addEventListener("click", () => {
+    updateValueArray();
+
+    addData(valueArray[0], valueArray[1], valueArray[2], valueArray[3]);
+    displayData();
+})
+btnupdate.addEventListener("click", () => {
+    if(selectedIndex !== undefined) {
+        updateValueArray();
+        
+        const type = findType(valueArray[0], valueArray[1], valueArray[2], valueArray[3]);
+        const areal = findAreal(valueArray[0], valueArray[1], valueArray[2]);
+        tabell.push([type, valueArray[0], valueArray[1], valueArray[2], valueArray[3], areal]);
+        removeSelectedFromTabell();
+        selectedIndex = tabell.length-1;
+
+        displayData();
+        drawRect(valueArray[0], valueArray[1], valueArray[2], valueArray[3]);
+    }
+})
+btnremove.addEventListener("click", () => {
+    if(selectedIndex !== undefined) {
+
+        removeSelectedFromTabell()
+        c.clearRect(0,0,2000,2000);
+
+    }
+
+})
+
+function removeSelectedFromTabell() {
+    //Fjerne fra tabell så den ikke blir displayet på nytt
+    tabell.splice(selectedIndex, 1);
+    selectedIndex = undefined;
+    displayData();
+}
+function updateValueArray() {
+    for (let i = 0; i < divArray.length; i++) {
+        const div = divArray[i];
+        // @ts-ignore
+        valueArray[i] = Number(div.value);
+    }
+}
+
+displayData();
+
+function displayData() {
     tabellDiv.innerHTML = "";
-    for (let i = 0; i < tabell.length; i++) {
+
+    let tr = document.createElement("tr");
+    tabellDiv.appendChild(tr);
+
+    //Loop for header-rad
+    for (let i = 0; i < tabell[0].length; i++) {
+        const element = tabell[0];
+        let td = document.createElement("th");
+        tr.appendChild(td);
+        td.innerHTML = element[i] + "";
+        td.style.border = "1px solid black";
+
+    }
+    for (let i = 1; i < tabell.length; i++) {
         const rad = tabell[i];
 
         let tr = document.createElement("tr");
         tabellDiv.appendChild(tr);
+
+        if (i === selectedIndex) {
+            tr.style.background = "rgba(10, 50, 10, 0.3)";
+
+        }
+        else {
+            tr.style.background = "rgb(255, 255, 255)";
+        }
 
         for (let j = 0; j < rad.length; j++) {
             const element = rad[j];
@@ -34,12 +118,19 @@ function displayData(tabellDiv, ctx) {
             td.innerHTML = element + "";
             td.style.border = "1px solid black";
 
+
             td.addEventListener("click", () => {
-                drawRect(ctx, rad[1], rad[2], rad[3], rad[4]);
+                drawRect(rad[1], rad[2], rad[3], rad[4]);
+                setInputs(rad[1], rad[2], rad[3], rad[4]);
+                selectedIndex = i;
+                // Redisplay data for å resette farge og selecte rett
+                displayData();
+
             })
         }
     }
 }
+
 
 
 function findAreal(bunnlinje, topplinje, hoyde) {
@@ -72,33 +163,15 @@ function addData(bunnlinje, topplinje, hoyde, forskyvning) {
 
 }
 
-window.onload = () => {
-    const canvas = $("canvas");
-    // @ts-ignore
-    const ctx = canvas.getContext("2d");
-    const tabellDiv = $("tabell");
-    const btnDiv = $("btn");
-
-    const divArray = [$("bunn"), $("topp"), $("hoyde"), $("forskyvning")];
-
-    let valueArray = [];
-    btnDiv.addEventListener("click", () => {
-        for (let i = 0; i < divArray.length; i++) {
-            const div = divArray[i];
-            valueArray[i] = Number(div.value);
-        }
-        addData(valueArray[0], valueArray[1], valueArray[2], valueArray[3]);
-        displayData(tabellDiv, ctx);
-    })
-
-
-
-    displayData(tabellDiv, ctx);
-
+function setInputs(bunn, topp, hoyde, forskyvning) {
+    divArray[0].value = bunn + "";
+    divArray[1].value = topp + "";
+    divArray[2].value = hoyde + "";
+    divArray[3].value = forskyvning + "";
 
 }
 
-function drawRect(c, bunnlinje, topplinje, hoyde, forskyvning) {
+function drawRect(bunnlinje, topplinje, hoyde, forskyvning) {
     c.clearRect(0, 0, 4000, 4000)
     c.beginPath();
     c.moveTo(forskyvning * cmPixel, 0)
@@ -109,3 +182,8 @@ function drawRect(c, bunnlinje, topplinje, hoyde, forskyvning) {
 
     c.stroke();
 }
+
+
+
+
+
