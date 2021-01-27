@@ -10,7 +10,23 @@
 <body>
     <script>
     
-    
+    function unike1(a) {
+       let alle = a.split("");
+       console.log(alle)
+
+       let unike = [];
+       for(let b in alle) {
+           if(unike.includes(b)) {
+            continue
+           }
+           else {
+               unike.push(b);
+            }
+            console.log(unike)
+       }
+       return unike.length;
+    }
+
     </script>
 </body>
 

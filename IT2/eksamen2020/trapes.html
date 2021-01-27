@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-size: 1.3em;
+        }
+        #tabell {
+            border-collapse: collapse;
+        }
+        #gui {
+            width: 100px;
+        }
+        #canvas {
+            position: absolute;
+            width: 1100px;
+            height: 1100px;
+            top: 100px;
+            left: 600px;
+        }
+    </style>
+    <script src="trapes.js"></script>
+
+</head>
+
+<body>
+    <div id="gui">
+        <label>Bunnlinje: <input type="number" id="bunn"></label>
+        <label>Topplinje: <input type="number" id="topp"></label>
+        <label>Høyde: <input type="number" id="hoyde"></label>
+        <label>Forskyvning: <input type="number" id="forskyvning"></label>
+        <br>
+        <br>
+        <button id="btn">Legg til</button>
+
+    </div>
+    <br>
+    <table id="tabell">
+
+    </table>
+    <canvas id="canvas" width="1100px" height="1100px"></canvas>
+
+
+</body>
+
+</html>

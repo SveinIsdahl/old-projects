@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tegning</title>
+    <link rel="stylesheet" href="c.css">
+    <script src="c.js"></script>
+</head>
+
+<body>
+    <div id="gui">
+        <select name="type" id="type">
+            <option>motstand</option>
+            <option>spole</option>
+            <option>capacitor</option>
+            <option>ledning</option>
+            <option>jord</option>
+            <option>plusspol</option>
+
+        </select>
+    </div>
+
+    <div id="tegneboks">
+        <canvas id="bakgrunn" width="400" height="400"></canvas>
+        <canvas id="tegning" width="400" height="400"></canvas>
+    </div>
+    
+    <script>
+        setup();
+    </script>
+</body>
+
+</html>
