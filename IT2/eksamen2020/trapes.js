@@ -40,6 +40,9 @@ btnAdd.addEventListener("click", () => {
     updateValueArray();
 
     addData(valueArray[0], valueArray[1], valueArray[2], valueArray[3]);
+    selectedIndex = tabell.length-1;
+    drawRect(valueArray[0], valueArray[1], valueArray[2], valueArray[3]);
+
     displayData();
 })
 btnupdate.addEventListener("click", () => {
