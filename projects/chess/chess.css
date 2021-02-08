@@ -1,0 +1,39 @@
+body {
+    background-color: rgb(50, 50, 50);
+}
+#gui {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    border: solid 3px black;
+    width: 30vw;
+    height: 85vh;
+    border-radius: 5px;
+    background-color: rgb(30, 30, 30);
+
+}
+#board {
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    border: solid 3px black;
+    width: calc(30vh + 30vw);
+    height: calc(30vh + 30vw);
+    border-radius: 5px;
+    background-color: rgb(100, 100, 100);
+}
+
+.whiteTile {
+
+}
+
+.blackTile {
+
+}
+.whitePiece {
+
+}
+
+.blackPiece {
+    
+}
