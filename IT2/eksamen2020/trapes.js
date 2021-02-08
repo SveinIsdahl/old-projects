@@ -6,7 +6,12 @@
 const $ = (id) => {
     return document.getElementById(id)
 }
-
+/**
+ * @typedef {[String, (String | Number), (String | Number), (String | Number), (String | Number), (String | Number)]} Tabell
+ */
+/**
+ * @type Tabell[]
+ */
 const tabell = [
     ["Type Firkant", "Bunnlinje", "Topplinje", "Høyde", "Forskyvning", "Areal"],
     ["Kvadrat", 10, 10, 10, 0, 100],
@@ -34,14 +39,14 @@ const divArray = [$("bunn"), $("topp"), $("hoyde"), $("forskyvning")];
 //Globale variabler
 let selectedIndex;
 // Array med alle inputvalues
-let valueArray = [];
+let valArr = [];
 
 btnAdd.addEventListener("click", () => {
     updateValueArray();
 
-    addData(valueArray[0], valueArray[1], valueArray[2], valueArray[3]);
+    addData(valArr[0], valArr[1], valArr[2], valArr[3]);
     selectedIndex = tabell.length-1;
-    drawRect(valueArray[0], valueArray[1], valueArray[2], valueArray[3]);
+    drawRect(valArr[0], valArr[1], valArr[2], valArr[3]);
 
     displayData();
 })
@@ -49,14 +54,14 @@ btnupdate.addEventListener("click", () => {
     if(selectedIndex !== undefined) {
         updateValueArray();
         
-        const type = findType(valueArray[0], valueArray[1], valueArray[2], valueArray[3]);
-        const areal = findAreal(valueArray[0], valueArray[1], valueArray[2]);
-        tabell.push([type, valueArray[0], valueArray[1], valueArray[2], valueArray[3], areal]);
+        const type = findType(valArr[0], valArr[1], valArr[2], valArr[3]);
+        const areal = findAreal(valArr[0], valArr[1], valArr[2]);
+        tabell.push([type, valArr[0], valArr[1], valArr[2], valArr[3], areal]);
         removeSelectedFromTabell();
         selectedIndex = tabell.length-1;
 
         displayData();
-        drawRect(valueArray[0], valueArray[1], valueArray[2], valueArray[3]);
+        drawRect(valArr[0], valArr[1], valArr[2], valArr[3]);
     }
 })
 btnremove.addEventListener("click", () => {
@@ -79,7 +84,7 @@ function updateValueArray() {
     for (let i = 0; i < divArray.length; i++) {
         const div = divArray[i];
         // @ts-ignore
-        valueArray[i] = Number(div.value);
+        valArr[i] = Number(div.value);
     }
 }
 
@@ -94,21 +99,31 @@ function displayData() {
     //Loop for header-rad
     for (let i = 0; i < tabell[0].length; i++) {
         const element = tabell[0];
-        let td = document.createElement("th");
-        tr.appendChild(td);
-        td.innerHTML = element[i] + "";
-        td.style.border = "1px solid black";
+        let th = document.createElement("th");
+        tr.appendChild(th);
+        th.innerHTML = element[i] + "";
+        th.style.border = "1px solid black";
 
     }
+    //Loop for resten av tabellen
     for (let i = 1; i < tabell.length; i++) {
+        
         const rad = tabell[i];
 
         let tr = document.createElement("tr");
         tabellDiv.appendChild(tr);
 
+        
+
+        //Setter bakgrunnsfarge på selected row
         if (i === selectedIndex) {
             tr.style.background = "rgba(10, 50, 10, 0.3)";
 
+        }
+        //Setter annen bakgrunnsfarge for annen hver rad
+        else if(i % 2 === 0) {
+            tr.style.background = "rgba(230, 230, 255, 1)";
+            console.log("test");
         }
         else {
             tr.style.background = "rgb(255, 255, 255)";
@@ -140,7 +155,11 @@ function findAreal(bunnlinje, topplinje, hoyde) {
     return ((topplinje + bunnlinje) * hoyde) / 2;
 }
 function findType(bunnlinje, topplinje, hoyde, forskyvning) {
-    if (((bunnlinje === topplinje) && (topplinje === hoyde)) && forskyvning === 0) {
+    if(bunnlinje === 0 || topplinje === 0) {
+        alert("Bunnlinje or Topplinje can not be 0 for it to be a square");
+        return "Not square"
+    }
+    else if (((bunnlinje === topplinje) && (topplinje === hoyde)) && forskyvning === 0) {
         return "Kvadrat"
     }
     else if ((bunnlinje === topplinje) && (forskyvning === 0)) {
@@ -151,7 +170,7 @@ function findType(bunnlinje, topplinje, hoyde, forskyvning) {
     }
     else if (bunnlinje !== topplinje) {
         return "Trapes"
-    }
+    } 
     else {
         alert("error, no type matching")
     }
@@ -182,10 +201,8 @@ function drawRect(bunnlinje, topplinje, hoyde, forskyvning) {
     c.lineTo(bunnlinje * cmPixel, hoyde * cmPixel);
     c.lineTo(0, hoyde * cmPixel);
     c.lineTo(forskyvning * cmPixel, 0);
-
     c.stroke();
 }
-
 
 
 
