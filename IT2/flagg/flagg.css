@@ -1,0 +1,82 @@
+#flaggliste {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+div.flagg {
+    width: 250px;
+    height: 180px;
+    box-shadow: 2px 2px 2px gray;
+    margin: 1rem; 
+    position: relative;
+}
+div.flagg:after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 20px;
+    height: 180px;
+    background-color: white;
+    left: calc(40% - 10px);
+    top: 0;
+}
+div.flagg:before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 250px;
+    height: 20px;
+    background-color: white;
+    top: calc(50% - 10px);
+    left: 0;
+}
+
+div.flagg.norsk:after {
+    background-color: blue;
+    height: 8px;
+    top: calc(50% - 4px);
+}
+div.flagg.norsk:before {
+    background: linear-gradient(90deg, white 0%, white 20%, blue 21%, blue 70%, white 71%);
+}
+div.norsk{
+    background: linear-gradient(0deg, red 0%, red 45%, white 46%, white 54%, red 55%); 
+}
+div.norsk2{
+    background-color: red; 
+}
+div.flagg.norsk2:after {
+    background-color: blue;
+    border: white 10px solid;
+    margin: -10px;
+}
+div.flagg.norsk2:before {
+    background-color: blue;
+    border: white 10px solid;
+    margin: -10px;
+
+
+}
+div.svensk{
+    background-color: blue;
+
+}
+div.flagg.svensk:after {
+    background-color: yellow;
+}
+div.flagg.svensk:before {
+    background-color: yellow;
+}
+div.dansk{
+    background-color: red;
+}
+div.finsk{
+    background-color: white;
+    border: 1px black solid;
+}
+div.flagg.finsk:after {
+    background-color: blue;
+}
+div.flagg.finsk:before {
+    background-color: blue;
+}

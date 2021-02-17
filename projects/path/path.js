@@ -19,5 +19,6 @@ for (let i = 0; i < placeDist.length; i++) {
         }
     }
     visitedCities.push(i);
+
 }
 

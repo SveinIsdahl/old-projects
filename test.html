@@ -10,8 +10,35 @@
 <body>
     <input type="text" id="inp">
     <script>
-    
-        
+
+        function findNumbers(a) {
+            let numbers = [];
+            let i = 0;
+            const lengde = a.length;
+            while(i < length) {
+                const ch = a[i];
+                i++;
+                if(Number.isInteger(+ch)) {
+                    let tall = ch;
+                    while((i < length) && Number.isInteger(+a[i])) {
+                        tall += a[i];
+                        i++;
+                    }
+                    numbers.push(+tall);
+                }
+            }
+            return numbers;
+
+        }
+        function shortName(a,b,c) {
+            if(a.length + " " + b.length < c) {
+                return a+" "+b
+            }
+            if(b.length + 1 < c) {
+                return a.charAt(0) + " " + b;
+            }
+            return a.charAt(0) + " " + b.charAt(0);
+        }
 
 
     </script>

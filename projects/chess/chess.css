@@ -20,4 +20,11 @@ body {
     height: calc(30vh + 30vw);
     border-radius: 5px;
 }
+input {
+    padding: 5px;
+    margin: 5px;
+}
+body {
+    color: #eeeeee;
+}
 

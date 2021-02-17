@@ -1,7 +1,7 @@
 //@ts-check
 
 const boardArray = [];
-
+const pieceArray = [];
 class Piece {
     constructor(type) {
         this.type = type;
@@ -11,22 +11,22 @@ class Piece {
     updatePosition(pos) {
         (this.pos !== undefined) ? boardArray[this.pos].style.backgroundImage = "" : undefined;
 
-        
 
-        if(typeof pos === "string") {
+
+        if (typeof pos === "string") {
             const squareArr = pos.split("");
             let alphabet = "ABCDEFGH".split("");
             let file = 0;
-            const rank = Number(squareArr[1])-1;
-            alphabet.forEach((k, i)=> {
+            const rank = Number(squareArr[1]) - 1;
+            alphabet.forEach((k, i) => {
                 (squareArr[0] === k) ? file = i : undefined
             })
-            this.updatePieceDiv(boardArray[rank*8+file])
-            this.pos = rank*8+file;
+            this.updatePieceDiv(boardArray[rank * 8 + file])
+            this.pos = rank * 8 + file;
 
         }
-        
-        if(typeof pos === "number") {
+
+        if (typeof pos === "number") {
             this.updatePieceDiv(boardArray[pos])
             this.pos = pos;
 
@@ -38,7 +38,7 @@ class Piece {
         div.style.backgroundImage = "url(pieces.svg)";
         div.style.backgroundPositionX = sprite.x + "%";
         div.style.backgroundPositionY = sprite.y + "%";
-     }
+    }
 
 }
 
@@ -70,7 +70,7 @@ function setupBoard(board) {
 
             div.style.backgroundSize = "600%";
             boardArray.push(div);
-            div.innerHTML = "rank" + rank + "file" + file;
+            //div.innerHTML = "rank" + rank + "file" + file;
         }
     }
 }
@@ -87,14 +87,53 @@ window.onload = () => {
 
     setupBoard(board);
 
-    let whiteKing = new Piece("P");
-    whiteKing.updatePosition("H8");
-    let blackKing = new Piece("K");
-    blackKing.updatePosition("A1");
-    blackKing.updatePosition("E1")
+    //FEN("rnbqkbnr/pppppppp/k1k/8/8/8/PPPPPPPP/RNBQKBNR");
+    FEN("rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R");
 
 }
+function FEN(string) {
+    let ranks = string.split("/").reverse();
 
+    for (let i = 0; i < ranks.length; i++) {
+        let rank = ranks[i]
+        let currentRank = rank.split("");
+
+        for (let j = 0; j < currentRank.length; j++) {
+
+            let symbol = currentRank[j];
+
+            // Hvis string er et tall
+            if (symbol === "8") {
+                continue
+            }
+            else if ((!isNaN(parseFloat(symbol)) && isFinite(symbol))) {
+
+                if (currentRank[j + 1] === undefined) {
+                    continue
+                }
+                let currentPiece = new Piece(currentRank[j + 1]);
+
+                currentPiece.updatePosition(i * 8 + j + parseInt(symbol));
+                pieceArray.push(currentPiece);
+
+                j++;
+                continue
+            }
+            else {
+                let currentPiece = new Piece(symbol);
+                // (rank*8 + file)
+                currentPiece.updatePosition(i * 8 + j);
+                pieceArray.push(currentPiece);
+
+            }
+
+        };
+        //}
+
+        //currentPiece.updatePosition(index+1 + "")
+    };
+
+}
 function spritePos(piece) {
     switch (piece) {
         case "K":
