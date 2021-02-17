@@ -11,8 +11,6 @@ class Piece {
     updatePosition(pos) {
         (this.pos !== undefined) ? boardArray[this.pos].style.backgroundImage = "" : undefined;
 
-
-
         if (typeof pos === "string") {
             const squareArr = pos.split("");
             let alphabet = "ABCDEFGH".split("");
@@ -33,13 +31,44 @@ class Piece {
         }
     }
     updatePieceDiv(div) {
-        const sprite = spritePos(this.type);
+        const sprite = this.spritePos(this.type);
 
         div.style.backgroundImage = "url(pieces.svg)";
         div.style.backgroundPositionX = sprite.x + "%";
         div.style.backgroundPositionY = sprite.y + "%";
     }
-
+     spritePos(piece) {
+        switch (piece) {
+            case "K":
+                return { x: 0, y: 0 }
+            case "Q":
+                return { x: 20, y: 0 }
+            case "B":
+                return { x: 40, y: 0 }
+            case "N":
+                return { x: 60, y: 0 }
+            case "R":
+                return { x: 80, y: 0 }
+            case "P":
+                return { x: 100, y: 0 }
+            case "k":
+                return { x: 0, y: 100 }
+            case "q":
+                return { x: 20, y: 100 }
+            case "b":
+                return { x: 40, y: 100 }
+            case "n":
+                return { x: 60, y: 100 }
+            case "r":
+                return { x: 80, y: 100 }
+            case "p":
+                return { x: 100, y: 100 }
+    
+            default:
+                console.log("Error, invalid piece symbol");
+                break;
+        }
+    }
 }
 
 /**
@@ -69,6 +98,10 @@ function setupBoard(board) {
             div.style.backgroundRepeat = "no-repeat";
 
             div.style.backgroundSize = "600%";
+            div.setAttribute("data-number",rank * 8 + file +"");
+            div.addEventListener("click",()=> {
+
+            })
             boardArray.push(div);
             //div.innerHTML = "rank" + rank + "file" + file;
         }
@@ -86,12 +119,15 @@ window.onload = () => {
         setupBoard(board);
     })
     */
-
     eventlistenerSetup(board);
     resetBoard(board);
     //Initialize board with standard position
     FEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
 }
+
+/**
+ * @param {HTMLElement} board
+ */
 function eventlistenerSetup(board) {
     // Input FEN to BOARD
     document.getElementById("FENbtn").addEventListener("click", () => {
@@ -105,6 +141,9 @@ function eventlistenerSetup(board) {
         resetBoard(board);
         //@ts-ignore
         FEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
+    })
+    board.addEventListener("click", (e)=>{
+        
     })
 }
 function resetBoard(board) {
@@ -146,44 +185,9 @@ function FEN(string) {
                 // (rank*8 + file)
                 currentPiece.updatePosition(i * 8 + j);
                 pieceArray.push(currentPiece);
-
             }
-
         };
         //}
-
-        //currentPiece.updatePosition(index+1 + "")
     };
 
-}
-function spritePos(piece) {
-    switch (piece) {
-        case "K":
-            return { x: 0, y: 0 }
-        case "Q":
-            return { x: 20, y: 0 }
-        case "B":
-            return { x: 40, y: 0 }
-        case "N":
-            return { x: 60, y: 0 }
-        case "R":
-            return { x: 80, y: 0 }
-        case "P":
-            return { x: 100, y: 0 }
-        case "k":
-            return { x: 0, y: 100 }
-        case "q":
-            return { x: 20, y: 100 }
-        case "b":
-            return { x: 40, y: 100 }
-        case "n":
-            return { x: 60, y: 100 }
-        case "r":
-            return { x: 80, y: 100 }
-        case "p":
-            return { x: 100, y: 100 }
-
-        default:
-            break;
-    }
 }
