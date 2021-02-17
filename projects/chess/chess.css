@@ -20,7 +20,7 @@ body {
     height: calc(30vh + 30vw);
     border-radius: 5px;
 }
-input {
+input, button {
     padding: 5px;
     margin: 5px;
 }

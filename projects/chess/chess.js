@@ -1,7 +1,7 @@
 //@ts-check
 
-const boardArray = [];
-const pieceArray = [];
+let boardArray = [];
+let pieceArray = [];
 class Piece {
     constructor(type) {
         this.type = type;
@@ -80,16 +80,38 @@ function setupBoard(board) {
 
 window.onload = () => {
     const board = document.getElementById("board");
+    /*
     window.addEventListener("resize", () => {
         board.innerHTML = "";
         setupBoard(board);
     })
+    */
 
-    setupBoard(board);
+    eventlistenerSetup(board);
+    resetBoard(board);
+    //Initialize board with standard position
+    FEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
+}
+function eventlistenerSetup(board) {
+    // Input FEN to BOARD
+    document.getElementById("FENbtn").addEventListener("click", () => {
+        resetBoard(board);
+        //@ts-ignore
+        FEN(document.getElementById("FENinp").value);
+    })
 
-    //FEN("rnbqkbnr/pppppppp/k1k/8/8/8/PPPPPPPP/RNBQKBNR");
-    FEN("rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R");
-
+    // Standard FEN button
+    document.getElementById("standardbtn").addEventListener("click", () => {
+        resetBoard(board);
+        //@ts-ignore
+        FEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
+    })
+}
+function resetBoard(board) {
+    boardArray = [];
+    pieceArray = [];
+    board.innerHTML = "";
+    setupBoard(board)
 }
 function FEN(string) {
     let ranks = string.split("/").reverse();
