@@ -2,6 +2,7 @@
 
 let boardArray = [];
 let pieceArray = [];
+let selectedPiece = -1;
 class Piece {
     constructor(type) {
         this.type = type;
@@ -21,13 +22,13 @@ class Piece {
             })
             this.updatePieceDiv(boardArray[rank * 8 + file])
             this.pos = rank * 8 + file;
-
+            //boardArray[pos].setAttribute("data-number", this.pos + "");
         }
 
         if (typeof pos === "number") {
-            this.updatePieceDiv(boardArray[pos])
+            this.updatePieceDiv(boardArray[pos]);
             this.pos = pos;
-
+            //boardArray[pos].setAttribute("data-number", this.pos + "");
         }
     }
     updatePieceDiv(div) {
@@ -37,7 +38,7 @@ class Piece {
         div.style.backgroundPositionX = sprite.x + "%";
         div.style.backgroundPositionY = sprite.y + "%";
     }
-     spritePos(piece) {
+    spritePos(piece) {
         switch (piece) {
             case "K":
                 return { x: 0, y: 0 }
@@ -63,7 +64,7 @@ class Piece {
                 return { x: 80, y: 100 }
             case "p":
                 return { x: 100, y: 100 }
-    
+
             default:
                 console.log("Error, invalid piece symbol");
                 break;
@@ -98,8 +99,14 @@ function setupBoard(board) {
             div.style.backgroundRepeat = "no-repeat";
 
             div.style.backgroundSize = "600%";
-            div.setAttribute("data-number",rank * 8 + file +"");
-            div.addEventListener("click",()=> {
+            //div.setAttribute("data-number", rank * 8 + file + "");
+            div.addEventListener("click", () => {
+                if (selectedPiece === -1) {
+                    select(rank * 8 + file);
+                }
+                else {
+                    drop(rank * 8 + file);
+                }
 
             })
             boardArray.push(div);
@@ -108,9 +115,44 @@ function setupBoard(board) {
     }
 }
 
+function select(pos) {
 
+    pieceArray.forEach((piece) => {
+        if (piece.pos === pos) {
+            selectedPiece = pos;
+        }
+    })
 
+}
+function drop(dropLoaction) {
+    if(hasPiece(dropLoaction)) {
+        console.log("has piece");
 
+    }
+    pieceArray.forEach((piece) => {
+        if (piece.pos === selectedPiece) {
+            piece.updatePosition(dropLoaction);
+        }
+
+    })
+    selectedPiece = -1;
+}
+function hasPiece(location) {
+
+    for(let i = 0; i < pieceArray.length; i++){
+        if(pieceArray[i].pos === location) {
+            return true
+        }
+    }
+}
+function getPiece(pos) {
+    pieceArray.forEach((piece) => {
+        if (piece.pos === pos) {
+            return piece
+        }
+
+    })
+}
 window.onload = () => {
     const board = document.getElementById("board");
     /*
@@ -142,9 +184,7 @@ function eventlistenerSetup(board) {
         //@ts-ignore
         FEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
     })
-    board.addEventListener("click", (e)=>{
-        
-    })
+
 }
 function resetBoard(board) {
     boardArray = [];
