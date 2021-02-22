@@ -1,0 +1,100 @@
+#flagliste {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+div.flag {
+    position: relative;
+    width:250px;
+    height: 160px;
+    box-shadow: 2px 2px 2px gray;
+    margin:1rem;
+    border:  solid gray 1px;
+    color: transparent;
+}
+div.flag:after {
+    position: absolute;
+    content:"";
+    display:block;
+    width:250px;
+    height: 20px;
+    background-color: white;
+    top: calc(50% - 10px);
+    left:0;
+}
+div.flag:before {
+    position: absolute;
+    content:"";
+    display:block;
+    height:160px;
+    width: 20px;
+    background-color: white;
+    left: calc(40% - 10px);
+    top:0px;
+}
+
+div.dansk {
+    background-color: red; 
+}
+div.svensk {
+    background-color: blue;
+}
+div.finsk {
+    background-color: white; 
+    border: solid gray 1px;
+}
+div.flag.finsk:after {
+    background-color: blue;
+}
+div.flag.finsk:before {
+    background-color: blue;
+}
+div.flag.svensk:after {
+    background-color: yellow;
+}
+div.flag.svensk:before {
+    background-color: yellow;
+}
+div.flag.norsk:after {
+    background-color: blue;
+    height: 8px;
+    top: calc(50% - 4px);
+}
+div.flag.norsk:before {
+    background: linear-gradient(90deg, white 0%, white 20%, blue 21%, blue 70%, white 71%);
+}
+div.flag.norsk {
+    background: linear-gradient(0deg, red 0%, red 45%, white 46%, white 54%, red 55%); 
+}
+
+div.fare {
+    position: relative;
+    width:0;
+    height: 0;
+    border-top:solid 20px transparent;
+    border-bottom:solid 40px red;
+    border-left:solid 30px transparent;
+    border-right:solid 30px transparent;
+}
+
+div.fare:after {
+    position: absolute;
+    top:6px;
+    left:-5px;
+    display: block;
+    content: "!";
+    color:blue;
+    font-size: 1.8rem;
+}
+
+div.fare:before {
+    content:"";
+    position: absolute;
+    top: 2px;
+    left: -22px;
+    width:0;
+    height: 0;
+    border-top:solid 5px transparent;
+    border-bottom:solid 30px white;
+    border-left:solid 22px transparent;
+    border-right:solid 22px transparent;
+}
