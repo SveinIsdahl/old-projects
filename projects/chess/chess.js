@@ -3,12 +3,19 @@
 let boardArray = [];
 let pieceArray = [];
 let selectedPiece = -1;
+
 class Piece {
+    /**
+     * @param {any} type
+     */
     constructor(type) {
         this.type = type;
         this.pos;
 
     }
+    /**
+     * @param {string | number} pos
+     */
     updatePosition(pos) {
         (this.pos !== undefined) ? boardArray[this.pos].style.backgroundImage = "" : undefined;
 
@@ -31,6 +38,9 @@ class Piece {
             //boardArray[pos].setAttribute("data-number", this.pos + "");
         }
     }
+    /**
+     * @param {{ style: { backgroundImage: string; backgroundPositionX: string; backgroundPositionY: string; }; }} div
+     */
     updatePieceDiv(div) {
         const sprite = this.spritePos(this.type);
 
@@ -38,8 +48,11 @@ class Piece {
         div.style.backgroundPositionX = sprite.x + "%";
         div.style.backgroundPositionY = sprite.y + "%";
     }
-    spritePos(piece) {
-        switch (piece) {
+    /**
+     * @param {any} type
+     */
+    spritePos(type) {
+        switch (type) {
             case "K":
                 return { x: 0, y: 0 }
             case "Q":
@@ -70,8 +83,67 @@ class Piece {
                 break;
         }
     }
-}
+    /**
+     * @param {number} pos
+     */
+    select(pos) {
+        pieceArray.forEach((piece) => {
+            if (piece.pos === pos) {
+                selectedPiece = pos;
+            }
+        })
 
+    }
+    /**
+     * @param {number} dropLoaction
+     */
+    drop(dropLoaction) {
+        if ((this.hasPiece(dropLoaction)) && (this.getPiece(dropLoaction).color === this.getPiece(selectedPiece).color)) {
+            console.log(this.getPiece(dropLoaction).color);
+            console.log(this.getPiece(selectedPiece).color)
+            console.log(pieceArray)
+            console.log("has piece of same color");
+            selectedPiece = -1;
+            return
+
+
+        }
+        pieceArray.forEach((piece) => {
+            if (piece.pos === selectedPiece) {
+                piece.updatePosition(dropLoaction);
+            }
+
+        })
+        selectedPiece = -1;
+    }
+    /**
+     * @param {any} location
+     */
+    hasPiece(location) {
+
+        for (let i = 0; i < pieceArray.length; i++) {
+            if (pieceArray[i].pos === location) {
+                return true
+            }
+        }
+    }
+    /**
+     * @param {number} [pos]
+     */
+    getPiece(pos) {
+        for(let piece of pieceArray) {
+            if(pos === piece.pos) {
+                return piece
+            }
+        }
+        return undefined
+    }
+    get color() {
+        return this.type === this.type.toUpperCase() ? "white" : "black"
+    }
+
+}
+let p = new Piece();
 /**
  * @param {HTMLElement} board
  */
@@ -102,10 +174,10 @@ function setupBoard(board) {
             //div.setAttribute("data-number", rank * 8 + file + "");
             div.addEventListener("click", () => {
                 if (selectedPiece === -1) {
-                    select(rank * 8 + file);
+                    p.select(rank * 8 + file);
                 }
                 else {
-                    drop(rank * 8 + file);
+                    p.drop(rank * 8 + file);
                 }
 
             })
@@ -115,44 +187,7 @@ function setupBoard(board) {
     }
 }
 
-function select(pos) {
 
-    pieceArray.forEach((piece) => {
-        if (piece.pos === pos) {
-            selectedPiece = pos;
-        }
-    })
-
-}
-function drop(dropLoaction) {
-    if(hasPiece(dropLoaction)) {
-        console.log("has piece");
-
-    }
-    pieceArray.forEach((piece) => {
-        if (piece.pos === selectedPiece) {
-            piece.updatePosition(dropLoaction);
-        }
-
-    })
-    selectedPiece = -1;
-}
-function hasPiece(location) {
-
-    for(let i = 0; i < pieceArray.length; i++){
-        if(pieceArray[i].pos === location) {
-            return true
-        }
-    }
-}
-function getPiece(pos) {
-    pieceArray.forEach((piece) => {
-        if (piece.pos === pos) {
-            return piece
-        }
-
-    })
-}
 window.onload = () => {
     const board = document.getElementById("board");
     /*
@@ -186,12 +221,18 @@ function eventlistenerSetup(board) {
     })
 
 }
+/**
+ * @param {HTMLElement} board
+ */
 function resetBoard(board) {
     boardArray = [];
     pieceArray = [];
     board.innerHTML = "";
     setupBoard(board)
 }
+/**
+ * @param {string} string
+ */
 function FEN(string) {
     let ranks = string.split("/").reverse();
 
