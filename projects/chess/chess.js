@@ -1,8 +1,19 @@
 //@ts-check
 
+/**
+ * @param {any} x
+ */
+const l = x => console.log(x)
+const consts = {
+    lightBackground: "#117f11",
+    darkBackground: "#cccccc",
+    greenColorChange: 60,
+}
+
 let boardArray = [];
 let pieceArray = [];
-let selectedPiece = -1;
+let selectedPiecePos = -1;
+let turn = "white";
 
 class Piece {
     /**
@@ -17,6 +28,7 @@ class Piece {
      * @param {string | number} pos
      */
     updatePosition(pos) {
+
         (this.pos !== undefined) ? boardArray[this.pos].style.backgroundImage = "" : undefined;
 
         if (typeof pos === "string") {
@@ -49,7 +61,7 @@ class Piece {
         div.style.backgroundPositionY = sprite.y + "%";
     }
     /**
-     * @param {any} type
+     * @param {string} type
      */
     spritePos(type) {
         switch (type) {
@@ -88,33 +100,38 @@ class Piece {
      */
     select(pos) {
         pieceArray.forEach((piece) => {
-            if (piece.pos === pos) {
-                selectedPiece = pos;
+            if (piece.pos === pos && piece.color === turn) {
+                selectedPiecePos = pos;
+                /**
+                 * @param {number} k
+                 */
+                boardArray[pos].style.backgroundColor = this.setTileColor(boardArray[pos].style.backgroundColor, consts.greenColorChange);                
             }
         })
-
     }
     /**
      * @param {number} dropLoaction
      */
     drop(dropLoaction) {
-        if ((this.hasPiece(dropLoaction)) && (this.getPiece(dropLoaction).color === this.getPiece(selectedPiece).color)) {
-            console.log(this.getPiece(dropLoaction).color);
-            console.log(this.getPiece(selectedPiece).color)
-            console.log(pieceArray)
-            console.log("has piece of same color");
-            selectedPiece = -1;
+        // Piece in droplocation is of same color as selected piece
+        if ((this.hasPiece(dropLoaction)) && (this.getPiece(dropLoaction).color === this.getPiece(selectedPiecePos).color)) {
+            boardArray[selectedPiecePos].style.backgroundColor = this.setTileColor(boardArray[selectedPiecePos].style.backgroundColor, -consts.greenColorChange);                
+            selectedPiecePos = -1;
             return
-
-
         }
-        pieceArray.forEach((piece) => {
-            if (piece.pos === selectedPiece) {
-                piece.updatePosition(dropLoaction);
-            }
+        let piece = this.getPiece(selectedPiecePos);
+        this.removePiece(dropLoaction);
+        piece.updatePosition(dropLoaction);
+        boardArray[selectedPiecePos].style.backgroundColor = this.setTileColor(boardArray[selectedPiecePos].style.backgroundColor, -consts.greenColorChange);                
 
-        })
-        selectedPiece = -1;
+        if(turn === "white") {
+            turn = "black";
+        }
+        else if(turn === "black") {
+            turn = "white";
+        }
+
+        selectedPiecePos = -1;
     }
     /**
      * @param {any} location
@@ -128,7 +145,7 @@ class Piece {
         }
     }
     /**
-     * @param {number} [pos]
+     * @param {number} pos
      */
     getPiece(pos) {
         for(let piece of pieceArray) {
@@ -138,24 +155,49 @@ class Piece {
         }
         return undefined
     }
+    /**
+     * @param {number} pos
+     */
+    removePiece(pos) {
+        
+        pieceArray.forEach((piece, index) => {
+            if (piece.pos === pos) {
+                piece.updatePosition(undefined);
+                pieceArray.splice(index, 1);
+            }
+
+        })
+    }
+    /**
+     * @param {string} color
+     * @param {number} g
+     */
+    setTileColor(color, g) {
+        l(color);
+        let colors = color.split("(");
+        colors.splice(0,1);
+        colors = colors[0].split(" ").join().split(",").filter(k => k !== "");
+        l(colors)
+        return "rgb(" + colors[0] + ", " + (Number(colors[1])+g) + ", " + colors[2] + ""
+    }
     get color() {
         return this.type === this.type.toUpperCase() ? "white" : "black"
     }
 
 }
-let p = new Piece();
 /**
  * @param {HTMLElement} board
  */
 function setupBoard(board) {
     const size = Number(board.offsetHeight) / 8;
+    let p = new Piece();
     for (let rank = 0; rank < 8; rank++) {
         for (let file = 0; file < 8; file++) {
             const isLight = (file + rank) % 2 !== 0;
 
-            let color = "#117f11";
+            let color = consts.lightBackground;
             if (isLight === true) {
-                color = "#cccccc"
+                color = consts.darkBackground;
             }
 
             let div = document.createElement("div");
@@ -173,7 +215,7 @@ function setupBoard(board) {
             div.style.backgroundSize = "600%";
             //div.setAttribute("data-number", rank * 8 + file + "");
             div.addEventListener("click", () => {
-                if (selectedPiece === -1) {
+                if (selectedPiecePos === -1) {
                     p.select(rank * 8 + file);
                 }
                 else {
@@ -190,12 +232,6 @@ function setupBoard(board) {
 
 window.onload = () => {
     const board = document.getElementById("board");
-    /*
-    window.addEventListener("resize", () => {
-        board.innerHTML = "";
-        setupBoard(board);
-    })
-    */
     eventlistenerSetup(board);
     resetBoard(board);
     //Initialize board with standard position
@@ -235,7 +271,11 @@ function resetBoard(board) {
  */
 function FEN(string) {
     let ranks = string.split("/").reverse();
-
+    if(ranks.length !== 8) {
+        alert("Invalid FEN");
+        FEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
+        return
+    }
     for (let i = 0; i < ranks.length; i++) {
         let rank = ranks[i]
         let currentRank = rank.split("");
@@ -244,10 +284,11 @@ function FEN(string) {
 
             let symbol = currentRank[j];
 
-            // Hvis string er et tall
             if (symbol === "8") {
                 continue
             }
+            // Hvis string er et tall
+            // @ts-ignore
             else if ((!isNaN(parseFloat(symbol)) && isFinite(symbol))) {
 
                 if (currentRank[j + 1] === undefined) {

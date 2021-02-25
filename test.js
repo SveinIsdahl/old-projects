@@ -33,7 +33,7 @@ for(let forkort in forkortelseListe) {
 function forkort(a) {
     let object = {};
     // Array med alle ord utenom forkortelser
-    const wordArray = a.split(/[ .,!]+/).filter( word => (word !== word.toUpperCase()) || (word.length < 2));
+    const wordArray = a.split(/[ .,!]+/).filter(word => (word !== word.toUpperCase()) || (word.length < 2));
 
     // Array med forkortelser
     const forkortelser = a.split(/[ .,!]+/).filter(word => word === word.toUpperCase() && word.length >= 2);
@@ -41,20 +41,20 @@ function forkort(a) {
     //Traverserer alle forkortelser
     for (let i = 0; i < forkortelser.length; i++) {
         const forkortelseOrd = forkortelser[i].split("");
-            //Traverserer alle ord som kan matche
-            for (let k = 0; k < wordArray.length; k++) {
-                //Traverserer forkortelseord for å sjekke hver bosktav
-                if(forkortelseOrd[0] === wordArray[k].charAt(0)) {
-                    for (let l = 0; l < forkortelseOrd.length; l++) {
-                        const forkortLetter = forkortelseOrd[l];
-                        const firstLetterinWordArray = wordArray[k+l].charAt(0);
-                        if (firstLetterinWordArray === forkortLetter) {
-                            object[forkortelseOrd.join("")] === undefined ? object[forkortelseOrd.join("")] = wordArray[k + l] : object[forkortelseOrd.join("")] += " " + wordArray[k + l]                            
-                        }
+        //Traverserer alle ord som kan matche
+        for (let k = 0; k < wordArray.length; k++) {
+            //Traverserer forkortelseord for å sjekke hver bosktav
+            if (forkortelseOrd[0] === wordArray[k].charAt(0)) {
+                for (let l = 0; l < forkortelseOrd.length; l++) {
+                    const forkortLetter = forkortelseOrd[l];
+                    const firstLetterinWordArray = wordArray[k + l].charAt(0);
+                    if (firstLetterinWordArray === forkortLetter) {
+                        object[forkortelseOrd.join("")] === undefined ? object[forkortelseOrd.join("")] = wordArray[k + l] : object[forkortelseOrd.join("")] += " " + wordArray[k + l]
                     }
                 }
-                
             }
+
+        }
     }
     return object
 }
@@ -65,4 +65,37 @@ function forkort(a) {
 console.log(forkort("I et skriv Ferje Og Rogaland Samband har FORS Norges Offentlige Utredninger lagt fram en undersøkelse av forekomst av frostskader på barmark. Videre har NOU rapporten argumentert for viktigheten av påstrøing av mold på sentliggende snø.").NOU)
 
 
+/**
+ * @param {string} a
+ */
+function forstavelse(a) {
+    const first = a.substr(0, 3)
+    let b = a.split("");
+    const main = b.slice(3, a.length).join("")
+    return main + first;
+}
 
+
+forstavelse("abcdefghi")
+
+
+
+/**
+ * @param {string} a
+ */
+function nettNumber(a) {
+    let array = a.split(",");
+    let c = 0;
+    let prevLetter = "";
+    for (let i = 0; i < array.length; i++) {
+        let string = array[i];
+        let s = string.replace("-", "").split("");
+        if (s[0] === prevLetter) {
+        }
+        else {
+            c++
+        }
+        prevLetter = s[1];
+    }
+    return c
+}

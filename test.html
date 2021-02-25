@@ -14,117 +14,30 @@
             width: 100px;
             height: 100px;
         }
+
+        #bleng {
+            width: 200px;
+            height: 200px;
+            border: solid red 1px;
+            color: blue;
+            font-size: 2px;
+            background: bleu;
+            text-align: center;
+        }
+
+        .nik {
+            width: 200px;
+            height: 30px;
+            font-size: 2em;
+            background: #ff0;
+        }
     </style>
 </head>
 
 <body>
-    <div id="test"></div>
+    <div class="bleng nik"> Lorem impsum</div>
     <script>
-        let divFig1 = document.getElementById("test");
-        let moveFrames = [
-        { left: "0vw" },
-        { left: "600px" }
-    ];
-    let moveSettings = {
-        duration: 12000,
-        iterations: 1,
-
-    }
-    let move = divFig1.animate(moveFrames, moveSettings);
-
-        /*
-        function findNumbers(a) {
-            let numbers = [];
-            let i = 0;
-            const lengde = a.length;
-            while (i < length) {
-                const ch = a[i];
-                i++;
-                if (Number.isInteger(+ch)) {
-                    let tall = ch;
-                    while ((i < length) && Number.isInteger(+a[i])) {
-                        tall += a[i];
-                        i++;
-                    }
-                    numbers.push(+tall);
-                }
-            }
-            return numbers;
-
-        }
-        function shortName(a, b, c) {
-            if (a.length + " " + b.length < c) {
-                return a + " " + b
-            }
-            if (b.length + 1 < c) {
-                return a.charAt(0) + " " + b;
-            }
-            return a.charAt(0) + " " + b.charAt(0);
-        }
-
-        class Elev {
-            constructor(navn, klasse, epost) {
-                this.navn = navn;
-                this.klasse = klasse;
-                this.epost = epost;
-            }
-            render() {
-                return this.navn;
-            }
-        }
-        let p = new Elev(`ole`, `3a`, `a@b.com`)
-
-        function abc(a,b,c) {
-            const d = b*b - 4*a*c;
-            if(d < 0) {
-                return false;
-            }
-            r = (-b + Math.sqrt(d)) /2;
-            if(Number.isInteger(r)) {
-                return true;
-            }
-            return false
-        }
-        function dynamicReduce(a) {
-            for (let i = 0; i < a.length; i++) {
-                if(i > 0) {
-                    let u = a[i-1];
-                    let v = a[i];
-                    let diff = Math.abs(u-v);
-                    if((diff/u) > 0.05) {
-                        a[i] = u;
-                    }
-                }
-            }
-            return a;
-        }
         
-        function taSide(a,b,c) {
-            let v = {};
-
-            let w = {};
-
-            v.x = b.x - a.x;
-            v.y = b.y - a.y;
-
-            w.x = c.x - a.x;
-            w.y = c.y - a.y;
-
-            let s = w.x*v.y - w.y*v.x
-
-            if(s < 0) {
-                return "left"
-            }
-            if(s === 0) {
-                return "online"
-            }
-            if(s > 0) {
-                return "right"
-            }
-        }
-
-        
-        */
     </script>
     <script src="test.js"></script>
 </body>
