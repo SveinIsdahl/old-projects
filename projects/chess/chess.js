@@ -17,7 +17,7 @@ let turn = "white";
 
 class Piece {
     /**
-     * @param {any} type
+     * @param {string} type
      */
     constructor(type) {
         this.type = type;
@@ -25,9 +25,10 @@ class Piece {
 
     }
     /**
+     * Moves a piece by updating the selected div and removing piece from previous square
      * @param {string | number} pos
      */
-    updatePosition(pos) {
+    move(pos) {
 
         (this.pos !== undefined) ? boardArray[this.pos].style.backgroundImage = "" : undefined;
 
@@ -51,16 +52,17 @@ class Piece {
         }
     }
     /**
-     * @param {{ style: { backgroundImage: string; backgroundPositionX: string; backgroundPositionY: string; }; }} div
+     * Sets background image of square div to a piece 
+     * @param {HTMLElement} div
      */
     updatePieceDiv(div) {
         const sprite = this.spritePos(this.type);
-
         div.style.backgroundImage = "url(pieces.svg)";
         div.style.backgroundPositionX = sprite.x + "%";
         div.style.backgroundPositionY = sprite.y + "%";
     }
     /**
+     * Returns sprite position
      * @param {string} type
      */
     spritePos(type) {
@@ -96,6 +98,7 @@ class Piece {
         }
     }
     /**
+     * Selects a piece
      * @param {number} pos
      */
     select(pos) {
@@ -105,41 +108,48 @@ class Piece {
                 /**
                  * @param {number} k
                  */
-                boardArray[pos].style.backgroundColor = this.setTileColor(boardArray[pos].style.backgroundColor, consts.greenColorChange);                
+                boardArray[pos].style.backgroundColor = this.setTileColor(boardArray[pos].style.backgroundColor, consts.greenColorChange);
             }
         })
     }
     /**
+     * Drops a piece if conditions are met
      * @param {number} dropLoaction
      */
     drop(dropLoaction) {
+        let piece = this.getPiece(selectedPiecePos);
+
         // Piece in droplocation is of same color as selected piece
-        if ((this.hasPiece(dropLoaction)) && (this.getPiece(dropLoaction).color === this.getPiece(selectedPiecePos).color)) {
-            boardArray[selectedPiecePos].style.backgroundColor = this.setTileColor(boardArray[selectedPiecePos].style.backgroundColor, -consts.greenColorChange);                
+        if ((this.hasPiece(dropLoaction)) && (this.getPiece(dropLoaction).color === piece.color)) {
+            boardArray[selectedPiecePos].style.backgroundColor = this.setTileColor(boardArray[selectedPiecePos].style.backgroundColor, -consts.greenColorChange);
             selectedPiecePos = -1;
             return
         }
-        let piece = this.getPiece(selectedPiecePos);
-        this.removePiece(dropLoaction);
-        piece.updatePosition(dropLoaction);
-        boardArray[selectedPiecePos].style.backgroundColor = this.setTileColor(boardArray[selectedPiecePos].style.backgroundColor, -consts.greenColorChange);                
+        if (validMove(piece, dropLoaction) !== true) {
+            l("not valid");
+            boardArray[selectedPiecePos].style.backgroundColor = this.setTileColor(boardArray[selectedPiecePos].style.backgroundColor, -consts.greenColorChange);
+            selectedPiecePos = -1;
+            return
+        }
+        l("valid");
 
-        if(turn === "white") {
-            turn = "black";
-        }
-        else if(turn === "black") {
-            turn = "white";
-        }
+        this.removePiece(dropLoaction);
+        piece.move(dropLoaction);
+        boardArray[selectedPiecePos].style.backgroundColor = this.setTileColor(boardArray[selectedPiecePos].style.backgroundColor, -consts.greenColorChange);
+
+        turn === "white" ? turn = "black" : turn = "white";
+
 
         selectedPiecePos = -1;
     }
     /**
-     * @param {any} location
+     * Checks of a square has a piece
+     * @param {number} square
      */
-    hasPiece(location) {
+    hasPiece(square) {
 
         for (let i = 0; i < pieceArray.length; i++) {
-            if (pieceArray[i].pos === location) {
+            if (pieceArray[i].pos === square) {
                 return true
             }
         }
@@ -148,8 +158,8 @@ class Piece {
      * @param {number} pos
      */
     getPiece(pos) {
-        for(let piece of pieceArray) {
-            if(pos === piece.pos) {
+        for (let piece of pieceArray) {
+            if (pos === piece.pos) {
                 return piece
             }
         }
@@ -159,10 +169,10 @@ class Piece {
      * @param {number} pos
      */
     removePiece(pos) {
-        
+
         pieceArray.forEach((piece, index) => {
             if (piece.pos === pos) {
-                piece.updatePosition(undefined);
+                piece.move(undefined);
                 pieceArray.splice(index, 1);
             }
 
@@ -173,24 +183,21 @@ class Piece {
      * @param {number} g
      */
     setTileColor(color, g) {
-        l(color);
         let colors = color.split("(");
-        colors.splice(0,1);
+        colors.splice(0, 1);
         colors = colors[0].split(" ").join().split(",").filter(k => k !== "");
-        l(colors)
-        return "rgb(" + colors[0] + ", " + (Number(colors[1])+g) + ", " + colors[2] + ""
+        return "rgb(" + colors[0] + ", " + (Number(colors[1]) + g) + ", " + colors[2] + ""
     }
     get color() {
         return this.type === this.type.toUpperCase() ? "white" : "black"
     }
-
 }
 /**
  * @param {HTMLElement} board
  */
 function setupBoard(board) {
     const size = Number(board.offsetHeight) / 8;
-    let p = new Piece();
+    let p = new Piece("");
     for (let rank = 0; rank < 8; rank++) {
         for (let file = 0; file < 8; file++) {
             const isLight = (file + rank) % 2 !== 0;
@@ -270,8 +277,10 @@ function resetBoard(board) {
  * @param {string} string
  */
 function FEN(string) {
+    selectedPiecePos = -1;
+    turn = "white";
     let ranks = string.split("/").reverse();
-    if(ranks.length !== 8) {
+    if (ranks.length !== 8) {
         alert("Invalid FEN");
         FEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
         return
@@ -296,7 +305,7 @@ function FEN(string) {
                 }
                 let currentPiece = new Piece(currentRank[j + 1]);
 
-                currentPiece.updatePosition(i * 8 + j + parseInt(symbol));
+                currentPiece.move(i * 8 + j + parseInt(symbol));
                 pieceArray.push(currentPiece);
 
                 j++;
@@ -305,11 +314,60 @@ function FEN(string) {
             else {
                 let currentPiece = new Piece(symbol);
                 // (rank*8 + file)
-                currentPiece.updatePosition(i * 8 + j);
+                currentPiece.move(i * 8 + j);
                 pieceArray.push(currentPiece);
             }
         };
         //}
     };
 
+}
+/**
+ * @param {object} piece
+ * @param {string} piece.type
+ * @param {number} piece.pos
+ * 
+ * @param {number} dropLoaction
+ */
+
+function validMove(piece, dropLoaction) {
+    let arr = moves(piece)
+    for(let pos of arr) {
+        if(pos === dropLoaction) {
+            return true
+        }
+    }
+}
+/**
+ * Funksjon moves() som finner alle ruter som kan flyttes til
+ * array i Piece class som inneholder alle ruter som kan flyttes til?
+ * parameter piece - finner da hvilke ruter som kan flyttes til
+ *  - dersom det er en hvit bonde 
+ * sjekker om den står på 
+ */
+let movesObject = {
+    "k": [7, 8, 9, -1, 1, -9, -8, -7],
+}
+/**
+ * 
+ * @param {object} piece
+ * @param {string} piece.type
+ * @param {number} piece.pos
+ */
+function moves(piece) {
+    let type = piece.type;
+    if(type === "p") {
+
+    }
+    if(type === "P") {
+        
+    }
+
+    type = type.toLowerCase();
+    if(type === "k") {
+        return movesObject.k.map(e => e+piece.pos);
+    }
+    if(type = "r") {
+
+    }
 }
