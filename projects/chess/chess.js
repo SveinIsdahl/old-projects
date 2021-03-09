@@ -19,6 +19,9 @@ class Piece {
     /**
      * @param {string} type
      */
+    type;
+    /** @type {number} */
+    pos;
     constructor(type) {
         this.type = type;
         this.pos;
@@ -113,33 +116,24 @@ class Piece {
         })
     }
     /**
-     * Drops a piece if conditions are met
-     * @param {number} dropLoaction
-     */
-    drop(dropLoaction) {
+ * Drops a piece if conditions are met
+ * @param {number} dropLocation
+ */
+    parentDrop(dropLocation) {
         let piece = this.getPiece(selectedPiecePos);
 
         // Piece in droplocation is of same color as selected piece
-        if ((this.hasPiece(dropLoaction)) && (this.getPiece(dropLoaction).color === piece.color)) {
+        if ((this.hasPiece(dropLocation)) && (this.getPiece(dropLocation).color === piece.color)) {
             boardArray[selectedPiecePos].style.backgroundColor = this.setTileColor(boardArray[selectedPiecePos].style.backgroundColor, -consts.greenColorChange);
             selectedPiecePos = -1;
             return
         }
-        if (validMove(piece, dropLoaction) !== true) {
-            l("not valid");
-            boardArray[selectedPiecePos].style.backgroundColor = this.setTileColor(boardArray[selectedPiecePos].style.backgroundColor, -consts.greenColorChange);
-            selectedPiecePos = -1;
-            return
-        }
-        l("valid");
 
-        this.removePiece(dropLoaction);
-        piece.move(dropLoaction);
+        this.removePiece(dropLocation);
+        piece.move(dropLocation);
         boardArray[selectedPiecePos].style.backgroundColor = this.setTileColor(boardArray[selectedPiecePos].style.backgroundColor, -consts.greenColorChange);
 
         turn === "white" ? turn = "black" : turn = "white";
-
-
         selectedPiecePos = -1;
     }
     /**
@@ -188,8 +182,208 @@ class Piece {
         colors = colors[0].split(" ").join().split(",").filter(k => k !== "");
         return "rgb(" + colors[0] + ", " + (Number(colors[1]) + g) + ", " + colors[2] + ""
     }
+
     get color() {
         return this.type === this.type.toUpperCase() ? "white" : "black"
+    }
+}
+class King extends Piece {
+    /**
+ * Drops a piece if conditions are met
+ * @param {number} dropLocation
+ */
+    drop(dropLocation) {
+        if (this.validMove(dropLocation)) {
+            this.parentDrop(dropLocation);
+        }
+        else {
+            boardArray[selectedPiecePos].style.backgroundColor = this.setTileColor(boardArray[selectedPiecePos].style.backgroundColor, -consts.greenColorChange);
+            selectedPiecePos = -1;
+            return
+        }
+    }
+    validMove(dropLoaction) {
+        let arr = this.moves()
+        for (let pos of arr) {
+            if (pos === dropLoaction) {
+                return true
+            }
+        }
+    }
+    moves() {
+        return [7, 8, 9, -1, 1, -9, -8, -7].map(e => e + this.pos);
+    }
+}
+class Queen extends Piece {
+    /**
+    * Drops a piece if conditions are met
+    * @param {number} dropLocation
+    */
+    drop(dropLocation) {
+        if (this.validMove(dropLocation)) {
+            this.parentDrop(dropLocation);
+        }
+        else {
+            boardArray[selectedPiecePos].style.backgroundColor = this.setTileColor(boardArray[selectedPiecePos].style.backgroundColor, -consts.greenColorChange);
+            selectedPiecePos = -1;
+            return
+        }
+    }
+    validMove(dropLoaction) {
+        let arr = this.moves()
+        for (let pos of arr) {
+            if (pos === dropLoaction) {
+                return true
+            }
+        }
+    }
+    moves() {
+        return [7, 8, 9, -1, 1, -9, -8, -7].map(e => e + this.pos);
+    }
+}
+class Knight extends Piece {
+    /**
+    * Drops a piece if conditions are met
+    * @param {number} dropLocation
+    */
+    drop(dropLocation) {
+        if (this.validMove(dropLocation)) {
+            this.parentDrop(dropLocation);
+        }
+        else {
+            boardArray[selectedPiecePos].style.backgroundColor = this.setTileColor(boardArray[selectedPiecePos].style.backgroundColor, -consts.greenColorChange);
+            selectedPiecePos = -1;
+            return
+        }
+    }
+    validMove(dropLoaction) {
+        let arr = this.moves()
+        for (let pos of arr) {
+            if (pos === dropLoaction) {
+                return true
+            }
+        }
+    }
+    moves() {
+        // Wrong
+        let arr = [16 - 1, 16 + 1, 6, 10, -10, -6 - 16 - 1, -16 + 1].map(e => e + this.pos);
+        arr.forEach((e,index) => {
+            let directionsArr = Object.keys(minToEdge(e)).map(k=> Number(k));
+            let posArr = minToEdge(this.pos)
+            for (let i = 0; i < directionsArr.length; i++) {
+                if(Math.abs(directionsArr[i]-posArr[i]) >= 3) {
+                    arr.splice(index, 1);
+                }
+                
+            }
+        })
+        return arr
+    }
+}
+class Bishop extends Piece {
+    /**
+    * Drops a piece if conditions are met
+    * @param {number} dropLocation
+    */
+    drop(dropLocation) {
+        if (this.validMove(dropLocation)) {
+            this.parentDrop(dropLocation);
+        }
+        else {
+            boardArray[selectedPiecePos].style.backgroundColor = this.setTileColor(boardArray[selectedPiecePos].style.backgroundColor, -consts.greenColorChange);
+            selectedPiecePos = -1;
+            return
+        }
+    }
+    validMove(dropLoaction) {
+        let arr = this.moves()
+        for (let pos of arr) {
+            if (pos === dropLoaction) {
+                return true
+            }
+        }
+    }
+    moves() {
+        return [7, 8, 9, -1, 1, -9, -8, -7].map(e => e + this.pos);
+    }
+}
+class Rook extends Piece {
+    /**
+    * Drops a piece if conditions are met
+    * @param {number} dropLocation
+    */
+    drop(dropLocation) {
+        if (this.validMove(dropLocation)) {
+            this.parentDrop(dropLocation);
+        }
+        else {
+            boardArray[selectedPiecePos].style.backgroundColor = this.setTileColor(boardArray[selectedPiecePos].style.backgroundColor, -consts.greenColorChange);
+            selectedPiecePos = -1;
+            return
+        }
+    }
+    validMove(dropLoaction) {
+        let arr = this.moves()
+        for (let pos of arr) {
+            if (pos === dropLoaction) {
+                return true
+            }
+        }
+    }
+    moves() {
+        return [7, 8, 9, -1, 1, -9, -8, -7].map(e => e + this.pos);
+    }
+}
+class Pawn extends Piece {
+    /**
+    * Drops a piece if conditions are met
+    * @param {number} dropLocation
+    */
+    drop(dropLocation) {
+        if (this.validMove(dropLocation)) {
+            this.parentDrop(dropLocation);
+        }
+        else {
+            boardArray[selectedPiecePos].style.backgroundColor = this.setTileColor(boardArray[selectedPiecePos].style.backgroundColor, -consts.greenColorChange);
+            selectedPiecePos = -1;
+            return
+        }
+    }
+    validMove(dropLoaction) {
+        let arr = this.moves()
+        for (let pos of arr) {
+            if (pos === dropLoaction) {
+                return true
+            }
+        }
+    }
+    moves() {
+        let moves = [];
+        let inv
+
+        if (this.color === "white") {
+            inv = 1;
+            if (this.pos > 7 && this.pos < 15) {
+                moves.push(this.pos + 16);
+            }
+        }
+        else {
+            inv = -1;
+            if (this.pos > 47 && this.pos < 55) {
+                moves.push(this.pos - 16);
+            }
+        }
+        if (Piece.prototype.hasPiece(this.pos + 7 * inv)) {
+            moves.push(this.pos + 7 * inv);
+        }
+        if (!Piece.prototype.hasPiece(this.pos + 8 * inv)) {
+            moves.push(this.pos + 8 * inv)
+        }
+        if (Piece.prototype.hasPiece(this.pos + 9 * inv)) {
+            moves.push(this.pos + 9 * inv)
+        }
+
+        return moves
     }
 }
 /**
@@ -197,7 +391,6 @@ class Piece {
  */
 function setupBoard(board) {
     const size = Number(board.offsetHeight) / 8;
-    let p = new Piece("");
     for (let rank = 0; rank < 8; rank++) {
         for (let file = 0; file < 8; file++) {
             const isLight = (file + rank) % 2 !== 0;
@@ -223,10 +416,11 @@ function setupBoard(board) {
             //div.setAttribute("data-number", rank * 8 + file + "");
             div.addEventListener("click", () => {
                 if (selectedPiecePos === -1) {
-                    p.select(rank * 8 + file);
+                    Piece.prototype.select(rank * 8 + file);
                 }
                 else {
-                    p.drop(rank * 8 + file);
+                    let piece = Piece.prototype.getPiece(selectedPiecePos);
+                    piece.drop(rank * 8 + file);
                 }
 
             })
@@ -235,8 +429,6 @@ function setupBoard(board) {
         }
     }
 }
-
-
 window.onload = () => {
     const board = document.getElementById("board");
     eventlistenerSetup(board);
@@ -244,7 +436,6 @@ window.onload = () => {
     //Initialize board with standard position
     FEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
 }
-
 /**
  * @param {HTMLElement} board
  */
@@ -288,86 +479,64 @@ function FEN(string) {
     for (let i = 0; i < ranks.length; i++) {
         let rank = ranks[i]
         let currentRank = rank.split("");
-
-        for (let j = 0; j < currentRank.length; j++) {
-
-            let symbol = currentRank[j];
-
-            if (symbol === "8") {
-                continue
-            }
+        let counter = 0;
+        for (let j = 0; j < 8; j++) {
+            let symbol = currentRank[counter];
             // Hvis string er et tall
             // @ts-ignore
-            else if ((!isNaN(parseFloat(symbol)) && isFinite(symbol))) {
-
-                if (currentRank[j + 1] === undefined) {
-                    continue
-                }
-                let currentPiece = new Piece(currentRank[j + 1]);
-
-                currentPiece.move(i * 8 + j + parseInt(symbol));
-                pieceArray.push(currentPiece);
-
-                j++;
-                continue
+            if ((!isNaN(parseFloat(symbol)) && isFinite(symbol))) {
+                j += parseInt(symbol) - 1;
             }
             else {
-                let currentPiece = new Piece(symbol);
+                let currentPiece;
+                if (symbol === undefined) {
+                    continue
+                }
+                let lowSym = symbol.toLowerCase();
+
+                switch (lowSym) {
+                    case ("k"):
+                        currentPiece = new King(symbol);
+                        break;
+                    case ("q"):
+                        currentPiece = new Queen(symbol);
+                        break;
+                    case ("n"):
+                        currentPiece = new Knight(symbol);
+                        break;
+                    case ("b"):
+                        currentPiece = new Bishop(symbol);
+                        break;
+                    case ("r"):
+                        currentPiece = new Rook(symbol);
+                        break;
+                    case ("p"):
+                        currentPiece = new Pawn(symbol);
+                        break;
+
+                    default:
+                        break;
+                }
                 // (rank*8 + file)
                 currentPiece.move(i * 8 + j);
                 pieceArray.push(currentPiece);
             }
+            counter++
+
         };
         //}
     };
 
 }
 /**
- * @param {object} piece
- * @param {string} piece.type
- * @param {number} piece.pos
- * 
- * @param {number} dropLoaction
+ * @param {number} pos
+ * @returns {object} distances to edge of board in cardinal directions
  */
-
-function validMove(piece, dropLoaction) {
-    let arr = moves(piece)
-    for(let pos of arr) {
-        if(pos === dropLoaction) {
-            return true
-        }
-    }
-}
-/**
- * Funksjon moves() som finner alle ruter som kan flyttes til
- * array i Piece class som inneholder alle ruter som kan flyttes til?
- * parameter piece - finner da hvilke ruter som kan flyttes til
- *  - dersom det er en hvit bonde 
- * sjekker om den står på 
- */
-let movesObject = {
-    "k": [7, 8, 9, -1, 1, -9, -8, -7],
-}
-/**
- * 
- * @param {object} piece
- * @param {string} piece.type
- * @param {number} piece.pos
- */
-function moves(piece) {
-    let type = piece.type;
-    if(type === "p") {
-
-    }
-    if(type === "P") {
-        
-    }
-
-    type = type.toLowerCase();
-    if(type === "k") {
-        return movesObject.k.map(e => e+piece.pos);
-    }
-    if(type = "r") {
-
-    }
+function minToEdge(pos) {
+    let distances = {};
+    distances.w = pos % 8;
+    distances.s = Math.floor(pos / 8);
+    distances.e = 7 - distances.w;
+    distances.n = 7 - distances.s;
+    return distances
 }

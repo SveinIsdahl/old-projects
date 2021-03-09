@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="kalender.js"></script>
+    <style>
+        span {
+            -ms-user-select: none;
+            user-select: none;
+            padding: 2px;
+            margin: 0px;
+        }
+
+        div {
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        span:hover {
+            background-color: rgb(230, 238, 245);
+        }
+
+        body {
+            font-size: large;
+        }
+
+        #main {
+            position: absolute;
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            margin-left: -100px;
+        }
+        #yeardiv{
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+        }
+        #yeardiv > span {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="yeardiv">
+            <span id="py">&lt;</span>
+            <span id="year">2021</span>
+            <span id="ny">&gt;</span>
+        </div>
+        <div id="monthdiv">
+            <span id="pm">&lt;</span>
+            <span id="month">Mar</span>
+            <span id="nm">&gt;</span>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
