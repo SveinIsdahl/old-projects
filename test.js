@@ -23,7 +23,7 @@ for(let forkort in forkortelseListe) {
             
         }
     }
-*/
+
 /**
  * Finner forkortinger i en tekst.
  * Gir tilbake ordliste { NTB:"Norsk Telegram Byrå" }
@@ -62,7 +62,6 @@ function forkort(a) {
 
 
 
-console.log(forkort("I et skriv Ferje Og Rogaland Samband har FORS Norges Offentlige Utredninger lagt fram en undersøkelse av forekomst av frostskader på barmark. Videre har NOU rapporten argumentert for viktigheten av påstrøing av mold på sentliggende snø.").NOU)
 
 
 /**
@@ -99,3 +98,22 @@ function nettNumber(a) {
     }
     return c
 }
+
+
+
+const l = (x) => { console.log(x) }
+/**
+ * @param {string} a
+ */
+function nettCycles(a) {
+    let counter = 0;
+    let networkPointsArr = a.split(",").join("-").split("-");
+    networkPointsArr.forEach((l, i) => {
+        networkPointsArr.forEach((k, j) => {
+            l === k && i > (j+1) ? counter++ : undefined
+        })
+    })
+    return counter;
+}
+//console.log(nettCycles("a-b,b-a"));
+//console.log(nettCycles("a-b,b-c,c-d,d-e,e-f,f-g,g-a,h-i,i-j,j-k,k-l,l-m,n-o,o-p,p-q,q-r,r-n,s-t,t-u"));
