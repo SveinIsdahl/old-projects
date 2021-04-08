@@ -95,19 +95,29 @@ window.onload = () => {
 
     // @ts-ignore
     database = firebase.database();
+     
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            loadDatabase(firebase.auth().currentUser.uid);
 
-    //sign in/up form
-    document.getElementById("sign").innerHTML = `
-    <label><b>Email</b></label>
-    <input type="text" id="email" required>
-    <br>
-    <label><b>Passord</b></label>
-    <input type="password" id="pwd" required>
+        } else {
+            //sign in/up form
+            document.getElementById("sign").innerHTML = `
+            <label><b>Email</b></label>
+            <input type="text" id="email" required>
+            <br>
+            <label><b>Passord</b></label>
+            <input type="password" id="pwd" required>
+    
+            <button id="loginbtn">Logg Inn</button> `;
+            document.getElementById("loginbtn").addEventListener("click", () => { login(firebase) });
+            //document.getElementById("signupbtn").addEventListener("click", () => { signup(firebase) })
+            //<button id="signupbtn">Opprett Bruker</button>
+        }
+    });
 
-    <button id="loginbtn">Logg Inn</button> `;
-    document.getElementById("loginbtn").addEventListener("click", () => { login(firebase) });
-    //document.getElementById("signupbtn").addEventListener("click", () => { signup(firebase) })
-    //<button id="signupbtn">Opprett Bruker</button>
+
+
 
 
 
@@ -121,7 +131,7 @@ function gotData(returnedData) {
     let data = returnedData.val();
 
     if (data == null || data == undefined) {
-        retrievedDataArray = [{"test":"test1","test2":"test3"}];
+        retrievedDataArray = [{ "test": "test1", "test2": "test3" }];
         createCalendar();
         dateAccumulator = 0;
 
