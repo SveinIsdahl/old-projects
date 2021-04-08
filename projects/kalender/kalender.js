@@ -104,10 +104,10 @@ window.onload = () => {
     <label><b>Passord</b></label>
     <input type="password" id="pwd" required>
 
-    <button id="loginbtn">Logg Inn</button> <button id="signupbtn">Opprett Bruker</button>`;
+    <button id="loginbtn">Logg Inn</button> `;
     document.getElementById("loginbtn").addEventListener("click", () => { login(firebase) });
-    document.getElementById("signupbtn").addEventListener("click", () => { signup(firebase) })
-
+    //document.getElementById("signupbtn").addEventListener("click", () => { signup(firebase) })
+    //<button id="signupbtn">Opprett Bruker</button>
 
 
 
