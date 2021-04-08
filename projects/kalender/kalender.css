@@ -1,0 +1,81 @@
+#kalender {
+  padding: 15px;
+  background-color: lightgray;
+}
+
+.uke {
+  margin: 0px;
+  border-radius: 5%;
+  width: auto;
+  height: 130px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.dag, .ukeNr{
+  text-align: center;
+  border: none 1px solid;
+  border-radius: 3%;
+  background: #889090;
+  margin: 3px;
+  font-size: 1.2em;
+}
+
+.ukeNr {
+  background: #222b2c;
+  color: white;
+  border-radius: 7px;
+
+}
+
+body {
+  background-color: lightgray;
+}
+
+@media only screen and (max-width: 1100px) {
+  #kalender {
+    padding: 1px;
+  }
+  .dag {
+    margin: 1px;
+    font-size: 0.8em;
+  }
+}
+
+form {
+  border: 3px solid #f1f1f1;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#sign {
+  padding: 16px;
+  max-width: 400px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
