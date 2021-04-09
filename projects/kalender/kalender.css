@@ -1,5 +1,4 @@
 #kalender {
-  margin: -8px;
   background-color: lightgray;
 }
 
@@ -33,18 +32,21 @@ body {
 }
 
 @media only screen and (max-aspect-ratio: 1/1) {
+  #kalender {
+    margin: -7px;
+  }
   .dag {
     margin: 1px;
     font-size: 0.8em;
   }
   .ukeNr {
-    margin: 1px;
+    margin: 0px;
     font-size: 0.9em;
   }
 }
 @media (pointer:none), (pointer:coarse) {
   #kalender {
-    padding: 1px;
+    margin: -8px;
   }
   .dag {
     margin: 1px;
