@@ -32,7 +32,7 @@ body {
   background-color: lightgray;
 }
 
-@media only screen and (max-aspect-ratio: 6/5) {
+@media only screen and (max-aspect-ratio: 1/1) {
   #kalender {
     padding: 1px;
   }
@@ -45,7 +45,19 @@ body {
     font-size: 0.9em;
   }
 }
-
+@media (pointer:none), (pointer:coarse) {
+  #kalender {
+    padding: 1px;
+  }
+  .dag {
+    margin: 1px;
+    font-size: 0.8em;
+  }
+  .ukeNr {
+    margin: 1px;
+    font-size: 0.9em;
+  }
+}
 form {
   border: 3px solid #f1f1f1;
 }
