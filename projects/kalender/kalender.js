@@ -195,6 +195,7 @@ function createCalendar() {
         let ukeNrDiv = document.createElement("div");
         kalender.append(ukeNrDiv);
         ukeNrDiv.className = "ukeNr";
+
         ukeNrDiv.innerHTML = "Uke " + ukenr;
         ukenr += 1;
 
@@ -207,7 +208,7 @@ function createCalendar() {
         for (let j = 1; j <= 7; j++) {
             let dagDiv = dagUkeArray[i][j];
 
-            let tempDate = new Date();
+            let tempDate  = new Date();
             tempDate.setDate(new Date().getDate() + dateAccumulator - 7);
 
             let tempDateString = tempDate.getDate() + "." + (tempDate.getMonth() + 1);
@@ -215,6 +216,12 @@ function createCalendar() {
             dagDiv = document.createElement("textarea");
             ukeDiv.append(dagDiv);
             dagDiv.className = "dag";
+            if(j%7 === 0 || j%6 === 0) {
+                dagDiv.style.backgroundColor = "#787070";
+                //dagDiv.style.width ="50%"
+
+
+            }
             dagDiv.style.resize = "none";
 
             dagDiv.addEventListener("change", () => {
