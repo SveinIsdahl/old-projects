@@ -32,7 +32,7 @@ body {
   background-color: lightgray;
 }
 
-@media only screen and (max-aspect-ratio: 11/12) {
+@media only screen and (max-aspect-ratio: 6/5) {
   #kalender {
     padding: 1px;
   }
