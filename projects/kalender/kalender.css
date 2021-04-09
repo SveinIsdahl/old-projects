@@ -40,6 +40,10 @@ body {
     margin: 1px;
     font-size: 0.8em;
   }
+  .ukeNr {
+    margin: 1px;
+    font-size: 1em;
+  }
 }
 
 form {

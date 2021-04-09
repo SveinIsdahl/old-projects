@@ -8,7 +8,9 @@ let keys;
 let dateAccumulator = 0;
 
 function loadDatabase(id) {
-    document.getElementById("sign").remove();
+    if(document.getElementById("sign")){
+        document.getElementById("sign").remove();
+    }
     //email
     ref = database.ref("kalender/" + id);
 
@@ -109,10 +111,10 @@ window.onload = () => {
             <label><b>Passord</b></label>
             <input type="password" id="pwd" required>
     
-            <button id="loginbtn">Logg Inn</button> `;
+            <button id="loginbtn">Logg Inn</button> <button id="signupbtn">Opprett Bruker</button>`;
             document.getElementById("loginbtn").addEventListener("click", () => { login(firebase) });
-            //document.getElementById("signupbtn").addEventListener("click", () => { signup(firebase) })
-            //<button id="signupbtn">Opprett Bruker</button>
+            document.getElementById("signupbtn").addEventListener("click", () => { signup(firebase) })
+            //
         }
     });
 
