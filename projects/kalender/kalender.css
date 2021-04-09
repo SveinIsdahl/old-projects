@@ -1,5 +1,5 @@
 #kalender {
-  padding: 15px;
+  margin: -8px;
   background-color: lightgray;
 }
 
@@ -33,9 +33,6 @@ body {
 }
 
 @media only screen and (max-aspect-ratio: 1/1) {
-  #kalender {
-    padding: 1px;
-  }
   .dag {
     margin: 1px;
     font-size: 0.8em;
