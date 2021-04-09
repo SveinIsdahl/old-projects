@@ -20,6 +20,7 @@ function loadDatabase(id) {
 
 
 function login(firebase) {
+    //@ts-ignore
     firebase.auth().signInWithEmailAndPassword(document.getElementById("email").value, document.getElementById("pwd").value)
         .then((userCredential) => {
             // Signed in
@@ -33,7 +34,7 @@ function login(firebase) {
         });
 }
 function signup(firebase) {
-
+    //@ts-ignore
     firebase.auth().createUserWithEmailAndPassword(document.getElementById("email").value, document.getElementById("pwd").value)
         .then((userCredential) => {
             let user = userCredential.user;
@@ -97,9 +98,10 @@ window.onload = () => {
 
     // @ts-ignore
     database = firebase.database();
-     
+    //@ts-ignore
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
+            //@ts-ignore
             loadDatabase(firebase.auth().currentUser.uid);
 
         } else {
@@ -112,7 +114,9 @@ window.onload = () => {
             <input type="password" id="pwd" required>
     
             <button id="loginbtn">Logg Inn</button> <button id="signupbtn">Opprett Bruker</button>`;
+            //@ts-ignore
             document.getElementById("loginbtn").addEventListener("click", () => { login(firebase) });
+            //@ts-ignore
             document.getElementById("signupbtn").addEventListener("click", () => { signup(firebase) })
             //
         }
