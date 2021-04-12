@@ -17,31 +17,35 @@
   border-radius: 3%;
   background: #889090;
   margin: 3px;
-  font-size: 1.2em;
+  font-size: 1.0em;
 }
 
 .ukeNr {
   background: #222b2c;
   color: white;
   border-radius: 7px;
+  
 
 }
-
-body {
+html {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: lightgray;
+  
 }
 
+textarea {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 @media only screen and (max-aspect-ratio: 1/1) {
   #kalender {
     margin: -7px;
   }
   .dag {
     margin: 1px;
-    font-size: 0.8em;
+    font-size: 0.6em;
   }
   .ukeNr {
     margin: 0px;
-    font-size: 0.9em;
   }
 }
 @media (pointer:none), (pointer:coarse) {
