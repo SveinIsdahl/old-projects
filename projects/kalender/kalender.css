@@ -46,6 +46,7 @@ textarea {
   }
   .ukeNr {
     margin: 0px;
+    font-size: 0.8em;
   }
 }
 @media (pointer:none), (pointer:coarse) {
@@ -54,7 +55,7 @@ textarea {
   }
   .dag {
     margin: 1px;
-    font-size: 0.7em;
+    font-size: 0.6em;
   }
   .ukeNr {
     margin: 1px;
