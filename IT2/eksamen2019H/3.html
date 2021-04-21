@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="primary">
+        <select id="muskelgruppe">
+            <option value="">--velg--</option>
+            <option>Armer</option>
+            <option>Skuldre</option>
+            <option>Bein</option>
+            <option>Rygg</option>
+            <option>Bryst</option>
+        </select>
+    </div>
+    <div id="secondary">
+
+    </div>
+    <script>
+        const secondaryDiv = document.getElementById("secondary");
+        const obj = {
+            Armer: [
+                "bicepscurle med stang",
+                "Fransk press"
+            ],
+            Skuldre: [
+                "Stående militærpress",
+                "sidehev"
+            ],
+            Bein: [
+                "Knebøy",
+                "Leg extension",
+                "Leg curl"
+            ],
+            Rygg: [
+                "Nedtrekk",
+                "Roing"
+            ],
+            Bryst: [
+                "Benkpress",
+                "Flies",
+                "Push Up"
+            ]
+        }
+        const muskelgruppeDiv = document.getElementById("muskelgruppe")
+        muskelgruppeDiv.addEventListener("change", () => {
+            secondaryDiv.innerHTML = "";
+
+            lagSelect(muskelgruppeDiv.value);
+        })
+        
+
+        function lagSelect(muskelgruppe) {
+            if (!muskelgruppe) {
+                secondaryDiv.innerHTML = "";
+                return
+            }
+            secondaryDiv.innerHTML = `<select id="øvelse"> ${lagOptions(muskelgruppe)} </select>` 
+            const ovelse = document.getElementById("øvelse");
+            ovelse.addEventListener( "change", ()=>{
+                if(ovelse.value)
+                console.log(muskelgruppe + "+" + ovelse.value)
+            })
+        }
+
+        function lagOptions(value) {
+            let html = `<option value="">--velg--</option>`;
+            obj[value].forEach(excercise => {
+                html += `<option>${excercise}</option>`
+            });
+            return html;
+        }
+    </script>
+</body>
+
+</html>

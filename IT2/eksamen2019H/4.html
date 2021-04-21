@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, tr, th, thead{
+            border: black 1px solid;
+            border-collapse: collapse;
+            padding: 4px;
+
+        }
+        input {
+        }
+    </style>
+</head>
+<body>
+    <div id="gui">
+        <br>
+        <label for="">Antall Repetisjoner</label><br><input id="repInp" type="text">
+        <br>
+        <label for="">Motstand</label><br><input id="motInp" type="text">
+        <br>
+        <button id="addBtn">Legg til i tabell</button>
+    </div>
+    <br>
+    <table>
+        <thead>
+            <th>Sett</th>
+            <th>Repetisjoner</th>
+            <th>Motstand</th>
+        </thead>
+        <tbody>
+            td*3
+        </tbody>
+    </table>
+    <script>
+        const $ = (id) => {return document.getElementById(id)};
+
+        const tbody = document.querySelector("tbody");
+        const tbodyArr = [];
+        $("addBtn").addEventListener("click", ()=> {
+            const repInp = $("repInp");
+            const motInp = $("motInp");
+            nyRad(repInp, motInp);
+            tegnTable();
+        })
+        //lager ny rad i table, egen funksjon for å få mer oversiktlig kode
+         function nyRad (repetisjoner, motstand) {
+            
+        }
+    </script>
+</body>
+</html>
