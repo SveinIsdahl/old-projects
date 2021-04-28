@@ -42,24 +42,14 @@ textarea {
   }
   .dag {
     margin: 1px;
-    font-size: 0.6em;
+    font-size: 0.7em;
   }
   .ukeNr {
     margin: 0px;
-  }
-}
-@media (pointer:none), (pointer:coarse) {
-  #kalender {
-    margin: -8px;
-  }
-  .dag {
-    margin: 1px;
     font-size: 0.8em;
   }
-  .ukeNr {
-    margin: 1px;
-  }
 }
+
 form {
   border: 3px solid #f1f1f1;
 }

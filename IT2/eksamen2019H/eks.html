@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #Armstrekkeren {
+            border: red 1px solid;
+            width: 50px;
+            height: 15px;
+            position: absolute;
+            top: 180px;
+            left: 380px;
+        }
+        #Den_brede_ryggmuskelen{
+            border: blue 1px solid;
+            width: 100px;
+            height: 140px;
+            left: 260px;
+            top: 180px;
+            position: absolute;
+        }
+        #st {
+            font-size: 1.3rem;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <audio src="Den_brede_ryggmuskelen.mp3" id="Den_brede_ryggmuskelenmp3"></audio>
+    <audio src="Armstrekkeren.mp3" id="Armstrekkerenmp3"></audio>
+    <div id="bilde">
+        <img src="kropp.gif">
+        <div id="Armstrekkeren"></div>
+        <div id="Den_brede_ryggmuskelen"></div>
+    </div>
+    <div id="st">
+        <label>Valgt gruppe: </label><div id="valgt_gruppe">
+        
+        </div>
+    </div>
+   
+    <script>
+        const arm = document.getElementById("Armstrekkeren");
+        const rygg = document.getElementById("Den_brede_ryggmuskelen");
+        const valgt = document.getElementById("valgt_gruppe");
+
+        function valgtFunk(e){
+            valgt.innerHTML = e.target.id.replaceAll("_", " ");
+            document.getElementById(e.target.id + "mp3").play();
+        }
+
+        arm.addEventListener("click", valgtFunk)
+        rygg.addEventListener("click",valgtFunk)
+
+        
+        
+    </script>
+</body>
+</html>
