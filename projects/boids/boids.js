@@ -54,9 +54,9 @@ function draw() {
         b1.vx -= vel.x * (100 / distance);
         b1.vy -= vel.y * (100 / distance);
 
-        if (b1.x <= 0) { b1.x = w };
+        if (b1.x < 0) { b1.x = w };
         if (b1.x > w) { b1.x = 0 };
-        if (b1.y <= 0) { b1.y = h };
+        if (b1.y < 0) { b1.y = h };
         if (b1.y > h) { b1.y = 0 };
 
         const maxVel = 5;
