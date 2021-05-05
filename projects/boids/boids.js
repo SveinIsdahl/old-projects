@@ -2,11 +2,15 @@
 const l = (x) => console.log(x);
 import { dotProduct, distancePoints, length, normalize } from "./vectors.js";
 const canvas = document.getElementById("canvas");
+//@ts-ignore
 const c = canvas.getContext("2d");
 
 const w = 1200;
 const h = 700;
+
+//@ts-ignore
 canvas.width = w;
+//@ts-ignore
 canvas.height = h;
 canvas.style.width = w + "px";
 canvas.style.height = h + "px";
@@ -23,25 +27,28 @@ class Boid {
         this.x += this.vx;
         this.y += this.vy;
     }
+    calculateVel() {
+
+    }
 }
 const boidArr = [];
 for (let i = 0; i < 300; i++) {
     boidArr[i] = new Boid(Math.round(Math.random() * w), Math.round(Math.random() * h));
 
 }
+c.lineWidth = 3
 function draw() {
     c.clearRect(0, 0, w, h)
     c.beginPath();
-    c.lineWidth = 3
     boidArr.forEach((b1, i) => {
-        // DIstance uten å ta kvadratrot for optimization
-        let distance = Infinity;
+        let currentDistanceToClosest = Infinity;
         let indexOfShortestDist = -1;
         boidArr.forEach((b2, j) => {
             if (i !== j) {
+                // DIstance uten å ta kvadratrot for optimization
                 let distTest = Math.pow((b1.x - b2.x), 2) + Math.pow(b1.y - b2.y, 2);
-                if (distTest < distance) {
-                    distance = distTest;
+                if (distTest < currentDistanceToClosest) {
+                    currentDistanceToClosest = distTest;
                     indexOfShortestDist = j;
                 }
             }
@@ -49,10 +56,9 @@ function draw() {
         const b2 = boidArr[indexOfShortestDist];
         const vel = normalize(b2.x - b1.x, b2.y - b1.y);
 
+        b1.vx -= vel.x * (100 / currentDistanceToClosest);
+        b1.vy -= vel.y * (100 / currentDistanceToClosest);
 
-
-        b1.vx -= vel.x * (100 / distance);
-        b1.vy -= vel.y * (100 / distance);
 
         if (b1.x < 0) { b1.x = w };
         if (b1.x > w) { b1.x = 0 };
@@ -67,12 +73,12 @@ function draw() {
         if (Math.abs(b1.vy) > maxVel) {
             b1.vy = maxVel * Math.sign(b1.vy);
         }
-        
+
         b1.updatePos();
         c.beginPath();
         c.arc(b1.x, b1.y, b1.r, 0, 2 * Math.PI);
-        c.moveTo(b1.x,b1.y);
-        c.lineTo(b1.vx*15+b1.x, b1.vy*15+b1.y)
+        c.moveTo(b1.x, b1.y);
+        c.lineTo(b1.vx * 15 + b1.x, b1.vy * 15 + b1.y)
         c.stroke();
     })
     c.stroke();
