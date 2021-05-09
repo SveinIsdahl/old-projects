@@ -28,6 +28,10 @@ class Boid {
         this.x += this.vx;
         this.y += this.vy;
     }
+    /**
+     * @param {array} boidArray
+     * @param {number} i
+     */
     repulsionCalculation(boidArray, i) {
         let b1 = this;
 
