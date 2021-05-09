@@ -1,5 +1,6 @@
 //@ts-check
-const l = (x) => console.log(x);
+const l = x => console.log(x);
+
 import { dotProduct, distancePoints, length, normalize } from "./vectors.js";
 const canvas = document.getElementById("canvas");
 //@ts-ignore
@@ -27,20 +28,9 @@ class Boid {
         this.x += this.vx;
         this.y += this.vy;
     }
-    calculateVel() {
+    repulsionCalculation(boidArray, i) {
+        let b1 = this;
 
-    }
-}
-const boidArr = [];
-for (let i = 0; i < 300; i++) {
-    boidArr[i] = new Boid(Math.round(Math.random() * w), Math.round(Math.random() * h));
-
-}
-c.lineWidth = 3
-function draw() {
-    c.clearRect(0, 0, w, h)
-    c.beginPath();
-    boidArr.forEach((b1, i) => {
         let currentDistanceToClosest = Infinity;
         let indexOfShortestDist = -1;
         boidArr.forEach((b2, j) => {
@@ -80,6 +70,19 @@ function draw() {
         c.moveTo(b1.x, b1.y);
         c.lineTo(b1.vx * 15 + b1.x, b1.vy * 15 + b1.y)
         c.stroke();
+    }
+}
+const boidArr = [];
+for (let i = 0; i < 300; i++) {
+    boidArr[i] = new Boid(Math.round(Math.random() * w), Math.round(Math.random() * h));
+
+}
+c.lineWidth = 3
+function draw() {
+    c.clearRect(0, 0, w, h)
+    c.beginPath();
+    boidArr.forEach((b1, i) => {
+        b1.repulsionCalculation(boidArr, i);
     })
     c.stroke();
 
