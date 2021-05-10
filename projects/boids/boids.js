@@ -3,7 +3,7 @@ const l = x => console.log(x);
 
 import { dotProduct, distancePoints, length, normalize } from "./vectors.js";
 const canvas = /** */ document.getElementById("canvas");
-//@ts-ignore
+// @ts-ignore
 const c = canvas.getContext("2d");
 
 const w = 1200;
@@ -11,9 +11,7 @@ const h = 700;
 
 let mouseDownState = false;
 let mpos = {};
-//@ts-ignore
 canvas.width = w;
-//@ts-ignore
 canvas.height = h;
 canvas.style.width = w + "px";
 canvas.style.height = h + "px";

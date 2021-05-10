@@ -17,8 +17,6 @@ function loadDatabase(id) {
     //On event value, 
     ref.on('value', gotData, (e) => { console.log("error " + e); })
 }
-
-
 function login(firebase) {
     //@ts-ignore
     firebase.auth().signInWithEmailAndPassword(document.getElementById("email").value, document.getElementById("pwd").value)
@@ -57,12 +55,9 @@ function signup(firebase) {
             }
 
         });
-
 }
 
-
 window.onload = () => {
-
     // firebase configuration
     let firebaseConfig = {
         apiKey: "AIzaSyD_6EPzd56KtaDCm9k1Od-MorOcuxwMlMI",
@@ -101,10 +96,12 @@ window.onload = () => {
     //@ts-ignore
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
+            loadingAnimation(true);
             //@ts-ignore
             loadDatabase(firebase.auth().currentUser.uid);
 
         } else {
+            loadingAnimation(false)
             //sign in/up form
             document.getElementById("sign").innerHTML = `
             <label><b>Email</b></label>
@@ -121,12 +118,6 @@ window.onload = () => {
             //
         }
     });
-
-
-
-
-
-
 }
 
 /**
@@ -139,6 +130,8 @@ function gotData(returnedData) {
     if (data == null || data == undefined) {
         retrievedDataArray = [{ "test": "test1", "test2": "test3" }];
         createCalendar();
+        loadingAnimation(false);
+
         dateAccumulator = 0;
 
     }
@@ -173,11 +166,8 @@ function getWeekNumber(d) {
     return weekNo;
 }
 
-
-
 function createCalendar() {
     // Array som inneholder ukene som er igjen av året, som igjen inneholder array for hver uke som inneholder 7 uke-div-elementer
-
     let dagUkeArray = [];
 
     let date = new Date();
@@ -219,8 +209,6 @@ function createCalendar() {
             if(j%7 === 0 || j%6 === 0) {
                 dagDiv.style.backgroundColor = "#787070";
                 //dagDiv.style.width ="50%"
-
-
             }
             dagDiv.style.resize = "none";
 
@@ -276,4 +264,16 @@ function addToDataStaging(textarea, date) {
         }
     }
     ref.push(stagingObject);
+}
+
+function loadingAnimation(state) {
+    /** @type {HTMLElement} */
+    const div = document.getElementById("ring");
+    if(state) {
+        div.className = "lds-ring";
+    }
+    else {
+        div.classList.remove("lds-ring"); 
+        void div.offsetWidth;
+    }
 }
