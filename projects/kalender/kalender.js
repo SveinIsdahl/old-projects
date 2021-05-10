@@ -144,6 +144,7 @@ function gotData(returnedData) {
         }
         createCalendar();
         dateAccumulator = 0;
+        loadingAnimation(false);
     }
 
 }
@@ -275,5 +276,6 @@ function loadingAnimation(state) {
     else {
         div.classList.remove("lds-ring"); 
         void div.offsetWidth;
+        console.log("t")
     }
 }
