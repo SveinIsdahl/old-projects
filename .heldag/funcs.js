@@ -30,5 +30,4 @@
      return sel;
  }
 
-
-export {getValue, l, $, makeSelect}
+ export {getValue, l, $, makeSelect}
