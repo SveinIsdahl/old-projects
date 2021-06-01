@@ -47,27 +47,30 @@ div {
 @keyframes time {
     0% {
         left: -100px;
+        top: 600px;
+
     }
     66% {
-        left: 300px;
+        left: 500px;
         top: 50vh;
     }
     100% {
-        left: 300px;
+        left: 500px;
         top: 50vh;
     }
 }
 @keyframes managment {
     0% {
         left: -100px;
+        top: 100px;
     }
     76% {
-        left: 400px;
+        left: 600px;
         top: 50vh;
 
     }
     100% {
-        left: 400px;
+        left: 600px;
         top: 50vh;
 
     }
@@ -75,14 +78,16 @@ div {
 @keyframes system {
     0% {
         left: -100px;
+        top: -200px;
+
     }
     86% {
-        left: 570px;
+        left: 784px;
         top: 50vh;
 
     }
     100% {
-        left: 570px;
+        left: 784px;
         top: 50vh;
     }
 }

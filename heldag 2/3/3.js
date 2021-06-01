@@ -4,11 +4,12 @@ import {getValue, l, $, makeSelect} from "../funcs.js"
 /**
  * Besvarelse oppg 2,4,5,6 hvor ansatte kan tildeles oppdrag og og tas av oppdrag og legge til flere ansatte
  * Dekker mål: Klasse, funksjon m. parameter
- * Tror alle mål utenom klasse er dekket i andre besvarelser
+ * Tror alle mål utenom klasse er dekket i andre besvarelse 1 og 2
  * Antar at det er nok å implementere i JS, ikke nødvendig med HTML, bare console
  * 
- * bruker da klasse for ansatte
- * 
+ * bruker da klasse for ansatte slik at det lett kan lages nye
+ * Ser ikke hvordan arv ved bruka av super() kan passe inn i løsning, 
+ * men kunne vært mulig dersom man skal ha ulike typer ansatte med ulike egenskaper
  * 
  */
 

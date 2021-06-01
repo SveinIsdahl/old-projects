@@ -1,8 +1,9 @@
 //@ts-check
 //Burde gjort animasjon i JS, men trodde css var raskere. 
-//Så deretter at lyd skulle times, dette ble upraktisk når animasjon er ren css
+//Fant deretter ut at lyd skulle times, dette ble upraktisk når animasjon er ren css
 //Har ikke tid å endre, derfor dårlig impletasjon og timing
 //Kunne hatt forskjellige animasjoner på ulik tid og gjort all timing i JS
+//Hadde da blitt finere css ettersom jeg hadde sluppet å skrive mange ekstra classes og animasjoner
 
 
 import {getValue, l, $, makeSelect} from "../funcs.js"

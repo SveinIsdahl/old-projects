@@ -72,6 +72,7 @@ function visOppdrag(ansatt) {
     const oppdragSelect = makeSelect(oppdrag)
     oppdragSelectorDiv.append(oppdragSelect);
 
+    //Setter div til ledig/opptatt avhengig av antall oppdrag
     const antallOppdrag = oppdrag.length-1;
     if(antallOppdrag === 0) {
         ledigDiv.innerHTML = "Ledig";

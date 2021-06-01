@@ -1,0 +1,93 @@
+
+div {
+    font-size: 2rem;
+}
+.t {
+    animation: time 3s linear forwards, blink 0.7s linear 3s forwards;
+}
+.man {
+    animation: managment 3s linear forwards, blink 0.7s linear 3s forwards;
+}
+.sys {
+    animation: system 3s linear forwards, blink 0.7s linear 3s forwards;
+}
+#time {
+    position: absolute;
+    left: -100px;
+    top: -50vh;
+
+}
+#managment{
+    position: absolute;
+    left: -100px;
+    top: -50vh;
+
+}
+#system{
+    position: absolute;
+    left: -100px;
+    top: -50vh;
+}
+@keyframes blink { 
+    0% {
+        color: blue;
+    }
+    40% {
+        color: red;
+    }
+    60% {
+        color: green
+    }
+    100% {
+        color: white;
+        background-color: blue;
+    }
+}
+
+@keyframes time {
+    0% {
+        left: -100px;
+        top: 600px;
+
+    }
+    66% {
+        left: 500px;
+        top: 50vh;
+    }
+    100% {
+        left: 500px;
+        top: 50vh;
+    }
+}
+@keyframes managment {
+    0% {
+        left: -100px;
+        top: 100px;
+    }
+    76% {
+        left: 600px;
+        top: 50vh;
+
+    }
+    100% {
+        left: 600px;
+        top: 50vh;
+
+    }
+}
+@keyframes system {
+    0% {
+        left: -100px;
+        top: -200px;
+
+    }
+    86% {
+        left: 784px;
+        top: 50vh;
+
+    }
+    100% {
+        left: 784px;
+        top: 50vh;
+    }
+}
