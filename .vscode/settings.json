@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/Library/Frameworks/Python.framework/Versions/3.7/bin/python3",
+    "python.pythonPath": "/Users/svein/opt/anaconda3/bin/python",
     "sqltools.connections": [
         {
             "askForPassword": false,

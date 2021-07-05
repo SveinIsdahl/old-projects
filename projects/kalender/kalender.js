@@ -56,7 +56,6 @@ function signup(firebase) {
 
         });
 }
-
 window.onload = () => {
     // firebase configuration
     let firebaseConfig = {

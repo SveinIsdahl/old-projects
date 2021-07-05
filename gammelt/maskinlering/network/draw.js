@@ -23,8 +23,8 @@ let training_data = [{
 
 function setup() {
     let network = new NeuralNetwork(2, 1000, 1);
-    network.learning_rate = 0.7;
-    for (let i = 0; i < 10000; i++) {
+    network.learning_rate = 0.6;
+    for (let i = 0; i < 1000; i++) {
         let data = random(training_data);
         network.train(data.inputs, data.targets);
     }
