@@ -1,0 +1,22 @@
+.arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    
+    border-top: 15px solid #999;
+  }
+.arrow-left {
+    top: 1px;
+    width: 0; 
+    height: 0; 
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent; 
+    
+    border-right:12px solid #999; 
+  }
+#dropDown {
+    position: absolute;
+    top: 20px;
+    right: 5px;
+}

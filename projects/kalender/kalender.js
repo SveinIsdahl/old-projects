@@ -1,4 +1,6 @@
 // @ts-check
+let $ = (id) => {return document.getElementById(id)}
+
 let database;
 let ref;
 let retrievedDataArray = [];
@@ -6,7 +8,7 @@ let stagedDataArray = [];
 let keys;
 //Antall dager fra nåværende dato
 let dateAccumulator = 0;
-
+let currentMode = "Dark";
 function loadDatabase(id) {
     if(document.getElementById("sign")){
         document.getElementById("sign").remove();
@@ -117,6 +119,40 @@ window.onload = () => {
             //
         }
     });
+    const dropDown = document.getElementById("dropDown");
+    dropDown.addEventListener("click", ()=> { 
+               
+        dropDown.className === "arrow-down" ?  addMenu(): removeMenu();
+
+        function addMenu() {
+            let menu = document.getElementById("menu");
+            menu.style.display = "flex"
+            menu.style.flexDirection ="row-reverse"
+            menu.style.paddingRight = "5px"
+            dropDown.className = "arrow-left"
+            menu.innerHTML = `<div id="modeToggle">${currentMode}</div>`;
+            document.getElementById("modeToggle").addEventListener("click", ()=>{
+                if(currentMode === "Dark") {
+                    setMode(currentMode = "Light");
+                    $("modeToggle").innerHTML = "Light"
+                }
+                    
+                
+                else if(currentMode === "Light") {
+                    setMode(currentMode = "Dark")
+                    $("modeToggle").innerHTML = "Dark"
+
+                }
+
+            })
+        }
+        function removeMenu() {
+            let menu = document.getElementById("menu");
+
+            dropDown.className = "arrow-down"
+            menu.innerHTML = ""
+        }
+    })
 }
 
 /**
@@ -207,7 +243,7 @@ function createCalendar() {
             ukeDiv.append(dagDiv);
             dagDiv.className = "dag";
             if(j%7 === 0 || j%6 === 0) {
-                dagDiv.style.backgroundColor = "#787070";
+                dagDiv.classList += " weekend";
                 //dagDiv.style.width ="50%"
             }
             dagDiv.style.resize = "none";
@@ -233,7 +269,7 @@ function createCalendar() {
                 }
             }
             if (dateAccumulator === 7) {
-                dagDiv.style.background = "#99aaee"
+                dagDiv.style.background = "#5465a8"
             }
             dateAccumulator++
         }
@@ -275,6 +311,33 @@ function loadingAnimation(state) {
     else {
         div.classList.remove("lds-ring"); 
         void div.offsetWidth;
-        console.log("t")
+    }
+}
+/**
+ * @param {string} mode
+ */
+function setMode(mode) {
+    let root = document.documentElement;
+    if(mode === "Dark") {
+        root.style.setProperty("--backCol", "#151515")
+        root.style.setProperty("--accentCol", "#32333d")
+        root.style.setProperty("--weekendCol", "#282020")
+        root.style.setProperty("--btnCol", "#4243af")
+        root.style.setProperty("--fontCol", "#ffffffcc")
+
+
+    }
+    else if (mode === "Light"){
+        root.style.setProperty("--backCol", "#eeeeee")
+        root.style.setProperty("--accentCol", "#c2c3cd")
+        root.style.setProperty("--weekendCol", "#ff9999")
+        root.style.setProperty("--btnCol", "#7273af")
+        root.style.setProperty("--fontCol", "#000000")
+
+
+
+    }
+    else {
+        console.log("error")
     }
 }
