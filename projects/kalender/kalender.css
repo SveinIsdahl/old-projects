@@ -6,10 +6,6 @@
   --fontCol: #ffffffcc;
 
 }
-textarea {
-  resize: none;
-    outline: none;
-}
 
 html {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -30,7 +26,7 @@ html {
   
 }
 
-.dag, .ukeNr, #modeToggle {
+.dag, .ukeNr, #themeToggle {
   text-align: center;
   border: none 1px solid;
   border-radius: 4%;
@@ -42,9 +38,9 @@ html {
   color: var(--fontCol);
 }
 .dag:hover {
-  border: 2px solid white;
+  border: 2px solid #aaaaaa;
 }
-.ukeNr, #modeToggle {
+.ukeNr, #themeToggle {
   background: var(--accentCol);
   color: var(--fontCol);
   border-radius: 7px;
@@ -55,6 +51,8 @@ html {
 
 textarea {
   border: none;
+  resize: none;
+  outline: none;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 @media only screen and (max-aspect-ratio: 1/1) {
@@ -76,13 +74,17 @@ textarea {
     margin-bottom: 7px;
     font-size: 1em;
   }
+  .dag:hover {
+    border: 0px solid #aaaaaa;
+  }
 }
 .weekend {
   background: var(--weekendCol);
 }
-#modeToggle {
+#themeToggle {
   background-color: var(--btnCol);
   position: relative;
   right: 0px;
   padding: 4px;
+  user-select: none;
 }

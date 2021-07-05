@@ -1,22 +1,24 @@
 .arrow-down {
+  top: 3px;
     width: 0; 
     height: 0; 
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
     
-    border-top: 15px solid #999;
+    border-top: 18px solid #999;
   }
 .arrow-left {
-    top: 1px;
+  top: 16px;
     width: 0; 
     height: 0; 
-    border-top: 12px solid transparent;
-    border-bottom: 12px solid transparent; 
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent; 
     
-    border-right:12px solid #999; 
+    border-right:15px solid #999; 
   }
 #dropDown {
     position: absolute;
-    top: 20px;
     right: 5px;
+    
 }
+

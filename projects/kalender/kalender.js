@@ -8,7 +8,7 @@ let stagedDataArray = [];
 let keys;
 //Antall dager fra nåværende dato
 let dateAccumulator = 0;
-let currentMode = "Dark";
+let globalTheme = "Dark";
 function loadDatabase(id) {
     if(document.getElementById("sign")){
         document.getElementById("sign").remove();
@@ -128,22 +128,13 @@ window.onload = () => {
             let menu = document.getElementById("menu");
             menu.style.display = "flex"
             menu.style.flexDirection ="row-reverse"
-            menu.style.paddingRight = "5px"
+            menu.style.marginRight = "10px"
+            //menu.style.border = "2px solid gray"
+            //menu.style.borderRadius ="7px"
             dropDown.className = "arrow-left"
-            menu.innerHTML = `<div id="modeToggle">${currentMode}</div>`;
-            document.getElementById("modeToggle").addEventListener("click", ()=>{
-                if(currentMode === "Dark") {
-                    setMode(currentMode = "Light");
-                    $("modeToggle").innerHTML = "Light"
-                }
-                    
-                
-                else if(currentMode === "Light") {
-                    setMode(currentMode = "Dark")
-                    $("modeToggle").innerHTML = "Dark"
-
-                }
-
+            menu.innerHTML = `<div id="themeToggle">${globalTheme}</div>`;
+            document.getElementById("themeToggle").addEventListener("click", ()=>{
+                setTheme(globalTheme);
             })
         }
         function removeMenu() {
@@ -316,26 +307,26 @@ function loadingAnimation(state) {
 /**
  * @param {string} mode
  */
-function setMode(mode) {
+function setTheme(theme) {
     let root = document.documentElement;
-    if(mode === "Dark") {
+    if(theme === "Light") {
         root.style.setProperty("--backCol", "#151515")
         root.style.setProperty("--accentCol", "#32333d")
         root.style.setProperty("--weekendCol", "#282020")
         root.style.setProperty("--btnCol", "#4243af")
         root.style.setProperty("--fontCol", "#ffffffcc")
-
+        globalTheme = "Dark";
+        $("themeToggle").innerHTML = "Dark";
 
     }
-    else if (mode === "Light"){
+    else if (theme === "Dark"){
         root.style.setProperty("--backCol", "#eeeeee")
         root.style.setProperty("--accentCol", "#c2c3cd")
         root.style.setProperty("--weekendCol", "#ff9999")
         root.style.setProperty("--btnCol", "#7273af")
         root.style.setProperty("--fontCol", "#000000")
-
-
-
+        globalTheme = "Light";
+        $("themeToggle").innerHTML = "Light";
     }
     else {
         console.log("error")
