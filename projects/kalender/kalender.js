@@ -87,7 +87,6 @@ window.onload = () => {
         */
     };
 
-
     // Initialize Firebase
     // @ts-ignore
     firebase.initializeApp(firebaseConfig);
@@ -119,6 +118,8 @@ window.onload = () => {
             //
         }
     });
+
+    //Code handling dropdown-arrow and menu
     const dropDown = document.getElementById("dropDown");
     dropDown.addEventListener("click", ()=> { 
                
@@ -261,6 +262,7 @@ function createCalendar() {
             }
             if (dateAccumulator === 7) {
                 dagDiv.style.background = "#5465a8"
+                dagDiv.id = "today";
             }
             dateAccumulator++
         }
