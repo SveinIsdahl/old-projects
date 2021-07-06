@@ -8,7 +8,7 @@ let stagedDataArray = [];
 let keys;
 //Antall dager fra nåværende dato
 let dateAccumulator = 0;
-let globalTheme = "Dark";
+let globalTheme = "Light";
 function loadDatabase(id) {
     if(document.getElementById("sign")){
         document.getElementById("sign").remove();
@@ -145,6 +145,7 @@ window.onload = () => {
             menu.innerHTML = ""
         }
     })
+    setTheme(globalTheme)
 }
 
 /**
@@ -239,7 +240,6 @@ function createCalendar() {
                 //dagDiv.style.width ="50%"
             }
             dagDiv.style.resize = "none";
-
             dagDiv.addEventListener("change", () => {
                 addToDataStaging(dagDiv, tempDateString);
             })
@@ -307,14 +307,14 @@ function loadingAnimation(state) {
     }
 }
 /**
- * @param {string} mode
+ * @param {string} theme
  */
 function setTheme(theme) {
     let root = document.documentElement;
     if(theme === "Light") {
         root.style.setProperty("--backCol", "#151515")
         root.style.setProperty("--accentCol", "#32333d")
-        root.style.setProperty("--weekendCol", "#282020")
+        root.style.setProperty("--weekendCol", "#2b2323")
         root.style.setProperty("--btnCol", "#4243af")
         root.style.setProperty("--fontCol", "#ffffffcc")
         globalTheme = "Dark";
@@ -324,7 +324,7 @@ function setTheme(theme) {
     else if (theme === "Dark"){
         root.style.setProperty("--backCol", "#eeeeee")
         root.style.setProperty("--accentCol", "#c2c3cd")
-        root.style.setProperty("--weekendCol", "#ff9999")
+        root.style.setProperty("--weekendCol", "#999599")
         root.style.setProperty("--btnCol", "#7273af")
         root.style.setProperty("--fontCol", "#000000")
         globalTheme = "Light";

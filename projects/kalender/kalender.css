@@ -1,12 +1,3 @@
-:root {
-  --backCol: #151515;
-  --accentCol: #32333d;
-  --weekendCol: #282020;
-  --btnCol: #4243af;
-  --fontCol: #ffffffcc;
-
-}
-
 html {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: var(--backCol);
