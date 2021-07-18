@@ -6,6 +6,9 @@ html {
 #kalender {
   background-color: var(--backCol);
 }
+label {
+  color: var(--fontCol);
+}
 
 .uke {
   margin: 0px;
