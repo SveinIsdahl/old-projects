@@ -17,7 +17,6 @@ label {
   height: 130px;
   display: grid;
   grid-template-columns: repeat(5, 2fr) repeat(2, 1fr);
-  
 }
 
 .dag, .ukeNr, #themeToggle {
